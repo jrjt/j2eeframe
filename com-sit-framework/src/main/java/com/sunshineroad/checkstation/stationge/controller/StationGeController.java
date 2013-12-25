@@ -19,7 +19,7 @@ public class StationGeController {
 	
 	@RequestMapping(value= "getstationgelist", method=RequestMethod.GET)
 	public @ResponseBody List<StationGe> getStationGelist(){
-		     
+		        
 		return stationGeService.alllist(); 
 	}
 }
