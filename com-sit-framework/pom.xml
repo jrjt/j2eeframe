@@ -32,7 +32,7 @@
         <url>http://192.168.40.144:8081/nexus/content/repositories/thirdparty/</url>  
       </repository>  
 	</distributionManagement>  
-	<!-- 项目属性 -->
+	<!-- 项目属性1 -->
 	<properties>
 		<jdk.version>1.6</jdk.version>
 		<spring.version>3.2.3.RELEASE</spring.version>
