@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/39/trunk/fes/src/com/sit/resource/template
+END
+modelJs.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/45/trunk/fes/src/com/sit/resource/template/modelJs.ftl
+END
+dao.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/dao.ftl
+END
+daoImpl.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/daoImpl.ftl
+END
+service.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/service.ftl
+END
+serviceImpl.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/serviceImpl.ftl
+END
+controllerTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/controllerTemplate.ftl
+END
+controller.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/controller.ftl
+END
+entityVo.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/44/trunk/fes/src/com/sit/resource/template/entityVo.ftl
+END
+entityTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/39/trunk/fes/src/com/sit/resource/template/entityTemplate.ftl
+END
+jspListTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/39/trunk/fes/src/com/sit/resource/template/jspListTemplate.ftl
+END
+jspTableTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/39/trunk/fes/src/com/sit/resource/template/jspTableTemplate.ftl
+END
+store.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/41/trunk/fes/src/com/sit/resource/template/store.ftl
+END
+entity.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/entity.ftl
+END
+jspDivTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/39/trunk/fes/src/com/sit/resource/template/jspDivTemplate.ftl
+END
+listJs.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/45/trunk/fes/src/com/sit/resource/template/listJs.ftl
+END
+serviceITemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/serviceITemplate.ftl
+END
+serviceImplTemplate.ftl
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/42/trunk/fes/src/com/sit/resource/template/serviceImplTemplate.ftl
+END

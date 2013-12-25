@@ -1,0 +1,15 @@
+package ${bussiPackage}.${entityPackage}.service;
+
+import java.util.List;
+
+import com.sunshineroad.fes.hr.user.model.UserModel;
+import com.sunshineroad.fes.hr.user.vo.UserModelVo;
+import com.sunshineroad.framework.core.common.service.IBaseServer;
+
+import ${bussiPackage}.${entityPackage}.entity.${entityName};
+import ${bussiPackage}.${entityPackage}.entityvo.${entityName}Vo;
+ import com.sunshineroad.framework.core.common.service.IBaseServer;
+
+public interface ${entityName}Service extends IBaseServer<${entityName}, Integer>{
+	public List<${entityName}Vo> list(${entityName} entity) ;
+}
