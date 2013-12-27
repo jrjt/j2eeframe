@@ -15,6 +15,10 @@ public class WebDispatcherServlet extends DispatcherServlet{
 	@Override
 	protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		SpringDispatcherContextHolder.initDispatcherContext(response);
+		
+		java.util.ResourceBundle  bundlePath = java.util.ResourceBundle.getBundle("resources//base_config");
+    	String jsBasePath=bundlePath.getString("js");
+    	response.setHeader("Access-Control-Allow-Origin", jsBasePath+"/*");
 		super.doService(request, response);
 	}
 }

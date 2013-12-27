@@ -1,14 +1,24 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
-	String extLibPath ="js/extjs";// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/ext4";
 	String ctx = request.getContextPath();
-	pageContext.setAttribute("extLibPath", extLibPath);
 	pageContext.setAttribute("ctx", ctx);
+	java.util.ResourceBundle  bundlePath = java.util.ResourceBundle.getBundle("resources//base_config");
+	String extLibPath=bundlePath.getString("js")+"/extjs";
+	//String extLibPath =jsBasePath/extjs4.1"//"js/extjs";// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/ext4";
+		
+	pageContext.setAttribute("extLibPath", extLibPath);
+	response.setHeader("Access-Control-Allow-Origin", "*");    
 %>
 <html>
 	<head>
-		<title>运维综合管理系统</title>
+		<title>运维综合管理系统1</title>
 		<link rel="icon" href="${ctx}/images/heat.ico" type="image/x-icon" />
+			<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="Heat">
+	<meta http-equiv="description" content="Heat">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 		<style type="text/css">
 			.x-panel-ghost {
 			    z-index: 1;
@@ -41,14 +51,14 @@
 			    font-size: 11px;
 			}
 		</style>
-
+<meta http-equiv="Access-Control-Allow-Origin" content="*">   
 	</head>
 	<body>
 		<div id="loading-tip" style="border-radius:3px;position: absolute;z-index: 1;border: solid 1px #ccc;background-color: #ffffff;padding: 10px;">
 			<div class="loading-indicator" style="color: #444;font: bold 13px tahoma, arial, helvetica;padding: 10px;height: auto;">
 				<img src="${ctx}/images/loading32.gif" width="31" height="31"
 					style="margin-right: 8px; float: left; vertical-align: top;" />
-				运维综合管理系统V1.0
+				 综合管理系统V1.0
 				<br />
 				<span id="loading-msg" style="font: normal 10px arial, tahoma, sans-serif;">加载样式和图片...</span>
 			</div>
@@ -65,17 +75,33 @@
 		<script type="text/javascript">
 			document.getElementById("loading-msg").innerHTML = "加载核心组件...";
 		</script>
-		<script type="text/javascript" src="${extLibPath}/ext-all-debug.js"></script>
+		<script type="text/javascript" src="${extLibPath}/ext-all.js"></script>
 		<script type="text/javascript" src="${extLibPath}/locale/ext-lang-zh_CN.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/firebugx.js"></script>
 		<script type="text/javascript" src="js/cryptojs.js"></script>
 		<script type="text/javascript" src="js/currentDate.js"></script>
 <!-- 		<script type="text/javascript" src="js/extexcel/export-all.js"></script> -->
-		<script type="text/javascript" src="js/ExporterExcel-all.js"></script>
+		<script type="text/javascript" src="js/ExporterExcel-all.js"></script> 
 		<script type="text/javascript">
 			Ext.appPath = '<%=ctx%>';
+			var express = require('express');
+			var app = express();
+			//设置跨域访问
+			app.all('*', function(req, res, next) {
+			    res.header("Access-Control-Allow-Origin", "*");
+			    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+			    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+			    res.header("X-Powered-By",' 3.2.1')
+			    res.header("Content-Type", "application/json;charset=utf-8");
+			    next();
+			});
 
+			app.get('/auth/:id/:password', function(req, res) {
+			    res.send({id:req.params.id, name: req.params.password});
+			});
+
+			app.listen(3000);
 
 			Ext.Ajax.on('requestcomplete', function(conn, response, options) {
 				if (response && response.getResponseHeader

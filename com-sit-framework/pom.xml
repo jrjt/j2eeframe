@@ -29,7 +29,7 @@
 	<distributionManagement>  
       <repository>  
         <id>releases</id>  
-        <url>http://192.168.40.144:8081/nexus/content/repositories/thirdparty/</url>  
+        <url>http://192.168.40.124:8081/nexus/content/repositories/thirdparty/</url>  
       </repository>  
 	</distributionManagement>  
 	<!-- 项目属性15 -->
@@ -71,10 +71,25 @@
 	</properties>
 
 	<repositories>
+	<repository>  
+            <id>nexus</id>  
+            <name>nexus</name>  
+            <url>http://192.168.40.124:8081/nexus/content/groups/public/</url>  
+            <releases>  
+                <enabled>true</enabled>  
+            </releases>  
+            <snapshots>  
+                <enabled>true</enabled>  
+            </snapshots>  
+        </repository> 
 		<repository>
 			<id>kafeitu</id>
 			<url>http://maven.kafeitu.me/nexus/content/groups/public</url>
 		</repository>
+		<repository>  
+        <id>proxool</id>  
+        <url>http://192.168.40.124:8081/nexus/content/repositories/thirdparty/</url>  
+      </repository>  
 		<repository>
 			<id>Activiti</id>
 			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
@@ -700,6 +715,11 @@
 			<artifactId>proxool-cglib</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<dependency>
+			<groupId>proxool</groupId>
+			<artifactId>proxool</artifactId>
+			<version>0.9.1</version>
+		</dependency>
 		<dependency> 
 			<groupId>quartz</groupId>
 			<artifactId>quartz</artifactId>
@@ -707,8 +727,21 @@
 		</dependency>
     
 	</dependencies>
-
+<pluginRepositories>  
+        <pluginRepository>  
+            <id>nexus</id>  
+            <name>nexus</name>  
+            <url>http://192.168.40.124:8081/nexus/content/groups/public/</url>  
+            <releases>  
+                <enabled>true</enabled>  
+            </releases>  
+            <snapshots>  
+                <enabled>true</enabled>  
+            </snapshots>  
+        </pluginRepository>  
+    </pluginRepositories>  
 	<build> 
+	
 		<plugins>
 	 
 		<plugin> 

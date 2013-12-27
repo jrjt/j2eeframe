@@ -49,6 +49,12 @@ public class HandlerPaginationInterceptor extends
 				PaginationUtils.setPagination(p);
 			}
 		}
+		/*java.util.ResourceBundle  bundlePath = java.util.ResourceBundle.getBundle("resources//base_config");
+		String jsPath=bundlePath.getString("js")+"";
+        response.setHeader("Access-Control-Allow-Origin", jsPath+"/*");  
+         response.setHeader("Access-Control-Allow-Headers", "Content-Type");  
+        response.setHeader("Access-Control-Allow-Methods", "GET");  
+        response.setHeader("Allow", "GET"); */
 		return true;
 	}
 	
