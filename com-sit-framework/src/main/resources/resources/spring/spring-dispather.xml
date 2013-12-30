@@ -42,7 +42,9 @@
 		<mvc:interceptor> 
 			<mvc:mapping path="/**" />
 			<bean
-				class="com.sunshineroad.framework.interceptor.dispatcher.HandlerDispatcherContextInterceptor"></bean>
+				class="com.sunshineroad.framework.interceptor.dispatcher.HandlerDispatcherContextInterceptor">
+ 
+				</bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
