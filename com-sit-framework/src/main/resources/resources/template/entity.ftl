@@ -57,7 +57,7 @@ public class ${entityName} extends BaseEntity {
 	</#if>
 	<#if sit_primary_key_policy == 'identity'>
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	</#if>
 	<#if sit_primary_key_policy == 'sequence'>
 	@Id

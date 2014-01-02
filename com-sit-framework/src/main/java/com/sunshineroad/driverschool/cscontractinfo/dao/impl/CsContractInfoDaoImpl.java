@@ -1,4 +1,4 @@
-package ${bussiPackage}.${entityPackage}.dao.impl;
+package com.sunshineroad.driverschool.cscontractinfo.dao.impl;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import ${bussiPackage}.${entityPackage}.dao.${entityName}Dao;
-import ${bussiPackage}.${entityPackage}.entity.${entityName};
-import ${bussiPackage}.${entityPackage}.entityvo.${entityName}Vo;
+import com.sunshineroad.driverschool.cscontractinfo.dao.CsContractInfoDao;
+import com.sunshineroad.driverschool.cscontractinfo.entity.CsContractInfo;
+import com.sunshineroad.driverschool.cscontractinfo.entityvo.CsContractInfoVo;
 
 import com.sunshineroad.framework.support.dao.hibernate.impl.HibernateDaoSupport;
 import com.sunshineroad.framework.web.support.pagination.PaginationUtils;
@@ -23,19 +23,19 @@ import com.sunshineroad.framework.web.support.pagination.PaginationUtils;
 
 /**   
  * @Title: daoImpl
- * @Description: ${ftl_description}
+ * @Description: a
  * @author  
- * @date ${ftl_create_time}
+ * @date 2014-01-02 16:35:54
  * @version V1.0   
  *
  */
-@Repository("${entityName}Dao")
-public class ${entityName}DaoImpl extends HibernateDaoSupport<${entityName}, Integer> implements ${entityName}Dao {
+@Repository("CsContractInfoDao")
+public class CsContractInfoDaoImpl extends HibernateDaoSupport<CsContractInfo, Integer> implements CsContractInfoDao {
    @Resource(name="sessionFactory_system")
 	    public void setSessionFactory(SessionFactory sessionFactory){
 	    	super.sessionFactory = sessionFactory;
 	    }
-	public ${entityName}DaoImpl(){
+	public CsContractInfoDaoImpl(){
 		this.getEntityClass();
 	} 
   

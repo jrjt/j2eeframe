@@ -76,8 +76,8 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	}
 
 	// 加载所有资源与权限的关系
-	private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
-	private void loadResourceDefine() {
+	public static Map<String, Collection<ConfigAttribute>> resourceMap = null;
+	public void loadResourceDefine() {
 		if (resourceMap == null) {
 			resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
 			Collection<ConfigAttribute> configAttributes = new ArrayList<ConfigAttribute>();

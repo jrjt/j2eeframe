@@ -29,6 +29,22 @@ public class ${entityName}ServiceImpl extends BaseServiceImpl<${entityName}, Int
 		return ListUtils.transform(${entityName?uncap_first}Dao.findPageByHql(" from ${entityName} "   ),
 				${entityName}Vo.class);
 	}
+	
+		@Override
+	public void update(${entityName} model)  {
+		this.${entityName?uncap_first}Dao.update(model);	
+	}
+	
+	@Override
+	public ${entityName} save(${entityName} model)   {
+		this.${entityName?uncap_first}Dao.save(model);	
+		return model;
+	}
+
+	@Override
+	public void delete(CsContractInfo model)  {
+		this.csContractInfoDao.delete(model);	
+	}
 }
 
 
