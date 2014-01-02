@@ -166,7 +166,7 @@ import com.sunshineroad.framework.codegenerate.pojo.CreateFileProperty;
 								for (int i = 0; i < temp.length; i++) {
 									result += temp[i];
 								}
-							} else {
+							} else {  
 								result = temp[0];
 							}
 						}
