@@ -1,4 +1,6 @@
 
+Ext.require(['Ext.window.*']);
+var csContractInfoStoreWindow;
 Ext.define('Fes.view.CsContractInfoList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.csContractInfolist',
@@ -90,7 +92,27 @@ createRoleCombox:function(){
 		var me = this;
 		me.store = Ext.create('Fes.store.CsContractInfoStore');
 	},
-
+	showWindow:function(){
+		 
+		 
+		if(!csContractInfoStoreWindow){
+			this.createWindow();
+		}
+		csContractInfoStoreWindow.show();
+	},
+	createWindow:function(){
+		 
+		csContractInfoStoreWindow= Ext.create('widget.window', {
+			title:'',
+			colosable:true,
+			closeAction:'hide',
+			width:'600',
+			layout:{type:'border',
+				padding:5},
+			items:[Ext.create('Fes.view.CsContractInfoForm',{})]
+		})
+		
+	},
 	addRecord : function() {
 		var records = this.getSelectionModel().getSelection();
 		var record = new Fes.model.CsContractInfoModel({
@@ -182,6 +204,7 @@ createRoleCombox:function(){
 		}
 
 	},
+	
 
 	createToolbar : function() {
 		var me = this;
@@ -203,7 +226,12 @@ createRoleCombox:function(){
 										}
 									});
 								}
-							}, '-', Ext.create('Ext.Button', {
+							}, '-',Ext.create('Ext.Button', {
+								text : '添加(窗口)',
+								iconCls : 'icon-add',
+								handler : me.showWindow,
+								scope : me
+							}),  Ext.create('Ext.Button', {
 										text : '添加',
 										iconCls : 'icon-add',
 										handler : me.addRecord,
