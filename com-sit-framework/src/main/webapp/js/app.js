@@ -5,11 +5,12 @@ Ext.Loader.setConfig({
 
 Ext.Loader.setPath({
 			'Ext.ux' : extLibPath + '/examples/ux',
+			
 			'Ext.app' : extLibPath + '/examples/app',
 			'Fes' : 'module'
 		});
 
-Ext.require(['Fes.MsgBox']);
+Ext.require(['Fes.MsgBox', 'Ext.data.*',  'Ext.util.*']);
 
 Ext.Ajax.on('requestexception', function(conn, response, options) {
 			var msg = '访问系统资源时发生异常<br/>' + '异常状态:' + response.status + '('

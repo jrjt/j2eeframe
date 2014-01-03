@@ -1,11 +1,9 @@
-
-Ext.require(['Ext.window.*']);
-var csContractInfoStoreWindow;
+ var _csContractInfoStoreWindow=false;
 Ext.define('Fes.view.CsContractInfoList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.csContractInfolist',
 	title : '角色列表',
- 
+	requires:'Fes.view.CsContractInfoWindow',
 	iconCls : 'icon-grid-list',
 	rowLines : true,
 	columnLines : true,
@@ -92,26 +90,38 @@ createRoleCombox:function(){
 		var me = this;
 		me.store = Ext.create('Fes.store.CsContractInfoStore');
 	},
-	showWindow:function(){
-		 
-		 
-		if(!csContractInfoStoreWindow){
-			this.createWindow();
+	showWindow:function(){ 
+		if(!_csContractInfoStoreWindow){
+			_csContractInfoStoreWindow= Ext.create('Fes.view.CsContractInfoWindow', { 
+				buttons : [
+				            {
+				                text: 'Save5',
+				                handler: function(){
+				                	  
+				            		  
+				            			alert(_csContractInfoStoreWindow.down('form').getValues());
+				            		 
+				                }
+				            },
+				            {
+				                text: 'Cancel',
+				                scope: this,
+				                handler: function(){
+				                	_csContractInfoStoreWindow.hide();
+				                }
+				            }
+				        ]
+			})
+			 
 		}
-		csContractInfoStoreWindow.show();
-	},
-	createWindow:function(){
-		 
-		csContractInfoStoreWindow= Ext.create('widget.window', {
-			title:'',
-			colosable:true,
-			closeAction:'hide',
-			width:'600',
-			layout:{type:'border',
-				padding:5},
-			items:[Ext.create('Fes.view.CsContractInfoForm',{})]
-		})
-		
+		_csContractInfoStoreWindow.show();
+	}, 
+	addWin:function(btn){
+		var win=btn.up('window');
+		console.log(win+'000000');
+		if(win){
+			console.log(win.down('form').getValues());
+		}
 	},
 	addRecord : function() {
 		var records = this.getSelectionModel().getSelection();

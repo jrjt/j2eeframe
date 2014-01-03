@@ -85,39 +85,7 @@
 		<script type="text/javascript" src="js/ExporterExcel-all.js"></script> 
 		<script type="text/javascript">
 			Ext.appPath = '<%=ctx%>';
-			var express = require('express');
-			var app = express();
-			//设置跨域访问
-			app.all('*', function(req, res, next) {
-			    res.header("Access-Control-Allow-Origin", "*");
-			    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-			    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-			    res.header("X-Powered-By",' 3.2.1')
-			    res.header("Content-Type", "application/json;charset=utf-8");
-			    next();
-			});
-
-			app.get('/auth/:id/:password', function(req, res) {
-			    res.send({id:req.params.id, name: req.params.password});
-			});
-
-			app.listen(3000);
-
-			Ext.Ajax.on('requestcomplete', function(conn, response, options) {
-				if (response && response.getResponseHeader
-						&& response.getResponseHeader('_timeout')) {
-
-					Ext.Msg.show({
-						title : '提示',
-						msg : '会话超时，请重新登录!',
-						buttons : Ext.Msg.OK,
-						icon : 'x-message-box-info',
-						fn : function() {
-								 window.location = Ext.appPath;
-						}
-					});
-				};
-			});
+			 
 		</script>
 		 
 	</body>

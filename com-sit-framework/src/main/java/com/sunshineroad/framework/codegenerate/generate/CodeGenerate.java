@@ -170,6 +170,9 @@ public Map<String, Object> execute()
 /* 169 */       codeFactory.invoke("modelJs.ftl", "model");
 /* 169 */       codeFactory.invoke("store.ftl", "store");
 
+/* 169 */       codeFactory.invoke("windowJs.ftl", "window");
+/* 169 */       codeFactory.invoke("formJs.ftl", "form"); 
+
 /*     */     }
 
 ApplicationContext context = new ClassPathXmlApplicationContext("resources\\spring\\spring-dao1.xml");

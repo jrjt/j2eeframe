@@ -1,57 +1,41 @@
-
+ 
 Ext.define('Fes.view.CsContractInfoForm', {
-	extend : 'Ext.form.Panel',
-	alias : 'widget.csContractInfoForm',
-	title : '',
-  
-	frame : true,
-	//是否可以拖动 
-    draggable:true, 
-	bodyPadding:'5 5 0',
-	width:600,
-	fieldDefaults:{
-		labelAlign:'left' ,
-		xtype:'textfield',
-		anchor:'95%',
-		msgTarget: 'side' 
-	},
-	items:[
-	       {
-	    	   xtype:'container',
-	    	   flex:1,
-	    	   layout:'anchor',
-	    	   item:[{
-	    		   fieldLabel:'数据项含义',
-	    		   name:'area'
-	    		   
-	    	   }]
-	       }, {
-	    	   xtype:'container',
-	    	   flex:1,
-	    	   layout:'anchor',
-	    	   item:[{
-	    		   fieldLabel:'客户类型',
-	    		   name:'contractNumber'
-	    		   
-	    	   }]
-	       }, {
-	    	   xtype:'container',
-	    	   flex:1,
-	    	   layout:'anchor',
-	    	   item:[{
-	    		   fieldLabel:'客户名称',
-	    		   name:'customerType'
-	    		   
-	    	   }]
-	       }, {
-	    	   xtype:'container',
-	    	   flex:1,
-	    	   layout:'anchor',
-	    	   item:[{
-	    		   fieldLabel:'区域',
-	    		   name:'customerName'
-	    		   
-	    	   }]
-	       }
-	       ] 
+	extend: 'Ext.form.Panel',
+	xtype: 'cscontractinfoform',
+	alias: 'widget.cscontractinfoform',
+	
+    frame: true,
+    bodyPadding: 10,
+    border: 0,
+    id: 'loginform-id',
+    fieldDefaults: {
+        labelAlign: 'left',
+        anchor: '98%',
+        labelWidth: 80
+    },
+    layout: {
+    	type: 'vbox',
+        align: 'stretch',
+        pack: 'center'
+    },
+    items: [{
+    	    xtype: 'textfield',
+    	    allowBlank: false,
+            fieldLabel: 'UserName',
+            name: 'params.name'
+        },{
+        	xtype: 'textfield',
+        	allowBlank: false,
+            fieldLabel: 'UserPass',
+            name: 'params.psw',
+            inputType: 'password'
+        },{
+            xtype: 'checkboxgroup',
+            vertical: false,
+            items: [
+                { boxLabel: 'remAccount', name: 'remAccount',checked: true },
+                { boxLabel: 'remPass', name: 'remPass'}
+            ]
+        }]
+
 });
