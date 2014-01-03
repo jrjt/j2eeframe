@@ -138,7 +138,7 @@ saveRecode:function(obj){
 				                	  
 				            		  
 				            			//alert(_${entityName?uncap_first}Window.down('form').getValues());
-				            			me.saveRecode(_csContractInfoWindow.down('form').getValues());
+				            			me.saveRecode(_${entityName?uncap_first}Window.down('form').getValues());
 				            		 
 				                }
 				            },

@@ -42,8 +42,8 @@ public class ${entityName}ServiceImpl extends BaseServiceImpl<${entityName}, Int
 	}
 
 	@Override
-	public void delete(CsContractInfo model)  {
-		this.csContractInfoDao.delete(model);	
+	public void delete(${entityName} model)  {
+		this.${entityName?uncap_first}Dao.delete(model);	
 	}
 }
 
