@@ -9,9 +9,9 @@ import com.sunshineroad.driverschool.cscontractinfo.entityvo.CsContractInfoVo;
 import com.sunshineroad.framework.support.dao.hibernate.HibernateDao;
 /**   
  * @Title: Dao
- * @Description: a
+ * @Description: 合同表
  * @author  
- * @date 2014-01-02 16:35:53
+ * @date 2014-01-03 18:39:09
  * @version V1.0   
  *
  */

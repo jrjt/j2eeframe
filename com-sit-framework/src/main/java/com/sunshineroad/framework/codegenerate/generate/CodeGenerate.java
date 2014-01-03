@@ -174,7 +174,7 @@ public Map<String, Object> execute()
 /* 169 */       codeFactory.invoke("formJs.ftl", "form"); 
 
 /*     */     }
-
+/*
 ApplicationContext context = new ClassPathXmlApplicationContext("resources\\spring\\spring-dao1.xml");
 
 DataSource ds =(DataSource) context.getBean("dataSource1"); 
@@ -183,6 +183,7 @@ JdbcTemplate jdbcTemplate =(JdbcTemplate) context.getBean("jdbcTemplate1");
 jdbcTemplate.equals("delete sys_resource where component= Fes.view"+entityName+"List"); 
 jdbcTemplate.execute("INSERT INTO `sys_resource` VALUES (null, 'Fes.view."+entityName+"List', '"+ftlDescription+"资源', '', '"+ftlDescription+"资源', '1', 'COMPONENT', '171', 'index.jsp');");
 ds.getConnection().close();
+*/
 
 /* 171 */     log.info("----jeecg----Code----Generation-----[单表模型：" + tableName + "]------ 生成完成。。。");
 /*     */   }

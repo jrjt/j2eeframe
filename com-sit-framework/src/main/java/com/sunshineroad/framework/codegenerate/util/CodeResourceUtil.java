@@ -17,7 +17,7 @@ public class CodeResourceUtil {
 	public static String PASSWORD = "123";
 
 	public static String DATABASE_NAME = "jxcia";
-
+  
 	public static String DATABASE_TYPE = "mysql";
 
 	public static String SIT_UI_FIELD_REQUIRED_NUM = "4";
@@ -45,6 +45,8 @@ public class CodeResourceUtil {
 	public static String CODEPATH;
 	public static String JSPPATH;
 	public static String LISTJSPATH;
+	public static String WINDOWJSPATH;
+	public static String FORMJSPATH;
 	public static String MODELJSPATH;
 	public static String STOREJSPATH;
 	public static String SIT_GENERATE_TABLE_ID;
@@ -105,6 +107,9 @@ public class CodeResourceUtil {
 		MODELJSPATH = web_root_package + "/" + "module/model/";
 		LISTJSPATH = web_root_package + "/" + "module/view" + "/";
 		STOREJSPATH = web_root_package + "/" + "module/store" + "/";
+		WINDOWJSPATH = web_root_package + "/" + "module/view" + "/";
+		FORMJSPATH = web_root_package + "/" + "module/view" + "/";
+		 
 	}
 
 	private void ResourceUtil() {

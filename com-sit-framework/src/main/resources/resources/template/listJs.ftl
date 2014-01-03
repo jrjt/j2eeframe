@@ -1,4 +1,4 @@
-
+var _${entityName?uncap_first}Window=false;
 Ext.define('Fes.view.${entityName}List', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.${entityName?uncap_first}list',
@@ -63,7 +63,20 @@ createRoleCombox:function(){
 		this.callParent();
 		
 	},
-
+saveRecode:function(obj){
+		var record = new Fes.model.${entityName}Model(obj);
+		this.getStore().add(record);
+		record.save({
+			success : function(vo, options) {
+				var data = Ext
+						.decode(options.response.responseText);
+				if (data.extra) {
+					vo.set('id', data.extra);
+				}
+				vo.commit();
+			}
+		}); 
+	},
 	createStore : function() {
 		var me = this;
 		me.store = Ext.create('Fes.store.${entityName}Store');
@@ -114,7 +127,34 @@ createRoleCombox:function(){
 		}
 
 	},
-
+	showWindow:function(rec){ 
+		var me = this;
+		if(!_${entityName?uncap_first}Window){
+			_${entityName?uncap_first}Window= Ext.create('Fes.view.${entityName}Window', { 
+				buttons : [
+				            {
+				                text: 'Save5',
+				                handler: function(){
+				                	  
+				            		  
+				            			//alert(_${entityName?uncap_first}Window.down('form').getValues());
+				            			me.saveRecode(_csContractInfoWindow.down('form').getValues());
+				            		 
+				                }
+				            },
+				            {
+				                text: 'Cancel',
+				                scope: this,
+				                handler: function(){
+				                	_${entityName?uncap_first}Window.hide();
+				                }
+				            }
+				        ]
+			})
+			 
+		}
+		_${entityName?uncap_first}Window.show();
+	},
 	createToolbar : function() {
 		var me = this;
 		return Ext.create('Ext.toolbar.Toolbar', {
@@ -136,6 +176,11 @@ createRoleCombox:function(){
 									});
 								}
 							}, '-', Ext.create('Ext.Button', {
+								text : '添加1',
+								iconCls : 'icon-add',
+								handler : me.showWindow,
+								scope : me
+							}),Ext.create('Ext.Button', {
 										text : '添加',
 										iconCls : 'icon-add',
 										handler : me.addRecord,

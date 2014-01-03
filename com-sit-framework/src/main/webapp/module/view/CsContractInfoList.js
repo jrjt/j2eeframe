@@ -1,9 +1,9 @@
- var _csContractInfoStoreWindow=false;
+var _csContractInfoWindow=false;
 Ext.define('Fes.view.CsContractInfoList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.csContractInfolist',
 	title : '角色列表',
-	requires:'Fes.view.CsContractInfoWindow',
+ 
 	iconCls : 'icon-grid-list',
 	rowLines : true,
 	columnLines : true,
@@ -85,44 +85,25 @@ createRoleCombox:function(){
 		this.callParent();
 		
 	},
-
+saveRecode:function(obj){
+		var record = new Fes.model.CsContractInfoModel(obj);
+		this.getStore().add(record);
+		record.save({
+			success : function(vo, options) {
+				var data = Ext
+						.decode(options.response.responseText);
+				if (data.extra) {
+					vo.set('id', data.extra);
+				}
+				vo.commit();
+			}
+		}); 
+	},
 	createStore : function() {
 		var me = this;
 		me.store = Ext.create('Fes.store.CsContractInfoStore');
 	},
-	showWindow:function(){ 
-		if(!_csContractInfoStoreWindow){
-			_csContractInfoStoreWindow= Ext.create('Fes.view.CsContractInfoWindow', { 
-				buttons : [
-				            {
-				                text: 'Save5',
-				                handler: function(){
-				                	  
-				            		  
-				            			alert(_csContractInfoStoreWindow.down('form').getValues());
-				            		 
-				                }
-				            },
-				            {
-				                text: 'Cancel',
-				                scope: this,
-				                handler: function(){
-				                	_csContractInfoStoreWindow.hide();
-				                }
-				            }
-				        ]
-			})
-			 
-		}
-		_csContractInfoStoreWindow.show();
-	}, 
-	addWin:function(btn){
-		var win=btn.up('window');
-		console.log(win+'000000');
-		if(win){
-			console.log(win.down('form').getValues());
-		}
-	},
+
 	addRecord : function() {
 		var records = this.getSelectionModel().getSelection();
 		var record = new Fes.model.CsContractInfoModel({
@@ -196,7 +177,7 @@ createRoleCombox:function(){
 		var me = this;
 		var records = this.getSelectionModel().getSelection();
 		if (records.length > 0) {
-			Fes.MsgBox.confirm('确定删除这' + records.length + '个a?',
+			Fes.MsgBox.confirm('确定删除这' + records.length + '个合同表?',
 					function(btn) {
 						Ext.each(records, function(record) {
 									if (Ext.Array.contains(me.getStore()
@@ -214,8 +195,35 @@ createRoleCombox:function(){
 		}
 
 	},
-	
-
+	showWindow:function(){ 
+		 
+		var me = this;
+		if(!_csContractInfoWindow){
+			_csContractInfoWindow= Ext.create('Fes.view.CsContractInfoWindow', { 
+				buttons : [
+				            {
+				                text: 'Save5',
+				                handler: function(){
+				                	  
+				            		  
+				            			//alert(_csContractInfoWindow.down('form').getValues());
+				            			me.saveRecode(_csContractInfoWindow.down('form').getValues());
+				            		 
+				                }
+				            },
+				            {
+				                text: 'Cancel',
+				                scope: this,
+				                handler: function(){
+				                	_csContractInfoWindow.hide();
+				                }
+				            }
+				        ]
+			})
+			 
+		}
+		_csContractInfoWindow.show();
+	},
 	createToolbar : function() {
 		var me = this;
 		return Ext.create('Ext.toolbar.Toolbar', {
@@ -236,12 +244,12 @@ createRoleCombox:function(){
 										}
 									});
 								}
-							}, '-',Ext.create('Ext.Button', {
-								text : '添加(窗口)',
+							}, '-', Ext.create('Ext.Button', {
+								text : '添加1',
 								iconCls : 'icon-add',
 								handler : me.showWindow,
 								scope : me
-							}),  Ext.create('Ext.Button', {
+							}),Ext.create('Ext.Button', {
 										text : '添加',
 										iconCls : 'icon-add',
 										handler : me.addRecord,

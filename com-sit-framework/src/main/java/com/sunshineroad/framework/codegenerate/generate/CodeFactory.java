@@ -96,6 +96,20 @@ public class CodeFactory {
 				str.append(StringUtils.capitalize(codeType));
 				str.append(".js");
 				
+			}else	if ("window".equalsIgnoreCase(type)) {
+				
+				str.append(CodeResourceUtil.WINDOWJSPATH);
+				str.append(StringUtils.capitalize(entityName));
+				str.append(StringUtils.capitalize(codeType));
+				str.append(".js");
+				
+			}else	if ("form".equalsIgnoreCase(type)) {
+				
+				str.append(CodeResourceUtil.FORMJSPATH);
+				str.append(StringUtils.capitalize(entityName));
+				str.append(StringUtils.capitalize(codeType));
+				str.append(".js");
+				
 			}else			if ("model".equalsIgnoreCase(type)) {
 				str.append(CodeResourceUtil.MODELJSPATH);
 				str.append(StringUtils.capitalize(entityName));
@@ -121,11 +135,11 @@ public class CodeFactory {
 				str.append(StringUtils.lowerCase("dao"));
 			
 			else if (!("EntityH".equalsIgnoreCase(type)||
-					"EntityM".equalsIgnoreCase(type)||"List".equalsIgnoreCase(codeType)||"store".equalsIgnoreCase(codeType)||"model".equalsIgnoreCase(codeType))) {
+					"EntityM".equalsIgnoreCase(type)||"List".equalsIgnoreCase(codeType)||"window".equals(type)||"form".equals(type)||"store".equalsIgnoreCase(codeType)||"model".equalsIgnoreCase(codeType))) {
 				str.append(StringUtils.lowerCase(codeType));
 			}
 			 if (!("EntityH".equalsIgnoreCase(type)||
-						"EntityM".equalsIgnoreCase(type)||"list".equals(type) || "model".equals(type) || "store"
+						"EntityM".equalsIgnoreCase(type)||"list".equals(type) ||"window".equals(type)||"form".equals(type)|| "model".equals(type) || "store"
 						.equals(type))) {
 				
 				 str.append("/");
@@ -139,7 +153,7 @@ public class CodeFactory {
 				str.append(codeType);
 				str.append(".jsp");
 			} else if (!("EntityH".equalsIgnoreCase(type)||
-					"EntityM".equalsIgnoreCase(type)||"list".equals(type) || "model".equals(type) || "store".equals(type))) {
+					"EntityM".equalsIgnoreCase(type)||"list".equals(type)||"window".equals(type)||"form".equals(type) || "model".equals(type) || "store".equals(type))) {
 				
 				 str.append("/");
 				str.append(StringUtils.capitalize(entityName));
@@ -193,6 +207,8 @@ public class CodeFactory {
 		entityVo("EntityVo"), 
 		list("list"),
 		store("store"), 
+		window("window"),
+		form("form"),
 		model("model"),
 		entityH("EntityH"),
 		entityM("EntityM");

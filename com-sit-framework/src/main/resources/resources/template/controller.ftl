@@ -70,7 +70,7 @@ public class ${entityName}Controller extends BaseControllerImpl {
 	public @ResponseBody Object save(@RequestBody ${entityName}Vo ${entityName?uncap_first}Vo) throws Exception{
 		${entityName} ${entityName?uncap_first} =new ${entityName}();
 		PropertyUtils.copyProperties(${entityName?uncap_first}, ${entityName?uncap_first}Vo);
-		return ResponseUtils.sendSuccess("保存成功",this.${entityName?uncap_first}Service.save(${entityName?uncap_first}));
+		return ResponseUtils.sendSuccess("保存成功",this.${entityName?uncap_first}Service.save(${entityName?uncap_first}).getId());
 	}
 	
 	@RequestMapping(value="{id}",method=RequestMethod.DELETE)

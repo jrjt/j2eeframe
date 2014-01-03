@@ -26,9 +26,9 @@ import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
 import org.apache.log4j.Logger;
 /**   
  * @Title: Controller
- * @Description: a
+ * @Description: 合同表
  * @author auto Generate
- * @date 2014-01-02 16:35:50
+ * @date 2014-01-03 18:39:06
  * @version V1.0   
  *
  */
