@@ -50,24 +50,24 @@ public class RoleController {
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)
 	public @ResponseBody Object update(@RequestBody RoleVo rolevo) throws Exception{
 		this.roleService.update(VoToRole(rolevo));
-		String actDesc="更新角色";
-		actionlogService.saveAlog("",actDesc,true,"");
+		//String actDesc="更新角色";
+		//actionlogService.saveAlog("",actDesc,true,"");
 		return ResponseUtils.sendSuccess("保存成功");
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public @ResponseBody Object save(@RequestBody RoleVo rolevo) throws Exception{
 		rolevo.setId(this.roleService.getNextval("TLM_ROLE_ITEM_SEQ"));
-		String actDesc="新建角色";
-		actionlogService.saveAlog("",actDesc,true,"");
+		//String actDesc="新建角色";
+		//actionlogService.saveAlog("",actDesc,true,"");
 		return ResponseUtils.sendSuccess("保存成功",this.roleService.save(VoToRole(rolevo)));
 	}
 	
 	@RequestMapping(value="{id}",method=RequestMethod.DELETE)
 	public @ResponseBody Object delete(@RequestBody RoleVo rolevo) throws Exception{
 		this.roleService.delete(VoToRole(rolevo));
-		String actDesc="删除角色";
-		actionlogService.saveAlog("",actDesc,true,"");
+		//String actDesc="删除角色";
+		//actionlogService.saveAlog("",actDesc,true,"");
 		return ResponseUtils.sendSuccess("删除成功");
 	}
 	

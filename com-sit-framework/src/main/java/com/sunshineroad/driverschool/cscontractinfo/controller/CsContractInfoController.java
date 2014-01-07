@@ -26,9 +26,9 @@ import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
 import org.apache.log4j.Logger;
 /**   
  * @Title: Controller
- * @Description: 合同表
+ * @Description: 合同
  * @author auto Generate
- * @date 2014-01-03 18:39:06
+ * @date 2014-01-07 10:58:59
  * @version V1.0   
  *
  */
@@ -50,7 +50,7 @@ public class CsContractInfoController extends BaseControllerImpl {
 	private CsContractInfoService csContractInfoService;
 	 
  
- @RequestMapping(method=RequestMethod.GET)
+ @RequestMapping(value="list",method=RequestMethod.GET)
 	public @ResponseBody Object list( ){
 	 	 HttpServletRequest request =WebUtils.getRequestByContext();
 		CsContractInfo csContractInfo= new CsContractInfo();
@@ -58,7 +58,7 @@ public class CsContractInfoController extends BaseControllerImpl {
 		return ResponseUtils.sendPagination(csContractInfoService.list(csContractInfo)) ;
 	}
  
-	@RequestMapping(value="{id}", method=RequestMethod.PUT)
+	@RequestMapping(value="update/{id}",  method=RequestMethod.PUT)
 	public @ResponseBody Object update(@RequestBody CsContractInfoVo csContractInfoVo) throws Exception{
 		CsContractInfo csContractInfo =new CsContractInfo();
 		PropertyUtils.copyProperties(csContractInfo, csContractInfoVo);
@@ -66,14 +66,14 @@ public class CsContractInfoController extends BaseControllerImpl {
 		return ResponseUtils.sendSuccess("保存成功");
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="create",method=RequestMethod.POST)
 	public @ResponseBody Object save(@RequestBody CsContractInfoVo csContractInfoVo) throws Exception{
 		CsContractInfo csContractInfo =new CsContractInfo();
 		PropertyUtils.copyProperties(csContractInfo, csContractInfoVo);
 		return ResponseUtils.sendSuccess("保存成功",this.csContractInfoService.save(csContractInfo).getId());
 	}
 	
-	@RequestMapping(value="{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="{destroy/{id}",method=RequestMethod.DELETE)
 	public @ResponseBody Object delete(@RequestBody CsContractInfo csContractInfo) throws Exception{
 		this.csContractInfoService.delete(csContractInfo);
 		return ResponseUtils.sendSuccess("删除成功");

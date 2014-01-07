@@ -29,9 +29,9 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
 
 /**   
  * @Title: Entity
- * @Description: 合同表
+ * @Description: 合同
  * @author  
- * @date 2014-01-03 18:39:07
+ * @date 2014-01-07 10:59:00
  * @version V1.0   
  *
  */

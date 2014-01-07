@@ -44,6 +44,7 @@
 
 	</beans:bean>
 
+	<http pattern="/resource/child" security="none" />
 	<http pattern="/StationGe/getstationgelist" security="none" />
 	<http pattern="/roles/**" security="none" />
 	<http pattern="/login.jsp" security="none" />

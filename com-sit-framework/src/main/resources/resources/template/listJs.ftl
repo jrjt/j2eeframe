@@ -2,7 +2,7 @@ var _${entityName?uncap_first}Window=false;
 Ext.define('Fes.view.${entityName}List', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.${entityName?uncap_first}list',
-	title : '角色列表',
+	title : '[${ftl_description}]列表',
  
 	iconCls : 'icon-grid-list',
 	rowLines : true,
@@ -10,7 +10,7 @@ Ext.define('Fes.view.${entityName}List', {
 	multiSelect : true,
 	simpleSelect : true,
 	viewConfig : {
-		loadingText : '正在加载人员列表'
+		loadingText : '正在加载[${ftl_description}]列表'
 	},
 createRoleCombox:function(){
  

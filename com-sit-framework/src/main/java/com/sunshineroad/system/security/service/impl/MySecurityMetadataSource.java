@@ -32,7 +32,7 @@ import com.sunshineroad.system.resource.entity.ResourceModel;
 @Service("mySecurityMetadataSource")
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
  
-
+     
 	@Autowired
 	protected ResourceDAO<ResourceModel, Integer> resourceDAO;
 	
@@ -44,20 +44,23 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 
 	// 返回所请求资源所需要的权限
 	public Collection<ConfigAttribute> getAttributes(Object object)	throws IllegalArgumentException {
-		System.out.println(">>>>>>>>>>333<<<<<<<<<< 返回所请求资源所需要的权限 ");
+		System.out.println(">>>>>>>>>>333333333333<<<<<<<<<< 返回所请求资源所需要的权限3 ");
 		String requestUrl = ((FilterInvocation) object).getRequestUrl().substring(1);
 		if(requestUrl.indexOf('?')!=-1){
 			requestUrl =requestUrl.substring(0, requestUrl.indexOf('?'));
 		}
+		//System.out.println("/aad/fea/87732-----" + "/aad/fea/87732".replaceAll("\\/\\d+", ""));
 		if(requestUrl.indexOf('/')!=-1){
-			requestUrl =requestUrl.substring(0, requestUrl.indexOf('/'));
+			//requestUrl =requestUrl.substring(0, requestUrl.indexOf('/'));
+			requestUrl=requestUrl.replaceAll("\\/\\d+", "");
 		}
 		
-		System.out.println("requestUrl is " + requestUrl);
-		if (resourceMap == null) {
+		System.out.println("requestUrl is        2--------" + requestUrl);
+		if (resourceMap == null||true) {
 			loadResourceDefine();
 		}
 		//return 
+		System.out.println("====================================>"+resourceMap.toString());
 		if(resourceMap.get(requestUrl)==null){
 			Collection<ConfigAttribute> returnCollection = new ArrayList<ConfigAttribute>(); 
 			returnCollection.add(new SecurityConfig("ROLE_NO_USER")); 
@@ -78,7 +81,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 	// 加载所有资源与权限的关系
 	public static Map<String, Collection<ConfigAttribute>> resourceMap = null;
 	public void loadResourceDefine() {
-		if (resourceMap == null) {
+		 
 			resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
 			Collection<ConfigAttribute> configAttributes = new ArrayList<ConfigAttribute>();
 			ConfigAttribute configAttribute = new SecurityConfig("ROLE_");
@@ -93,12 +96,23 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 			configAttribute= new SecurityConfig("ROLE_菜单权限");
 			configAttributes.add(configAttribute);
 			resourceMap.put("resource", configAttributes);
+
+			configAttributes = new ArrayList<ConfigAttribute>();
+			configAttribute= new SecurityConfig("ROLE_resource/root");
+			configAttributes.add(configAttribute);
+			resourceMap.put("resource/root", configAttributes);
+
+
+			configAttributes = new ArrayList<ConfigAttribute>();
+			configAttribute= new SecurityConfig("ROLE_resource/child");
+			configAttributes.add(configAttribute);
+			resourceMap.put("resource/child", configAttributes);  
 			
 			configAttributes = new ArrayList<ConfigAttribute>();
 			configAttribute= new SecurityConfig("ROLE_loginUser");
 			configAttributes.add(configAttribute);
 			resourceMap.put("loginUser", configAttributes);
-			if(resources==null){
+			if(resources==null){  
 				  configAttributes = new ArrayList<ConfigAttribute>();
 				// TODO:ZZQ 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头
 				// 关联代码：applicationContext-security.xml
@@ -113,12 +127,12 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 					// TODO:ZZQ 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头
 					// 关联代码：applicationContext-security.xml
 					// 关联代码：com.huaxin.security.MyUserDetailServiceImpl#obtionGrantedAuthorities
-					  configAttribute = new SecurityConfig("ROLE_" + resource.getText());
+					  configAttribute = new SecurityConfig("ROLE_" + resource.getUrl());
 					configAttributes.add(configAttribute);
 					resourceMap.put(resource.getUrl(), configAttributes);
 				}
 			}
-		}
+		 
 	}
 
 }

@@ -174,16 +174,23 @@ public Map<String, Object> execute()
 /* 169 */       codeFactory.invoke("formJs.ftl", "form"); 
 
 /*     */     }
-/*
-ApplicationContext context = new ClassPathXmlApplicationContext("resources\\spring\\spring-dao1.xml");
 
-DataSource ds =(DataSource) context.getBean("dataSource1"); 
+ApplicationContext context = new ClassPathXmlApplicationContext("resources\\spring\\spring-dao.xml");
+
+DataSource ds =(DataSource) context.getBean("dataSource5");  
 JdbcTemplate jdbcTemplate =(JdbcTemplate) context.getBean("jdbcTemplate1");
+     
+//jdbcTemplate.equals("delete sys_resource where component= Fes.view"+entityName+"List"); 
+jdbcTemplate.equals("delete sys_resource where url like '%"+entityName+"%'"); 
+jdbcTemplate.execute("INSERT INTO `sys_resource` (component,descripton,text,type,parent_id,URL) ( 'Fes.view."+entityName+"List', '"+ftlDescription+"资源', '', '"+ftlDescription+"资源',  'COMPONENT',"+CodeGenerate.sequenceCode+".Currval, '"+entityName+"s');");
+jdbcTemplate.execute("INSERT INTO `sys_resource` (component,descripton,text,type,parent_id,URL) ( NULL, '"+ftlDescription+"列表', '', '"+ftlDescription+"资源',  'COMPONENT',"+CodeGenerate.sequenceCode+".Currval, '"+entityName+"/list');");
+jdbcTemplate.execute("INSERT INTO `sys_resource` (component,descripton,text,type,parent_id,URL) ( NULL, '"+ftlDescription+"新增', '', '"+ftlDescription+"新增',  'COMPONENT',"+CodeGenerate.sequenceCode+".Currval, '"+entityName+"/create');");
+jdbcTemplate.execute("INSERT INTO `sys_resource` (component,descripton,text,type,parent_id,URL) ( NULL, '"+ftlDescription+"修改', '', '"+ftlDescription+"修改',  'COMPONENT',"+CodeGenerate.sequenceCode+".Currval, '"+entityName+"/update');");
+jdbcTemplate.execute("INSERT INTO `sys_resource` (component,descripton,text,type,parent_id,URL) ( NULL, '"+ftlDescription+"删除', '', '"+ftlDescription+"删除',  'COMPONENT',"+CodeGenerate.sequenceCode+".Currval, '"+entityName+"/delete');");
+    
 
-jdbcTemplate.equals("delete sys_resource where component= Fes.view"+entityName+"List"); 
-jdbcTemplate.execute("INSERT INTO `sys_resource` VALUES (null, 'Fes.view."+entityName+"List', '"+ftlDescription+"资源', '', '"+ftlDescription+"资源', '1', 'COMPONENT', '171', 'index.jsp');");
 ds.getConnection().close();
-*/
+
 
 /* 171 */     log.info("----jeecg----Code----Generation-----[单表模型：" + tableName + "]------ 生成完成。。。");
 /*     */   }

@@ -69,6 +69,7 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
 			List<ResourceModel> tempRes = role.getResources();
 			for (ResourceModel res : tempRes) {
 				resources.add(res);
+				System.out.println("我的资源路径---->"+res.getText()+res.getUrl());
 			}
 		}
 		
@@ -79,12 +80,14 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
 		authSet.add(new SimpleGrantedAuthority("ROLE_" +"index.jsp"));
 		authSet.add(new SimpleGrantedAuthority("ROLE_菜单权限"));
 		authSet.add(new SimpleGrantedAuthority("ROLE_loginUser"));
+		authSet.add(new SimpleGrantedAuthority("ROLE_resource/root"));
 		
 		for (ResourceModel res : resources) {
 			// TODO:ZZQ 用户可以访问的资源名称（或者说用户所拥有的权限） 注意：必须"ROLE_"开头
 			// 关联代码：applicationContext-security.xml
 			// 关联代码：com.huaxin.security.MySecurityMetadataSource#loadResourceDefine
-			authSet.add(new SimpleGrantedAuthority("ROLE_" + res.getText()));
+			authSet.add(new SimpleGrantedAuthority("ROLE_" + res.getUrl()));
+			//authSet.add(new SimpleGrantedAuthority("ROLE_" + res.getText()));
 			
 		}
 		return authSet;

@@ -9,9 +9,9 @@ Ext.define('Fes.view.CsContractInfoForm', {
     border: 0,
     id: 'cscontractinfoform-id',
     fieldDefaults: {
-        labelAlign: 'left',
+        labelAlign: 'right',
         anchor: '99%',
-        labelWidth: 100
+        labelWidth: 110
     },
     defaults:{layout:'anchor',
     		  defaults:{anchor:'100%'}
@@ -55,7 +55,7 @@ Ext.define('Fes.view.CsContractInfoForm', {
 	           	    xtype: 'textfield',
 	           	    allowBlank: false,
 	           	    columnWidth:1/4,
-	                fieldLabel: '合同/销单/签证编号',
+	                fieldLabel: '合同编号/销单编号/签证编号',
 	                name: 'contractName'
 	               },
 				 

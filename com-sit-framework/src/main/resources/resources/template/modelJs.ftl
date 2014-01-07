@@ -8,10 +8,25 @@ Ext.define("Fes.model.${entityName}Model",{
 		{name:'id',type:'int'}
 		 
 	],
-    proxy:{
-   
+	
+	   proxy:{
+    	 
         type : 'rest',
-        url:'${entityName?uncap_first}s',
+        url:'csContractInfos',
+        actionMethods:{
+        	  create : 'POST',
+              read   : 'GET',
+              update : 'PUT',
+              destroy: 'DELETE' 
+        	
+        },
+        api:{
+        	create:'${entityName?uncap_first}/create',
+        	read:'${entityName?uncap_first}/list',
+        	update:'${entityName?uncap_first}/update',
+        	destroy:'${entityName?uncap_first}/destroy' 
+        	 
+        },
         reader:{
             type : 'json',
             root : 'root',
@@ -19,6 +34,8 @@ Ext.define("Fes.model.${entityName}Model",{
         },
         writer:{
             type:'json'
+            
         }
     }
+ 
 });

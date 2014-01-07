@@ -1,7 +1,7 @@
 Ext.define('Fes.view.CsContractInfoWindow',{
 	extend: 'Ext.window.Window',
 	alias: 'widget.cscontractinfowindow',
-	title: '添加 合同表',
+	title: '[合同]',
     width: 1000,
     height: 350,
     plain: true,

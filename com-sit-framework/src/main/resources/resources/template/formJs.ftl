@@ -9,9 +9,9 @@ Ext.define('Fes.view.${entityName}Form', {
     border: 0,
     id: '${entityPackage}form-id',
     fieldDefaults: {
-        labelAlign: 'left',
+        labelAlign: 'right',
         anchor: '99%',
-        labelWidth: 100
+        labelWidth: 110
     },
     defaults:{layout:'anchor',
     		  defaults:{anchor:'100%'}

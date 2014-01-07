@@ -39,10 +39,10 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
 			ConfigAttribute configAttribute = iterator.next();
 			// 访问所请求资源所需要的权限
 			String needPermission = configAttribute.getAttribute();
-			System.out.println("needPermission is " + needPermission);
+			System.out.println("====================》》》访问功能所需要的权限 is " + needPermission);
 			// 用户所拥有的权限authentication
 			for (GrantedAuthority ga : authentication.getAuthorities()) {
-				System.out.println("yourPermission is " + ga.getAuthority());
+				System.out.println("当前用户所拥有的权限 is " + ga.getAuthority());
 				if (needPermission.equals(ga.getAuthority())) {
 					return;
 				}

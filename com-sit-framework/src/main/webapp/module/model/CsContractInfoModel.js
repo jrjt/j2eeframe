@@ -54,10 +54,25 @@ Ext.define("Fes.model.CsContractInfoModel",{
 		{name:'id',type:'int'}
 		 
 	],
-    proxy:{
-   
+	
+	   proxy:{
+    	 
         type : 'rest',
         url:'csContractInfos',
+        actionMethods:{
+        	  create : 'POST',
+              read   : 'GET',
+              update : 'PUT',
+              destroy: 'DELETE' 
+        	
+        },
+        api:{
+        	create:'csContractInfo/create',
+        	read:'csContractInfo/list',
+        	update:'csContractInfo/update',
+        	destroy:'csContractInfo/destroy' 
+        	 
+        },
         reader:{
             type : 'json',
             root : 'root',
@@ -65,6 +80,8 @@ Ext.define("Fes.model.CsContractInfoModel",{
         },
         writer:{
             type:'json'
+            
         }
     }
+ 
 });

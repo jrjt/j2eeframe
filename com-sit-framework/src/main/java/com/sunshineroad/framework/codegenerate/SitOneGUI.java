@@ -15,5 +15,5 @@ public class SitOneGUI {
  
 		CodeWindow  codeWindow = new CodeWindow();
 		codeWindow.pack();   
-	}    
+	}     
 }

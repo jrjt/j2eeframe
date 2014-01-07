@@ -2,7 +2,7 @@ var _csContractInfoWindow=false;
 Ext.define('Fes.view.CsContractInfoList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.csContractInfolist',
-	title : '角色列表',
+	title : '[合同]列表',
  
 	iconCls : 'icon-grid-list',
 	rowLines : true,
@@ -10,7 +10,7 @@ Ext.define('Fes.view.CsContractInfoList', {
 	multiSelect : true,
 	simpleSelect : true,
 	viewConfig : {
-		loadingText : '正在加载人员列表'
+		loadingText : '正在加载[合同]列表'
 	},
 createRoleCombox:function(){
  
@@ -177,7 +177,7 @@ saveRecode:function(obj){
 		var me = this;
 		var records = this.getSelectionModel().getSelection();
 		if (records.length > 0) {
-			Fes.MsgBox.confirm('确定删除这' + records.length + '个合同表?',
+			Fes.MsgBox.confirm('确定删除这' + records.length + '个合同?',
 					function(btn) {
 						Ext.each(records, function(record) {
 									if (Ext.Array.contains(me.getStore()
@@ -195,8 +195,7 @@ saveRecode:function(obj){
 		}
 
 	},
-	showWindow:function(){ 
-		 
+	showWindow:function(rec){ 
 		var me = this;
 		if(!_csContractInfoWindow){
 			_csContractInfoWindow= Ext.create('Fes.view.CsContractInfoWindow', { 

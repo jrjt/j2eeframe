@@ -1,7 +1,7 @@
 Ext.define('Fes.view.${entityName}Window',{
 	extend: 'Ext.window.Window',
 	alias: 'widget.${entityPackage}window',
-	title: '添加 ${ftl_description}',
+	title: '[${ftl_description}]',
     width: 1000,
     height: 350,
     plain: true,
