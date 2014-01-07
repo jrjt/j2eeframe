@@ -56,7 +56,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
 		}
 		
 		System.out.println("requestUrl is        2--------" + requestUrl);
-		if (resourceMap == null||true) {
+		if (resourceMap == null) {
 			loadResourceDefine();
 		}
 		//return 
