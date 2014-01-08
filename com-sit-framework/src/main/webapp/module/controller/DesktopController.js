@@ -63,7 +63,7 @@ Ext.define('Fes.controller.DesktopController', {
 	onTreeItemClick : function(view, node) {
   var self = view;
 		var tab = this.getContainer();
-		if (node.isLeaf()) { // 判断是否是根节点
+		if (node.isLeaf()||node.data.type === 'COMPONENT') { // 判断是否是根节点
 			if (node.data.type === 'URL') { // 判断资源类型
 				var panel = Ext.create('Ext.panel.Panel', {
 					title : node.data.text,
