@@ -28,7 +28,7 @@ import org.apache.log4j.Logger;
  * @Title: Controller
  * @Description: 合同
  * @author auto Generate
- * @date 2014-01-07 10:58:59
+ * @date 2014-01-08 18:26:03
  * @version V1.0   
  *
  */
@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
  
 	
 @Controller
-@RequestMapping(value="csContractInfos")
+@RequestMapping(value="csContractInfo")
 public class CsContractInfoController extends BaseControllerImpl {
 	/**
 	 * Logger for this class

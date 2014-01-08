@@ -18,206 +18,69 @@ Ext.define('Fes.view.CsContractInfoForm', {
     },
     layout: 'column',
     items: [
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '数据项含义',
-	                name: 'area'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '区域',
-	                name: 'customerName'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '客户名称',
-	                name: 'customerType'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '客户类型',
-	                name: 'contractNumber'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '合同编号/销单编号/签证编号',
-	                name: 'contractName'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '合同名称',
-	                name: 'contractType'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '合同类型',
-	                name: 'projectNumber'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '项目编号',
-	                name: 'signDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '签订时间',
-	                name: 'endDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '到期时间',
-	                name: 'contractMoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '合同额',
-	                name: 'settlementMoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '结算凭证金额',
-	                name: 'projectInfo'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '是否立项',
-	                name: 'firstPaymoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '首付款金额',
-	                name: 'firstPaymoneyDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '首付款回款时间',
-	                name: 'secondPaymoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '第二笔金额',
-	                name: 'secondPaymoneyDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '第二笔回款时间',
-	                name: 'endPaymoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '尾款金额',
-	                name: 'endPaymoneyDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '尾款回款时间',
-	                name: 'otherPaymoney'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '其他回款金额',
-	                name: 'otherPaymoneyDate'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '备用字段1',
-	                name: 'remark1'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '备用字段2',
-	                name: 'remark2'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '备用字段3',
-	                name: 'remark3'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '备用字段4',
-	                name: 'remark4'
-	               },
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '备用字段5',
-	                name: 'remark5'
-	               },
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '区域',name: 'area'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '客户名称',name: 'customerName'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '客户类型',name: 'customerType'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同/销单/签证编号',name: 'contractNumber'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同名称',name: 'contractName'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同类型',name: 'contractType'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '项目编号',name: 'projectNumber'},
+	      	 
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '签订时间',name: 'signDate'},
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '到期时间',name: 'endDate'},
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同额',name: 'contractMoney'},
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '结算凭证金额',name: 'settlementMoney'},
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '是否立项',name: 'projectInfo'},
+	      	 
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款金额',name: 'firstPaymoney'},
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款回款时间',name: 'firstPaymoneyDate'},
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔金额',name: 'secondPaymoney'},
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔回款时间',name: 'secondPaymoneyDate'},
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款金额',name: 'endPaymoney'},
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款回款时间',name: 'endPaymoneyDate'},
+//number
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款金额',name: 'otherPaymoney'},
+//date
+	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款时间',name: 'otherPaymoneyDate'},
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段1',name: 'remark1'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段2',name: 'remark2'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段3',name: 'remark3'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段4',name: 'remark4'},
+	      	 
+//varchar2
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段5',name: 'remark5'},
+	      	 
 					
 					{xtype:'hidden',name:'id'}
 						        	

@@ -18,16 +18,17 @@ Ext.define('Fes.view.${entityName}Form', {
     },
     layout: 'column',
     items: [
-   			 <#list columns as po>
-				 
-	        	   {
-	           	    xtype: 'textfield',
-	           	    allowBlank: false,
-	           	    columnWidth:1/4,
-	                fieldLabel: '${po.filedComment}',
-	                name: '${po.fieldName}'
-	               },
-			</#list>
+<#list columns as po>
+//${po.fieldType}
+		<#if po.fieldType =="date" >	 
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'},
+			<#elseif po.fieldType =="number">
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'},
+	      	 <#else>
+	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'},
+	      	 
+	    </#if>
+</#list>
 					
 					{xtype:'hidden',name:'id'}
 						        	

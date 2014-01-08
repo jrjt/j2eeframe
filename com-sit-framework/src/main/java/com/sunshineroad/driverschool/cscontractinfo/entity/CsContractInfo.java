@@ -31,7 +31,7 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
  * @Title: Entity
  * @Description: 合同
  * @author  
- * @date 2014-01-07 10:59:00
+ * @date 2014-01-08 18:26:03
  * @version V1.0   
  *
  */
@@ -40,45 +40,45 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
 public class CsContractInfo extends BaseEntity {
 	/**id*/
 	private java.lang.Long id;
-	/**数据项含义*/
-	private java.lang.String area;
 	/**区域*/
-	private java.lang.String customerName;
+	private java.lang.String area;
 	/**客户名称*/
-	private java.lang.String customerType;
+	private java.lang.String customerName;
 	/**客户类型*/
+	private java.lang.String customerType;
+	/**合同/销单/签证编号*/
 	private java.lang.String contractNumber;
-	/**合同编号/销单编号/签证编号*/
-	private java.lang.String contractName;
 	/**合同名称*/
-	private java.lang.String contractType;
+	private java.lang.String contractName;
 	/**合同类型*/
-	private java.lang.String projectNumber;
+	private java.lang.String contractType;
 	/**项目编号*/
-	private java.util.Date signDate;
+	private java.lang.String projectNumber;
 	/**签订时间*/
-	private java.util.Date endDate;
+	private java.util.Date signDate;
 	/**到期时间*/
-	private java.math.BigDecimal contractMoney;
+	private java.util.Date endDate;
 	/**合同额*/
-	private java.math.BigDecimal settlementMoney;
+	private java.math.BigDecimal contractMoney;
 	/**结算凭证金额*/
-	private java.lang.String projectInfo;
+	private java.math.BigDecimal settlementMoney;
 	/**是否立项*/
-	private java.math.BigDecimal firstPaymoney;
+	private java.lang.String projectInfo;
 	/**首付款金额*/
-	private java.util.Date firstPaymoneyDate;
+	private java.math.BigDecimal firstPaymoney;
 	/**首付款回款时间*/
-	private java.math.BigDecimal secondPaymoney;
+	private java.util.Date firstPaymoneyDate;
 	/**第二笔金额*/
-	private java.util.Date secondPaymoneyDate;
+	private java.math.BigDecimal secondPaymoney;
 	/**第二笔回款时间*/
-	private java.math.BigDecimal endPaymoney;
+	private java.util.Date secondPaymoneyDate;
 	/**尾款金额*/
-	private java.util.Date endPaymoneyDate;
+	private java.math.BigDecimal endPaymoney;
 	/**尾款回款时间*/
-	private java.math.BigDecimal otherPaymoney;
+	private java.util.Date endPaymoneyDate;
 	/**其他回款金额*/
+	private java.math.BigDecimal otherPaymoney;
+	/**其他回款时间*/
 	private java.util.Date otherPaymoneyDate;
 	/**备用字段1*/
 	private java.lang.String remark1;
@@ -113,7 +113,7 @@ public class CsContractInfo extends BaseEntity {
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  数据项含义
+	 *@return: java.lang.String  区域
 	 */
 	@Column(name ="AREA",nullable=true,length=50)
 	public java.lang.String getArea(){
@@ -122,14 +122,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  数据项含义
+	 *@param: java.lang.String  区域
 	 */
 	public void setArea(java.lang.String area){
 		this.area = area;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  区域
+	 *@return: java.lang.String  客户名称
 	 */
 	@Column(name ="CUSTOMER_NAME",nullable=true,length=50)
 	public java.lang.String getCustomerName(){
@@ -138,14 +138,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  区域
+	 *@param: java.lang.String  客户名称
 	 */
 	public void setCustomerName(java.lang.String customerName){
 		this.customerName = customerName;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  客户名称
+	 *@return: java.lang.String  客户类型
 	 */
 	@Column(name ="CUSTOMER_TYPE",nullable=true,length=10)
 	public java.lang.String getCustomerType(){
@@ -154,14 +154,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  客户名称
+	 *@param: java.lang.String  客户类型
 	 */
 	public void setCustomerType(java.lang.String customerType){
 		this.customerType = customerType;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  客户类型
+	 *@return: java.lang.String  合同/销单/签证编号
 	 */
 	@Column(name ="CONTRACT_NUMBER",nullable=true,length=50)
 	public java.lang.String getContractNumber(){
@@ -170,14 +170,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  客户类型
+	 *@param: java.lang.String  合同/销单/签证编号
 	 */
 	public void setContractNumber(java.lang.String contractNumber){
 		this.contractNumber = contractNumber;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  合同编号/销单编号/签证编号
+	 *@return: java.lang.String  合同名称
 	 */
 	@Column(name ="CONTRACT_NAME",nullable=true,length=100)
 	public java.lang.String getContractName(){
@@ -186,14 +186,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  合同编号/销单编号/签证编号
+	 *@param: java.lang.String  合同名称
 	 */
 	public void setContractName(java.lang.String contractName){
 		this.contractName = contractName;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  合同名称
+	 *@return: java.lang.String  合同类型
 	 */
 	@Column(name ="CONTRACT_TYPE",nullable=true,length=10)
 	public java.lang.String getContractType(){
@@ -202,14 +202,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  合同名称
+	 *@param: java.lang.String  合同类型
 	 */
 	public void setContractType(java.lang.String contractType){
 		this.contractType = contractType;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  合同类型
+	 *@return: java.lang.String  项目编号
 	 */
 	@Column(name ="PROJECT_NUMBER",nullable=true,length=50)
 	public java.lang.String getProjectNumber(){
@@ -218,14 +218,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  合同类型
+	 *@param: java.lang.String  项目编号
 	 */
 	public void setProjectNumber(java.lang.String projectNumber){
 		this.projectNumber = projectNumber;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  项目编号
+	 *@return: java.util.Date  签订时间
 	 */
 	@Column(name ="SIGN_DATE",nullable=true)
 	public java.util.Date getSignDate(){
@@ -234,14 +234,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  项目编号
+	 *@param: java.util.Date  签订时间
 	 */
 	public void setSignDate(java.util.Date signDate){
 		this.signDate = signDate;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  签订时间
+	 *@return: java.util.Date  到期时间
 	 */
 	@Column(name ="END_DATE",nullable=true)
 	public java.util.Date getEndDate(){
@@ -250,14 +250,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  签订时间
+	 *@param: java.util.Date  到期时间
 	 */
 	public void setEndDate(java.util.Date endDate){
 		this.endDate = endDate;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  到期时间
+	 *@return: java.math.BigDecimal  合同额
 	 */
 	@Column(name ="CONTRACT_MONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getContractMoney(){
@@ -266,14 +266,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  到期时间
+	 *@param: java.math.BigDecimal  合同额
 	 */
 	public void setContractMoney(java.math.BigDecimal contractMoney){
 		this.contractMoney = contractMoney;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  合同额
+	 *@return: java.math.BigDecimal  结算凭证金额
 	 */
 	@Column(name ="SETTLEMENT_MONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getSettlementMoney(){
@@ -282,14 +282,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  合同额
+	 *@param: java.math.BigDecimal  结算凭证金额
 	 */
 	public void setSettlementMoney(java.math.BigDecimal settlementMoney){
 		this.settlementMoney = settlementMoney;
 	}
 	/**
 	 *方法: 取得java.lang.String
-	 *@return: java.lang.String  结算凭证金额
+	 *@return: java.lang.String  是否立项
 	 */
 	@Column(name ="PROJECT_INFO",nullable=true,length=310)
 	public java.lang.String getProjectInfo(){
@@ -298,14 +298,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.lang.String
-	 *@param: java.lang.String  结算凭证金额
+	 *@param: java.lang.String  是否立项
 	 */
 	public void setProjectInfo(java.lang.String projectInfo){
 		this.projectInfo = projectInfo;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  是否立项
+	 *@return: java.math.BigDecimal  首付款金额
 	 */
 	@Column(name ="FIRST_PAYMONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getFirstPaymoney(){
@@ -314,14 +314,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  是否立项
+	 *@param: java.math.BigDecimal  首付款金额
 	 */
 	public void setFirstPaymoney(java.math.BigDecimal firstPaymoney){
 		this.firstPaymoney = firstPaymoney;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  首付款金额
+	 *@return: java.util.Date  首付款回款时间
 	 */
 	@Column(name ="FIRST_PAYMONEY_DATE",nullable=true)
 	public java.util.Date getFirstPaymoneyDate(){
@@ -330,14 +330,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  首付款金额
+	 *@param: java.util.Date  首付款回款时间
 	 */
 	public void setFirstPaymoneyDate(java.util.Date firstPaymoneyDate){
 		this.firstPaymoneyDate = firstPaymoneyDate;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  首付款回款时间
+	 *@return: java.math.BigDecimal  第二笔金额
 	 */
 	@Column(name ="SECOND_PAYMONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getSecondPaymoney(){
@@ -346,14 +346,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  首付款回款时间
+	 *@param: java.math.BigDecimal  第二笔金额
 	 */
 	public void setSecondPaymoney(java.math.BigDecimal secondPaymoney){
 		this.secondPaymoney = secondPaymoney;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  第二笔金额
+	 *@return: java.util.Date  第二笔回款时间
 	 */
 	@Column(name ="SECOND_PAYMONEY_DATE",nullable=true)
 	public java.util.Date getSecondPaymoneyDate(){
@@ -362,14 +362,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  第二笔金额
+	 *@param: java.util.Date  第二笔回款时间
 	 */
 	public void setSecondPaymoneyDate(java.util.Date secondPaymoneyDate){
 		this.secondPaymoneyDate = secondPaymoneyDate;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  第二笔回款时间
+	 *@return: java.math.BigDecimal  尾款金额
 	 */
 	@Column(name ="END_PAYMONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getEndPaymoney(){
@@ -378,14 +378,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  第二笔回款时间
+	 *@param: java.math.BigDecimal  尾款金额
 	 */
 	public void setEndPaymoney(java.math.BigDecimal endPaymoney){
 		this.endPaymoney = endPaymoney;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  尾款金额
+	 *@return: java.util.Date  尾款回款时间
 	 */
 	@Column(name ="END_PAYMONEY_DATE",nullable=true)
 	public java.util.Date getEndPaymoneyDate(){
@@ -394,14 +394,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  尾款金额
+	 *@param: java.util.Date  尾款回款时间
 	 */
 	public void setEndPaymoneyDate(java.util.Date endPaymoneyDate){
 		this.endPaymoneyDate = endPaymoneyDate;
 	}
 	/**
 	 *方法: 取得java.math.BigDecimal
-	 *@return: java.math.BigDecimal  尾款回款时间
+	 *@return: java.math.BigDecimal  其他回款金额
 	 */
 	@Column(name ="OTHER_PAYMONEY",nullable=true,precision=20,scale=8)
 	public java.math.BigDecimal getOtherPaymoney(){
@@ -410,14 +410,14 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.math.BigDecimal
-	 *@param: java.math.BigDecimal  尾款回款时间
+	 *@param: java.math.BigDecimal  其他回款金额
 	 */
 	public void setOtherPaymoney(java.math.BigDecimal otherPaymoney){
 		this.otherPaymoney = otherPaymoney;
 	}
 	/**
 	 *方法: 取得java.util.Date
-	 *@return: java.util.Date  其他回款金额
+	 *@return: java.util.Date  其他回款时间
 	 */
 	@Column(name ="OTHER_PAYMONEY_DATE",nullable=true)
 	public java.util.Date getOtherPaymoneyDate(){
@@ -426,7 +426,7 @@ public class CsContractInfo extends BaseEntity {
 
 	/**
 	 *方法: 设置java.util.Date
-	 *@param: java.util.Date  其他回款金额
+	 *@param: java.util.Date  其他回款时间
 	 */
 	public void setOtherPaymoneyDate(java.util.Date otherPaymoneyDate){
 		this.otherPaymoneyDate = otherPaymoneyDate;

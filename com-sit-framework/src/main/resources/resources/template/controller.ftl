@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
  
 	
 @Controller
-@RequestMapping(value="${entityName?uncap_first}s")
+@RequestMapping(value="${entityName?uncap_first}")
 public class ${entityName}Controller extends BaseControllerImpl {
 	/**
 	 * Logger for this class

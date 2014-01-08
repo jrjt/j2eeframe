@@ -11,7 +11,7 @@ import com.sunshineroad.framework.support.dao.hibernate.HibernateDao;
  * @Title: Dao
  * @Description: 合同
  * @author  
- * @date 2014-01-07 10:59:02
+ * @date 2014-01-08 18:26:10
  * @version V1.0   
  *
  */

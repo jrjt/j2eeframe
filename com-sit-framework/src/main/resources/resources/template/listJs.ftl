@@ -18,7 +18,13 @@ createRoleCombox:function(){
 	columns : [	
 	{xtype : 'rownumberer'}, 
 				<#list columns as po>
-					{text : '${po.filedComment}',width : 120,sortable : true,dataIndex : '${po.fieldName}',field : {xtype : 'textfield',required : true}},
+				 	<#if po.fieldType =="date" >	
+					{text : '${po.filedComment}',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : '${po.fieldName}',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+						<#else>
+						{text : '${po.filedComment}',width : 120,sortable : true,dataIndex : '${po.fieldName}',field : {xtype : 'textfield',required : true}},
+		 	 		</#if>
+		 	 		
 	 	 		</#list>
 	 	 		
 	 	 		{text : 'id',width : 120,sortable : true,dataIndex : 'id',hidden:true}
@@ -32,6 +38,13 @@ createRoleCombox:function(){
 				id:'${entityName?uncap_first}ListRowEditor',
 				listeners : {
 					beforeedit:function( editor,  e,  eOpts ){
+				 
+					<#list columns as po>
+					  
+						<#if po.fieldType =='date' >
+							var d= new Date();if(e.record.data.${po.fieldName}>0){ d.setTime(e.record.data.${po.fieldName}); e.record.data.${po.fieldName}=d;}
+						</#if>
+					</#list>
 					},
 					startEdit:function(record, columnHeader ){
 			

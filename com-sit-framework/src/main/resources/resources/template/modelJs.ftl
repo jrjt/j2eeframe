@@ -12,7 +12,7 @@ Ext.define("Fes.model.${entityName}Model",{
 	   proxy:{
     	 
         type : 'rest',
-        url:'csContractInfos',
+        url:'csContractInfo',
         actionMethods:{
         	  create : 'POST',
               read   : 'GET',

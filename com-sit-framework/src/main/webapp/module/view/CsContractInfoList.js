@@ -17,30 +17,62 @@ createRoleCombox:function(){
 },
 	columns : [	
 	{xtype : 'rownumberer'}, 
-					{text : '数据项含义',width : 120,sortable : true,dataIndex : 'area',field : {xtype : 'textfield',required : true}},
-					{xtype:'datecolumn',format:'Y-m-d',text : '签订时间2',width : 120,sortable : true,dataIndex : 'signDate',field : {xtype : 'datefield' }},
-					{text : '区域',width : 120,sortable : true,dataIndex : 'customerName',field : {xtype : 'textfield',required : true}},
-					{text : '客户名称',width : 120,sortable : true,dataIndex : 'customerType',field : {xtype : 'textfield',required : true}},
-					{text : '客户类型',width : 120,sortable : true,dataIndex : 'contractNumber',field : {xtype : 'textfield',required : true}},
-					{text : '合同/销单/签证编号',width : 120,sortable : true,dataIndex : 'contractName',field : {xtype : 'textfield',required : true}},
-					{text : '合同名称',width : 120,sortable : true,dataIndex : 'contractType',field : {xtype : 'textfield',required : true}},
-					{text : '合同类型',width : 120,sortable : true,dataIndex : 'projectNumber',field : {xtype : 'textfield',required : true}}, 
-					{text : '到期时间',width : 120,sortable : true,dataIndex : 'contractMoney',field : {xtype : 'textfield',required : true}},
-					{text : '合同额',width : 120,sortable : true,dataIndex : 'settlementMoney',field : {xtype : 'textfield',required : true}},
-					{text : '结算凭证金额',width : 120,sortable : true,dataIndex : 'projectInfo',field : {xtype : 'textfield',required : true}},
-					{text : '是否立项',width : 120,sortable : true,dataIndex : 'firstPaymoney',field : {xtype : 'textfield',required : true}},
-					{text : '首付款金额',width : 120,sortable : true,dataIndex : 'firstPaymoneyDate',field : {xtype : 'textfield',required : true}},
-					{text : '首付款回款时间',width : 120,sortable : true,dataIndex : 'secondPaymoney',field : {xtype : 'textfield',required : true}},
-					{text : '第二笔金额',width : 120,sortable : true,dataIndex : 'secondPaymoneyDate',field : {xtype : 'textfield',required : true}},
-					{text : '第二笔回款时间',width : 120,sortable : true,dataIndex : 'endPaymoney',field : {xtype : 'textfield',required : true}},
-					{text : '尾款金额',width : 120,sortable : true,dataIndex : 'endPaymoneyDate',field : {xtype : 'textfield',required : true}},
-					{text : '尾款回款时间',width : 120,sortable : true,dataIndex : 'otherPaymoney',field : {xtype : 'textfield',required : true}},
-					{text : '其他回款金额',width : 120,sortable : true,dataIndex : 'otherPaymoneyDate',field : {xtype : 'textfield',required : true}},
-					{text : '备用字段1',width : 120,sortable : true,dataIndex : 'remark1',field : {xtype : 'textfield',required : true}},
-					{text : '备用字段2',width : 120,sortable : true,dataIndex : 'remark2',field : {xtype : 'textfield',required : true}},
-					{text : '备用字段3',width : 120,sortable : true,dataIndex : 'remark3',field : {xtype : 'textfield',required : true}},
-					{text : '备用字段4',width : 120,sortable : true,dataIndex : 'remark4',field : {xtype : 'textfield',required : true}},
-					{text : '备用字段5',width : 120,sortable : true,dataIndex : 'remark5',field : {xtype : 'textfield',required : true}},
+						{text : '区域',width : 120,sortable : true,dataIndex : 'area',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '客户名称',width : 120,sortable : true,dataIndex : 'customerName',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '客户类型',width : 120,sortable : true,dataIndex : 'customerType',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '合同/销单/签证编号',width : 120,sortable : true,dataIndex : 'contractNumber',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '合同名称',width : 120,sortable : true,dataIndex : 'contractName',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '合同类型',width : 120,sortable : true,dataIndex : 'contractType',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '项目编号',width : 120,sortable : true,dataIndex : 'projectNumber',field : {xtype : 'textfield',required : true}},
+		 	 		
+					{text : '签订时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'signDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+					{text : '到期时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'endDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+						{text : '合同额',width : 120,sortable : true,dataIndex : 'contractMoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '结算凭证金额',width : 120,sortable : true,dataIndex : 'settlementMoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '是否立项',width : 120,sortable : true,dataIndex : 'projectInfo',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '首付款金额',width : 120,sortable : true,dataIndex : 'firstPaymoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+					{text : '首付款回款时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'firstPaymoneyDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+						{text : '第二笔金额',width : 120,sortable : true,dataIndex : 'secondPaymoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+					{text : '第二笔回款时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'secondPaymoneyDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+						{text : '尾款金额',width : 120,sortable : true,dataIndex : 'endPaymoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+					{text : '尾款回款时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'endPaymoneyDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+						{text : '其他回款金额',width : 120,sortable : true,dataIndex : 'otherPaymoney',field : {xtype : 'textfield',required : true}},
+		 	 		
+					{text : '其他回款时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'otherPaymoneyDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+		 	 		
+		 	 		
+						{text : '备用字段1',width : 120,sortable : true,dataIndex : 'remark1',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '备用字段2',width : 120,sortable : true,dataIndex : 'remark2',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '备用字段3',width : 120,sortable : true,dataIndex : 'remark3',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '备用字段4',width : 120,sortable : true,dataIndex : 'remark4',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '备用字段5',width : 120,sortable : true,dataIndex : 'remark5',field : {xtype : 'textfield',required : true}},
+		 	 		
 	 	 		
 	 	 		{text : 'id',width : 120,sortable : true,dataIndex : 'id',hidden:true}
 	 	 		
@@ -53,6 +85,38 @@ createRoleCombox:function(){
 				id:'csContractInfoListRowEditor',
 				listeners : {
 					beforeedit:function( editor,  e,  eOpts ){
+				 
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+							var d= new Date();if(e.record.data.signDate>0){ d.setTime(e.record.data.signDate); e.record.data.signDate=d;}
+					  
+							var d= new Date();if(e.record.data.endDate>0){ d.setTime(e.record.data.endDate); e.record.data.endDate=d;}
+					  
+					  
+					  
+					  
+					  
+							var d= new Date();if(e.record.data.firstPaymoneyDate>0){ d.setTime(e.record.data.firstPaymoneyDate); e.record.data.firstPaymoneyDate=d;}
+					  
+					  
+							var d= new Date();if(e.record.data.secondPaymoneyDate>0){ d.setTime(e.record.data.secondPaymoneyDate); e.record.data.secondPaymoneyDate=d;}
+					  
+					  
+							var d= new Date();if(e.record.data.endPaymoneyDate>0){ d.setTime(e.record.data.endPaymoneyDate); e.record.data.endPaymoneyDate=d;}
+					  
+					  
+							var d= new Date();if(e.record.data.otherPaymoneyDate>0){ d.setTime(e.record.data.otherPaymoneyDate); e.record.data.otherPaymoneyDate=d;}
+					  
+					  
+					  
+					  
+					  
 					},
 					startEdit:function(record, columnHeader ){
 			
