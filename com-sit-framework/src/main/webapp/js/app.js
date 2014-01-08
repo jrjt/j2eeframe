@@ -13,9 +13,13 @@ Ext.Loader.setPath({
 Ext.require(['Fes.MsgBox', 'Ext.data.*',  'Ext.util.*']);
 
 Ext.Ajax.on('requestexception', function(conn, response, options) {
+	
+			var repsonset_Text=response.status;
+			   
+			if(repsonset_Text=='403')repsonset_Text="您没有权限访问此资源！请联系管理员。";
 			var msg = '访问系统资源时发生异常<br/>' + '异常状态:' + response.status + '('
 					+ response.statusText + ')<br/>' + '异常信息:'
-					+ response.responseText
+					+ repsonset_Text;
 			Ext.Msg.show({
 						title : '系统异常',
 						msg : msg,

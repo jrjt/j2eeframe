@@ -73,7 +73,7 @@ public class ${entityName}Controller extends BaseControllerImpl {
 		return ResponseUtils.sendSuccess("保存成功",this.${entityName?uncap_first}Service.save(${entityName?uncap_first}).getId());
 	}
 	
-	@RequestMapping(value="{destroy/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="delete/{id}",method=RequestMethod.DELETE)
 	public @ResponseBody Object delete(@RequestBody ${entityName} ${entityName?uncap_first}) throws Exception{
 		this.${entityName?uncap_first}Service.delete(${entityName?uncap_first});
 		return ResponseUtils.sendSuccess("删除成功");

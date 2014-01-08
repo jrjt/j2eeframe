@@ -1,10 +1,12 @@
-Ext.define("Fes.model.${entityName}Model",{
+Ext.define("Fes.model.SysParameterModel",{
 	extend:'Ext.data.Model',
 	fields:[
-		<#list columns as po>
 			
-			{name:'${po.fieldName}',type:'string'}	,	//${po.filedComment}
-		</#list>
+			{name:'parName',type:'string'}	,	//参数名称
+			
+			{name:'parCode',type:'string'}	,	//参数代码
+			
+			{name:'parUpId',type:'string'}	,	//上级参数
 		{name:'id',type:'int'}
 		 
 	],
@@ -12,7 +14,7 @@ Ext.define("Fes.model.${entityName}Model",{
 	   proxy:{
     	 
         type : 'rest',
-        url:'${entityName?uncap_first}',
+        url:'sysParameter',
         actionMethods:{
         	  create : 'POST',
               read   : 'GET',
@@ -21,10 +23,10 @@ Ext.define("Fes.model.${entityName}Model",{
         	
         },
         api:{
-        	create:'${entityName?uncap_first}/create',
-        	read:'${entityName?uncap_first}/list',
-        	update:'${entityName?uncap_first}/update',
-        	destroy:'${entityName?uncap_first}/delete' 
+        	create: 'sysParameter/create',
+        	read:   'sysParameter/list',
+        	update: 'sysParameter/update',
+        	destroy:'sysParameter/delete'   
         	 
         },
         reader:{

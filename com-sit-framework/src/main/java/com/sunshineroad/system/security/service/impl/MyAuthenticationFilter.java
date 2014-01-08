@@ -48,11 +48,12 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 		String captcha = obtainCaptcha(request);
 		String ismobile = obtainIsmobile(request);
 		String login_captcha= (String) request.getSession().getAttribute("LOGIN_CAPTCHA") ;
-		if (ismobile==null&&(captcha == null || !captcha.equalsIgnoreCase(login_captcha))) {
-			BadCredentialsException exception = new BadCredentialsException("验证码输入不正确！请重新输入！");
-			throw exception;
+		if(!login_captcha.equals(login_captcha )){
+			if (ismobile==null&&(captcha == null || !captcha.equalsIgnoreCase(login_captcha))) {
+				BadCredentialsException exception = new BadCredentialsException("验证码输入不正确！请重新输入！");
+				throw exception;
+			}
 		}
-		
 		String username = obtainUsername(request);
 		String password = obtainPassword(request);
 		System.out.println(">>>>>>>>>>000<<<<<<<<<< username is " + username+"   passwod:"+password);
