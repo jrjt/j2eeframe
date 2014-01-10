@@ -7,6 +7,20 @@ Ext.define("Fes.model.SysParameterModel",{
 			{name:'parCode',type:'string'}	,	//参数代码
 			
 			{name:'parUpId',type:'string'}	,	//上级参数
+			
+			{name:'icoUrl',type:'string'}	,	//图标路径
+			
+			{name:'isDir',type:'string'}	,	//是否有子类
+			
+			{name:'parType',type:'string'}	,	//参数类型
+			
+			{name:'parLev',type:'string'}	,	//层级
+			
+			{name:'isExp',type:'string'}	,	//是否默认展开
+			
+			{name:'sortIndex',type:'string'}	,	//排序序号
+			
+			{name:'isDef',type:'string'}	,	//默认选中
 		{name:'id',type:'int'}
 		 
 	],
@@ -23,10 +37,10 @@ Ext.define("Fes.model.SysParameterModel",{
         	
         },
         api:{
-        	create: 'sysParameter/create',
-        	read:   'sysParameter/list',
-        	update: 'sysParameter/update',
-        	destroy:'sysParameter/delete'   
+        	create:'sysParameter/create',
+        	read:'sysParameter/list',
+        	update:'sysParameter/update',
+        	destroy:'sysParameter/delete' 
         	 
         },
         reader:{

@@ -21,7 +21,7 @@ public class TreeNode {
 	private boolean checked;
 	private boolean expanded;
 
-	TreeNode() {
+	public TreeNode() {
 	}
 
  

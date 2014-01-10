@@ -3,7 +3,8 @@ Ext.define('Fes.view.SysParameterList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.sysParameterlist',
 	title : '[参数]列表',
- 
+	
+	requires:["Fes.util.ParameterComboTree"],
 	iconCls : 'icon-grid-list',
 	rowLines : true,
 	columnLines : true,
@@ -21,7 +22,33 @@ createRoleCombox:function(){
 		 	 		
 						{text : '参数代码',width : 120,sortable : true,dataIndex : 'parCode',field : {xtype : 'textfield',required : true}},
 		 	 		
-						{text : '上级参数',width : 120,sortable : true,dataIndex : 'parUpId',field : {xtype : 'textfield',required : true}},
+						{text : '上级参数',width : 120,sortable : true,dataIndex : 'parUpId',field : {
+							xtype:'parameterComboTree',
+							//fieldLabel: '权限',
+							//labelWidth: 40,   
+							rootText : '功能',
+							rootId:'0',
+							expanded:true,
+							storeUrl : 'sysParameter/getTreeNodeChildren',
+							id:'sysParameterlist'+'SysParameterComboTree',
+							selectMode:'all',
+							treeHeight:300,
+							rootVisible:true
+						}},
+		 	 		
+						{text : '图标路径',width : 120,sortable : true,dataIndex : 'icoUrl',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '是否有子类',width : 120,sortable : true,dataIndex : 'isDir',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '参数类型',width : 120,sortable : true,dataIndex : 'parType',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '层级',width : 120,sortable : true,dataIndex : 'parLev',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '是否默认展开',width : 120,sortable : true,dataIndex : 'isExp',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '排序序号',width : 120,sortable : true,dataIndex : 'sortIndex',field : {xtype : 'textfield',required : true}},
+		 	 		
+						{text : '默认选中',width : 120,sortable : true,dataIndex : 'isDef',field : {xtype : 'textfield',required : true}},
 		 	 		
 	 	 		
 	 	 		{text : 'id',width : 120,sortable : true,dataIndex : 'id',hidden:true}
@@ -36,6 +63,13 @@ createRoleCombox:function(){
 				listeners : {
 					beforeedit:function( editor,  e,  eOpts ){
 				 
+					  
+					  
+					  
+					  
+					  
+					  
+					  
 					  
 					  
 					  
@@ -104,6 +138,20 @@ saveRecode:function(obj){
 						parCode:records[records.length-1].data.parCode,
 				 	
 						parUpId:records[records.length-1].data.parUpId,
+				 	
+						icoUrl:records[records.length-1].data.icoUrl,
+				 	
+						isDir:records[records.length-1].data.isDir,
+				 	
+						parType:records[records.length-1].data.parType,
+				 	
+						parLev:records[records.length-1].data.parLev,
+				 	
+						isExp:records[records.length-1].data.isExp,
+				 	
+						sortIndex:records[records.length-1].data.sortIndex,
+				 	
+						isDef:records[records.length-1].data.isDef,
 				 	
  
 								});

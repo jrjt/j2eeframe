@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.sunshineroad.framework.support.service.IBaseService;
 import com.sunshineroad.framework.util.ResponseUtils;
 import com.sunshineroad.framework.util.WebUtils; 
-
 import com.sunshineroad.driverschool.sysparameter.entity.SysParameter;
 import com.sunshineroad.driverschool.sysparameter.entityvo.SysParameterVo;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-
 import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
 
 import org.apache.log4j.Logger;
@@ -28,7 +27,7 @@ import org.apache.log4j.Logger;
  * @Title: Controller
  * @Description: 参数
  * @author auto Generate
- * @date 2014-01-08 20:17:19
+ * @date 2014-01-09 10:34:32
  * @version V1.0   
  *
  */
@@ -49,8 +48,18 @@ public class SysParameterController extends BaseControllerImpl {
 	@Autowired
 	private SysParameterService sysParameterService;
 	 
- 
- @RequestMapping(value="list",method=RequestMethod.GET)
+ //sysParameterVo2TreeNode
+	
+
+	@RequestMapping(value="getTreeNodeChildren",method=RequestMethod.GET)
+	public @ResponseBody Object getTreeNodeChildren(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String id=request.getParameter("id");
+		if(null==id||id.length()==0){
+			return null;
+		} 	   
+		return ResponseUtils.sendPagination(sysParameterService.getChildrenById(Long.valueOf(id))) ;
+		}
+	 @RequestMapping(value="list",method=RequestMethod.GET)
 	public @ResponseBody Object list( ){
 	 	 HttpServletRequest request =WebUtils.getRequestByContext();
 		SysParameter sysParameter= new SysParameter();
