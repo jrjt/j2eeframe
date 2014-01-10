@@ -144,6 +144,7 @@ saveRecode:function(obj){
 		var me = this;
 		if(!_${entityName?uncap_first}Window){
 			_${entityName?uncap_first}Window= Ext.create('Fes.view.${entityName}Window', { 
+			    closeAction:'hide',
 				buttons : [
 				            {
 				                text: 'Save5',
