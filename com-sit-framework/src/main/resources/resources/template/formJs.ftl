@@ -21,7 +21,7 @@ Ext.define('Fes.view.${entityName}Form', {
 <#list columns as po>
 //${po.fieldType}
 		<#if po.fieldType =="date" >	 
-	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'}, 
 			<#elseif po.fieldType =="number">
 	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '${po.filedComment}',name: '${po.fieldName}'},
 	      	 <#else>

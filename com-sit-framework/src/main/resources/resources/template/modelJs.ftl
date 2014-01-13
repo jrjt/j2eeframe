@@ -2,8 +2,13 @@ Ext.define("Fes.model.${entityName}Model",{
 	extend:'Ext.data.Model',
 	fields:[
 		<#list columns as po>
+			<#if po.fieldType =='date' >
+				{name:'${po.fieldName}',type:'auto'}	,	//${po.filedComment}
+			 <#else>
+				{name:'${po.fieldName}',type:'string'}	,	//${po.filedComment}
 			
-			{name:'${po.fieldName}',type:'string'}	,	//${po.filedComment}
+			</#if>
+			
 		</#list>
 		{name:'id',type:'int'}
 		 

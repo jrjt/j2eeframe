@@ -63,7 +63,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 		UserModel user = this.userDao.findByUsername(username);
 		 
 
-		System.out.println(" username is " + user.getPassword());
+		//System.out.println(" username is " + user.getPassword());
 		//String passwordMd5=CipherUtil.generatePassword(password);
 		if (user == null || !user.getPassword().equalsIgnoreCase(password)) {
 			BadCredentialsException exception = new BadCredentialsException("权限认证失败！用户名或密码不匹配！");

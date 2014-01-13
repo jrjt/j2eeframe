@@ -22,19 +22,7 @@
 		<property name="simultaneousBuildThrottle" value="${jdbc.simultaneous.build.throttle}" />
 	</bean>
  
-	
-	 <bean id="dataSource5" class="org.logicalcobwebs.proxool.ProxoolDataSource">
-		<property name="alias" value="proxoolDataSourceA" />
-		<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="driverUrl" value="jdbc\:oracle\:thin\:@192.168.40.147\:1521\:kdp" />
-		<property name="user" value="w24sDev" />
-		<property name="password" value="w24sDev" />
-		<property name="maximumConnectionCount" value="50" />
-		<property name="minimumConnectionCount" value="2" />
-		<property name="statistics" value="1m,15m,1h,1d" />
-		<property name="simultaneousBuildThrottle" value="30" />
-	</bean>
-
+ 
 	<bean id="dataSource_xjnx" class="org.logicalcobwebs.proxool.ProxoolDataSource">
 		<property name="alias" value="proxoolDataSourceB" />
 		<property name="driver" value="${jdbc.driver}" />

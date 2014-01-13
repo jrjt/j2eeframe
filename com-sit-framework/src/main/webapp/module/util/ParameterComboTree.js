@@ -38,9 +38,7 @@
 								 	// alert(Ext.JSON.encode(s.up('ParameterComboTree').id));
 								 	 
 								 	  
-				                    var new_params = {//参数  
-				                        id : '999'  
-				                    };  
+				                     
 				                   // Ext.apply(s.proxy.extraParams, new_params);
 									 
 									

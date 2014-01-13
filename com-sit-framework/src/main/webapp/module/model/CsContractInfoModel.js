@@ -16,9 +16,9 @@ Ext.define("Fes.model.CsContractInfoModel",{
 			
 			{name:'projectNumber',type:'string'}	,	//项目编号
 			
-			{name:'signDate',type:'string'}	,	//签订时间
+			{name:'signDate',type:'auto'}	,	//签订时间
 			
-			{name:'endDate',type:'string'}	,	//到期时间
+			{name:'endDate',type:'auto'}	,	//到期时间
 			
 			{name:'contractMoney',type:'string'}	,	//合同额
 			

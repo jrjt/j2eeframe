@@ -31,7 +31,7 @@ createRoleCombox:function(){
 		 	 		
 						{text : '项目编号',width : 120,sortable : true,dataIndex : 'projectNumber',field : {xtype : 'textfield',required : true}},
 		 	 		
-					{text : '签订时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'signDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+					{text : '签订时间',format:'Y-m-d',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'signDate',field : {xtype : 'datefield', format:'Y-m-d'}},
 		 	 		
 		 	 		
 					{text : '到期时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'endDate',field : {xtype : 'datefield', format:'Y-m-d'}},
@@ -123,7 +123,7 @@ createRoleCombox:function(){
 						this.editRecord=record;
 					},
 					edit : function(editor, e) {
-					 
+						// alert(Ext.JSON.encode(e.record.data));
 						e.record.save({
 									success : function(csContractInfo, options) {
 										var data = Ext.decode(options.response.responseText);
@@ -148,25 +148,39 @@ createRoleCombox:function(){
 		this.callParent();
 		
 	},
+editRecord:function(){ 
+	var records = this.getSelectionModel().getSelection();
+	if(records&&records.length > 0){
+		var record = new Fes.model.CsContractInfoModel(records[records.length-1].data);
+		 
+		this.showWindow(record);
+	}else{
+		Ext.Msg.alert('提示：','请先选择需要编辑的记录！');
+	}
+	
+},
 saveRecode:function(obj){
+	 
 		var record = new Fes.model.CsContractInfoModel(obj);
 		this.getStore().add(record);
-		record.save({
-			success : function(vo, options) {
-				var data = Ext
-						.decode(options.response.responseText);
-				if (data.extra) {
-					vo.set('id', data.extra);
+		 {
+			record.save({
+				success : function(vo, options) {
+					var data = Ext
+							.decode(options.response.responseText);
+					if (data.extra) {
+						vo.set('id', data.extra);
+					}
+					vo.commit();
 				}
-				vo.commit();
-			}
-		}); 
+			});
+		}; 
 	},
 	createStore : function() {
 		var me = this;
 		me.store = Ext.create('Fes.store.CsContractInfoStore');
 	},
-
+	 
 	addRecord : function() {
 		var records = this.getSelectionModel().getSelection();
 		var record = new Fes.model.CsContractInfoModel({
@@ -225,8 +239,8 @@ saveRecode:function(obj){
 				 	
 						remark4:records[records.length-1].data.remark4,
 				 	
-						remark5:records[records.length-1].data.remark5,
-				 	
+						remark5:records[records.length-1].data.remark5
+						
  
 								});
 		}
@@ -284,6 +298,10 @@ saveRecode:function(obj){
 			})
 			 
 		}
+		if(rec){
+			if(rec.data.signDate>0){ var d= new Date(); d.setTime(rec.data.signDate);  rec.data.signDate=d;}
+			_csContractInfoWindow.down('form').loadRecord(rec); 
+		}
 		_csContractInfoWindow.show();
 	},
 	createToolbar : function() {
@@ -316,7 +334,12 @@ saveRecode:function(obj){
 										iconCls : 'icon-add',
 										handler : me.addRecord,
 										scope : me
-									}),  '-', {
+									}),  '-',Ext.create('Ext.Button', {
+										text : '编辑',
+										iconCls : 'icon-add',
+										handler : me.editRecord,
+										scope : me
+									}), '-',{
 								xtype : 'button',
 								text : '删除',
 								iconCls : 'icon-del',

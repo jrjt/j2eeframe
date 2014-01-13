@@ -40,7 +40,7 @@ Ext.define('Fes.view.CsContractInfoForm', {
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '项目编号',name: 'projectNumber'},
 	      	 
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '签订时间',name: 'signDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '签订时间',name: 'signDate'},
 //date
 	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '到期时间',name: 'endDate'},
 //number
@@ -82,7 +82,7 @@ Ext.define('Fes.view.CsContractInfoForm', {
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段5',name: 'remark5'},
 	      	 
 					
-					{xtype:'hidden',name:'id'}
+					{xtype:'hidden',name:'id',value:null}
 						        	
 						          
 						            
