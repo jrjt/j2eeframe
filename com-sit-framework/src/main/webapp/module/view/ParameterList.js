@@ -1,7 +1,7 @@
-var _sysParameterWindow=false;
-Ext.define('Fes.view.SysParameterList', {
+﻿var _sysParameterWindow=false;
+Ext.define('Fes.view.ParameterList', {
 	extend : 'Ext.grid.Panel',
-	alias : 'widget.sysParameterList',
+	alias : 'widget.parameterList',
 	title : '[参数]列表',
 	
 	requires:["Fes.util.ParameterComboTree"],

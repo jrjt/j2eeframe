@@ -3,20 +3,20 @@
 */
 
 
-Ext.define("Fes.controller.DeptController",{
+Ext.define("Fes.controller.ParameterController",{
 		extend:	'Ext.app.Controller',
 		GridDoActionUtil:Ext.create("Fes.util.GridDoActionUtil"),
 		init:function(){
-			 
+			 return;
 			  this.getGridObj = function(button){
 			  	 return button.ownerCt.ownerCt;
 			  },
 			  this.getTreeObj = function(button){
-			  		return button.ownerCt.ownerCt.ownerCt.ownerCt.child("#west-tree").child("#dept-tree");
+			  		return button.ownerCt.ownerCt.ownerCt.ownerCt.child("#west-tree").child("#parameter-tree");
 			  },
 				this.control({
 					 
-					'deptList button[id=deptDelete]':{
+					'parameterList button[id=parameterDelete]':{
 					  click:function(deleteButton){
 						  
 								var grid = this.getGridObj(deleteButton);
@@ -25,7 +25,7 @@ Ext.define("Fes.controller.DeptController",{
 						}
 					
 					},
-					'deptList button[id=deptSave]':{
+					'parameterList button[id=parameterSave]':{
 						click:function(addButton){
 								var grid = this.getGridObj(addButton);
 								var tree = this.getTreeObj(addButton);	
@@ -33,7 +33,7 @@ Ext.define("Fes.controller.DeptController",{
 						}
 				  },
 					//设定列表添加按钮的事件
-					'deptList button[id=deptAdd]':{
+					'parameterList button[id=parameterAdd]':{
 						click:function(addButton){
 						 
 							//得到数据表格的对象
@@ -53,23 +53,23 @@ Ext.define("Fes.controller.DeptController",{
 						}
 					},
 					//设定列表添加按钮的事件
-					'deptList button[id=deptInsert]':{
+					'parameterList button[id=parameterInsert]':{
 						click:function(addButton){
 						 
 							//得到数据表格的对象
 							var grid = this.getGridObj(addButton);
 							var records = grid.getSelectionModel().getSelection();
 						
-							var record = new Fes.model.DeptModel({
-								deptName : '新建机构'
+							var record = new Fes.model.ParameterModel({
+								parameterName : '新建机构'
 							});
 							if (records.length > 0){
 								// record =	records[records.length-1];
-								record= new Fes.model.DeptModel({
-														deptName : '新建机构',	
+								record= new Fes.model.ParameterModel({
+														parameterName : '新建机构',	
 														 password:	records[records.length-1].data.password,
-														 parentDeptName:			records[records.length-1].data.parentDeptName,
-														 deptId:			records[records.length-1].data.deptId,
+														 parentParameterName:			records[records.length-1].data.parentParameterName,
+														 parameterId:			records[records.length-1].data.parameterId,
 														 parentId:	records[records.length-1].data.parentId
 													});
 							}
@@ -82,15 +82,14 @@ Ext.define("Fes.controller.DeptController",{
 				});	
 		},
 		views:[
-		  'DeptList',
-			'DeptLayout',
-			'DeptTree'
+		  'ParameterList',
+			'ParameterLayout',
+			'ParameterTree'
 		],
 		stores:[
-				'DeptStore',
-				'DeptStore4Tree'
+				'SysParameterStore' ,'ParameterStore4Tree'
 		],
 		models:[
-				'DeptModel'
+				'SysParameterModel'
 		]
 });

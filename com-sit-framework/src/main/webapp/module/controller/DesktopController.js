@@ -61,7 +61,7 @@ Ext.define('Fes.controller.DesktopController', {
 	},
 
 	onTreeItemClick : function(view, node) {
-  var self = view;
+		var self = view;
 		var tab = this.getContainer();
 		if (node.isLeaf()||node.data.type === 'COMPONENT') { // 判断是否是根节点
 			if (node.data.type === 'URL') { // 判断资源类型
@@ -94,6 +94,24 @@ Ext.define('Fes.controller.DesktopController', {
 									tab.add(panel);
 									tab.setActiveTab(panel);
 								}, view);
+                 }else if(node.data.component.indexOf('SysParameter') > -1){
+                	 Ext.require("Fes.view.ParameterLayout");
+                	 Ext.require("Fes.controller.ParameterController",
+								function() {
+									 var newController = application.getController('ParameterController');
+											 newController.init();
+									panel = Ext.widget('parameterLayout', {
+												title : '参数管理',
+												id : id,
+												closable : true
+											});
+											
+									//因为是异步，所以下面代码执行前 init方法已经结束
+									tab.add(panel);
+									tab.setActiveTab(panel);
+								}, view);
+                	 
+                	 
                  }else{
 				 panel = Ext.create(node.data.component, {
 				 			id:id,

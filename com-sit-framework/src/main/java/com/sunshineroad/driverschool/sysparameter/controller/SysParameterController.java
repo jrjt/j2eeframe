@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sunshineroad.framework.support.service.IBaseService;
 import com.sunshineroad.framework.util.ResponseUtils;
+import com.sunshineroad.framework.util.TreeNode;
 import com.sunshineroad.framework.util.WebUtils; 
 import com.sunshineroad.driverschool.sysparameter.entity.SysParameter;
 import com.sunshineroad.driverschool.sysparameter.entityvo.SysParameterVo;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
 import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
+import com.sunshineroad.system.dept.vo.DeptVo;
 
 import org.apache.log4j.Logger;
 /**   
@@ -87,7 +89,23 @@ public class SysParameterController extends BaseControllerImpl {
 		this.sysParameterService.delete(sysParameter);
 		return ResponseUtils.sendSuccess("删除成功");
 	}
-    
+	
+	@RequestMapping(value="root",method=RequestMethod.GET)
+	public @ResponseBody List<TreeNode> root() throws Exception{
+		 HttpServletRequest request =WebUtils.getRequestByContext();
+			String id=request.getParameter("id"); 
+		if(null==id||id.length()==0){
+			return null;
+		}else{
+			Integer pid=Integer.valueOf(id);
+			List<TreeNode> nodeList= sysParameterService.getChildrenById(Long.valueOf(id));
+			
+			return	nodeList;
+			 
+		}
+		//return this.deptService.getRoot();
+	}
+	
  
   
 }
