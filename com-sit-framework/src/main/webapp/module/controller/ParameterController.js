@@ -82,7 +82,7 @@ Ext.define("Fes.controller.ParameterController",{
 				});	
 		},
 		views:[
-		  'ParameterList',
+		   
 			'ParameterLayout',
 			'ParameterTree'
 		],

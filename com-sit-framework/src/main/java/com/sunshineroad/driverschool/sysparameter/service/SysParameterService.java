@@ -8,7 +8,7 @@ import com.sunshineroad.framework.support.service.IBaseService;
 import com.sunshineroad.framework.util.TreeNode;
 
 public interface SysParameterService extends IBaseService<SysParameter, Integer>{
-	public List<SysParameterVo> list(SysParameter entity) ;
+	public List<SysParameterVo> list(SysParameterVo sysParameterVo) ;
 
 	public List<TreeNode> getChildrenById(Long id);
 }

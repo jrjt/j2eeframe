@@ -3,7 +3,7 @@ Ext.define("Fes.view.ParameterTree",{
 	alias :'widget.parameterTree',
 	rootVisible:true, 
 	 
-	//store:'ParameterStore4Tree',
+	 
 	animate:true,
 	 
 	initComponent : function() {

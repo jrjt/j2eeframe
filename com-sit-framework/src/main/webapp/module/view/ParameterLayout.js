@@ -12,7 +12,7 @@ Ext.define("Fes.view.ParameterLayout",{
 		}, 
 		layout:'border',
 		items:[{
-			title:'部门树形',
+			 
 			region:'west',
 			iconCls:'parameter_table',
 			xtype:'panel',
@@ -23,20 +23,21 @@ Ext.define("Fes.view.ParameterLayout",{
 			layout:'fit',//充满整个面板
 			items:[{
 				xtype:'parameterTree', 
-				rootId : 0,  
+				rootId : 1,  
 				rootText : '参数',
 				expanded : false,
 				listeners:{
 					itemclick:function( view, record,  item,  index,  e,  eOpts ){
 					 	 
-						  
-						//Ext.JSON.encode(Ext.getCmp('parameter-grid').getStore().getBaseParam());
-						Ext.getCmp('parameter-grid').getStore().load(
+						   
+						if(record.data.leaf) return ;
+						Ext.getCmp('parameter-grid').setTitle('['+record.data.text+']的所属参数列表');
+						Ext.getCmp('parameter-grid').getStore().load( 
 								{
 									
 									params : {
-										 id:record.data.id,
-										 parameterName:record.data.text
+										 id:record.data.id ,
+										 start:0
 									}
 								 
 								}
@@ -46,27 +47,24 @@ Ext.define("Fes.view.ParameterLayout",{
 				id:'parameter-tree'
 			}]
 		},{
-			title:'部门数据表格',
+			id:'parameter-grid',
+			xtype:'sysParameterList',
 			iconCls:'parameter_table',
 			region:'center',
-			xtype:'panel',
-			id:'center-grid',
+		 
+			 
 			margins:'5 5 5 0',
 			layout:'fit',//充满整个面板
 			border:0,
-			items:[{
-					id:'parameter-grid',
-					xtype:'sysParameterList',
-					region:'center',
-					layout:'fit',//充满整个面板
-						listeners:{
-							beforeload:function(store, operation, eOpts ){
-								
-							}
-						}
+			 
+			layout:'fit',//充满整个面板
+				listeners:{
+					beforeload:function(store, operation, eOpts ){
 						
-						
-			}]
-		}]
+					}
+				}
+				
+				
+	}]
 });
 

@@ -2,9 +2,9 @@ var _sysParameterWindow=false;
 Ext.define('Fes.view.SysParameterList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.sysParameterList',
-	title : '[参数]列表',
+	title : '全部参数-列表',
 	
-	requires:["Fes.util.ParameterComboTree"],
+	requires:["Fes.util.ParameterComboTree",'Ext.toolbar.Paging'],
 	iconCls : 'icon-grid-list',
 	rowLines : true,
 	columnLines : true,
@@ -54,6 +54,7 @@ createRoleCombox:function(){
 	 	 		{text : 'id',width : 120,sortable : true,dataIndex : 'id',hidden:true}
 	 	 		
 	],
+	
 	initComponent : function() {
 	 
 		this.createStore();
@@ -96,11 +97,7 @@ createRoleCombox:function(){
 		 
 		;
 		this.plugins = [this.rowEditor], this.tbar = this.createToolbar();
-		this.bbar = {
-			xtype : 'pagingtoolbar',
-			store : this.store,
-			displayInfo : true
-		};
+		 
 		this.callParent();
 		
 	},
@@ -121,6 +118,13 @@ saveRecode:function(obj){
 	createStore : function() {
 		var me = this;
 		me.store = Ext.create('Fes.store.SysParameterStore');
+		
+		me.bbar=Ext.create( 'Ext.PagingToolbar',{
+			 
+			 
+			store : me.store,
+			displayInfo : true
+		});
 	},
 
 	addRecord : function() {
@@ -217,8 +221,10 @@ saveRecode:function(obj){
 		return Ext.create('Ext.toolbar.Toolbar', {
 					items : [{
 								xtype : 'textfield',
-								fieldLabel : 'ID',
+								fieldLabel : ' ',
 								labelWidth : 40,
+								emptyText:'输入参数名称/代码/类型',
+								labelSeparator:'',
 								flex : .6,
 								id : 'sysParameterId'
 							},{
@@ -228,9 +234,16 @@ saveRecode:function(obj){
 								handler : function() {
 									me.getStore().load({
 										params : {
-											id : Ext.getCmp('sysParameterId').getValue()
+											params : Ext.getCmp('sysParameterId').getValue(),
+											start:0
+											
+										},
+										callback : function(re, options,success) {
+											 
+											me.setTitle('查询[参数名称/代码/类型]条件为： :"'+
+													Ext.getCmp('sysParameterId').getValue() +'" 的结果列表');
 										}
-									});
+									}); 
 								}
 							}, '-', Ext.create('Ext.Button', {
 								text : '添加1',

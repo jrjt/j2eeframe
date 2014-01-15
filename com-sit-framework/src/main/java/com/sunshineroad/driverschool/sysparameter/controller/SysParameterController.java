@@ -1,4 +1,5 @@
 package com.sunshineroad.driverschool.sysparameter.controller;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,9 +65,29 @@ public class SysParameterController extends BaseControllerImpl {
 	 @RequestMapping(value="list",method=RequestMethod.GET)
 	public @ResponseBody Object list( ){
 	 	 HttpServletRequest request =WebUtils.getRequestByContext();
-		SysParameter sysParameter= new SysParameter();
-  
-		return ResponseUtils.sendPagination(sysParameterService.list(sysParameter)) ;
+	 	 SysParameterVo	sysParameterVo= new SysParameterVo();
+	  
+		
+	 	 String id=request.getParameter("id");
+		 if(null!=id){
+			 sysParameterVo.setId(Long.valueOf(id));
+		 }
+
+	 	 String params=request.getParameter("params");
+	 	 try {
+	 		if(null!=params){
+				byte b[] = params.getBytes("ISO-8859-1");
+				params = new String(b);
+	 		}
+	 	} catch (UnsupportedEncodingException e) {
+	 		 params=null;
+		}
+	 	if(null!=params){
+			 sysParameterVo.setParName(params);
+			}
+		 
+		return ResponseUtils.sendPagination(sysParameterService.list(sysParameterVo)) ;
+	 
 	}
  
 	@RequestMapping(value="update/{id}",  method=RequestMethod.PUT)
