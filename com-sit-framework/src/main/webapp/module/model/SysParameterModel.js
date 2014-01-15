@@ -8,6 +8,8 @@ Ext.define("Fes.model.SysParameterModel",{
 			
 			{name:'parUpId',type:'string'}	,	//上级参数
 			
+			{name:'parUpName',type:'string'}	,	//上级参数名称
+			
 			{name:'icoUrl',type:'string'}	,	//图标路径
 			
 			{name:'isDir',type:'string'}	,	//是否有子类

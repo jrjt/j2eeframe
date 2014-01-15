@@ -23,6 +23,8 @@ public class SysParameterVo   {
 	private java.lang.String parCode;
 	/**上级参数*/
 	private java.lang.Long parUpId;
+	/**上级参数*/
+	private java.lang.String parUpName;
 	/**图标路径*/
 	private java.lang.String icoUrl;
 	/**是否有子类*/
@@ -44,6 +46,14 @@ public class SysParameterVo   {
 	 */
 public java.lang.Long getId(){
 		return this.id;
+	}
+
+	public java.lang.String getParUpName() {
+		return parUpName;
+	}
+
+	public void setParUpName(java.lang.String parUpName) {
+		this.parUpName = parUpName;
 	}
 
 	/**

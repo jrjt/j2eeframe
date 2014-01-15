@@ -18,37 +18,38 @@ createRoleCombox:function(){
 },
 	columns : [	
 	{xtype : 'rownumberer'}, 
-						{text : '参数名称',width : 120,sortable : true,dataIndex : 'parName',field : {xtype : 'textfield',required : true}},
+						{text : '参数名称',width : 120,sortable : true,dataIndex : 'parName',field : {xtype : 'textfield' ,required : true}},
 		 	 		
-						{text : '参数代码',width : 120,sortable : true,dataIndex : 'parCode',field : {xtype : 'textfield',required : true}},
-		 	 		
-						{text : '上级参数',width : 120,sortable : true,dataIndex : 'parUpId',field : {
+						{text : '参数代码',width : 120,sortable : true,dataIndex : 'parCode',field : {xtype : 'textfield' ,required : true}},
+		 	 		 
+						{text : '上级参数',width : 120,   renderer:function(v,c,r){return r.data.parUpName},sortable : true, dataIndex : 'parUpName',field : {
 							xtype:'parameterComboTree',
 							//fieldLabel: '权限',
 							//labelWidth: 40,   
 							rootText : '功能',
-							rootId:'0',
-							expanded:true,
+							
+							rootId:'1',
+							
 							storeUrl : 'sysParameter/getTreeNodeChildren',
 							id:'sysParameterlist'+'SysParameterComboTree',
 							selectMode:'all',
 							treeHeight:300,
-							rootVisible:true
+							rootVisible:false
 						}},
 		 	 		
-						{text : '图标路径',width : 120,sortable : true,dataIndex : 'icoUrl',field : {xtype : 'textfield',required : true}},
+						{text : '图标路径',width : 120,sortable : true,dataIndex : 'icoUrl',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '是否有子类',width : 120,sortable : true,dataIndex : 'isDir',field : {xtype : 'textfield',required : true}},
+						{text : '是否有子类',width : 120,sortable : true,dataIndex : 'isDir',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '参数类型',width : 120,sortable : true,dataIndex : 'parType',field : {xtype : 'textfield',required : true}},
+						{text : '参数类型',width : 120,sortable : true,dataIndex : 'parType',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '层级',width : 120,sortable : true,dataIndex : 'parLev',field : {xtype : 'textfield',required : true}},
+						{text : '层级',width : 120,sortable : true,dataIndex : 'parLev',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '是否默认展开',width : 120,sortable : true,dataIndex : 'isExp',field : {xtype : 'textfield',required : true}},
+						{text : '是否默认展开',width : 120,sortable : true,dataIndex : 'isExp',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '排序序号',width : 120,sortable : true,dataIndex : 'sortIndex',field : {xtype : 'textfield',required : true}},
+						{text : '排序序号',width : 120,sortable : true,dataIndex : 'sortIndex',field : {xtype : 'textfield' }},
 		 	 		
-						{text : '默认选中',width : 120,sortable : true,dataIndex : 'isDef',field : {xtype : 'textfield',required : true}},
+						{text : '默认选中',width : 120,sortable : true,dataIndex : 'isDef',field : {xtype : 'textfield'}},
 		 	 		
 	 	 		
 	 	 		{text : 'id',width : 120,sortable : true,dataIndex : 'id',hidden:true}
@@ -63,31 +64,28 @@ createRoleCombox:function(){
 				id:'sysParameterListRowEditor',
 				listeners : {
 					beforeedit:function( editor,  e,  eOpts ){
-				 
-					  
-					  
-					  
-					  
-					  
-					  
-					  
-					  
-					  
-					  
+						Ext.getCmp('sysParameterlist'+'SysParameterComboTree').setLocalValue(e.record.data.parUpId,e.record.data.parUpName);
+						
 					},
 					startEdit:function(record, columnHeader ){
 			
 						this.editRecord=record;
 					},
 					edit : function(editor, e) {
-					 
+						 var me=this;
+						 e.record.data.parUpId=Ext.getCmp('sysParameterlist'+'SysParameterComboTree').getValue();
+						 e.record.data.parUpName=Ext.getCmp('sysParameterlist'+'SysParameterComboTree').getTextValue();
 						e.record.save({
 									success : function(sysParameter, options) {
+										 
 										var data = Ext.decode(options.response.responseText);
 										if (data.extra) {
 											sysParameter.set('id', data.extra);
 										}
+									//	alert(Ext.JSON.encode(sysParameter.data));
+										sysParameter.data.parUpName=Ext.getCmp('sysParameterlist'+'SysParameterComboTree').getTextValue();
 										sysParameter.commit();
+										 
 									}
 								});
 	

@@ -4,7 +4,7 @@
 	alias: 'widget.parameterComboTree',
 	store : new Ext.data.ArrayStore({fields:[],data:[[]]}),
 	editable : false,
-	allowBlank:false,
+	 
     requires : ["Ext.tree.Panel","Fes.model.Node"],  
 	listConfig : {resizable:true,minWidth:250,maxWidth:450},
 	_idValue : null,
@@ -17,7 +17,7 @@
 				height : 250,
 				//width : 350,
 				autoScroll : true,
-				rootVisible: true,
+				rootVisible: self.rootVisible,
 				store:  new Ext.data.TreeStore({
 							nodeParam : 'id',
 						//	model:'Node',
@@ -44,7 +44,7 @@
 									
 								}
 							},
-					        autoLoad : false,
+					        autoLoad : true,
 					        root : {  
 				                   id : self.rootId,  
 				                   text : self.rootText,
@@ -61,7 +61,7 @@
 		this.creatTree();
 		this.on({
 			'expand' : function(){
-				me.treeObj.getStore().load();
+				
 				 //alert(me.treeObj.getStore().load({}));
 			    if(!this.treeObj.rendered&&this.treeObj&&!this.readOnly){
 			        Ext.defer(function(){
@@ -74,6 +74,7 @@
 			if(rec){
 				this.setValue(this._txtValue = rec.get('text'));
 				this._idValue = rec.get('id');
+				 
 				//设置回调
                 this.callback.call(this,rec.get('id'), rec.get('text'));
                 //关闭tree
@@ -81,6 +82,7 @@
 			}
 		},this);
 		this.callParent(arguments);
+		 me.treeObj.getStore().load();
 	},
 	getValue : function(){//获取id值
 		return this._idValue;

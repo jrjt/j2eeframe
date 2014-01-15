@@ -21,6 +21,7 @@ Ext.define("Fes.view.ParameterTree",{
              xtype: 'treecolumn',  
              dataIndex: 'text',  
              flex: 1,  
+             sortable:false,
              editor: {  
                  xtype: 'textfield',  
                  selectOnFocus: true,  
@@ -32,9 +33,10 @@ Ext.define("Fes.view.ParameterTree",{
          },{  
              xtype: 'actioncolumn',  
              width: 24,  
+             sortable:false,
              //icon: 'resources/images/delete.png',  
              iconCls: 'x-hidden',  
-             tooltip: 'Delete',  
+             tooltip: '删除',  
              handler: Ext.bind(me.handleDeleteClick, me)  
          }];  
            
