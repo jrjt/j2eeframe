@@ -42,6 +42,8 @@ public class SysParameterServiceImpl extends BaseServiceImpl<SysParameter, Integ
 			hql.append(" or "+" parType like '%"+entity.getParName()+"%'   ");
 			hql.append("  )");
 		}  
+		 
+		hql.append(" ORDER BY sortIndex");
 		return ListUtils.transform(sysParameterDao.findPageByHql(hql.toString() ),
 				SysParameterVo.class);
 	}
