@@ -40,32 +40,32 @@ Ext.define('Fes.view.CsContractInfoForm', {
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '项目编号',name: 'projectNumber'},
 	      	 
 //date
-	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '签订时间',name: 'signDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '签订时间',name: 'signDate'}, 
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '到期时间',name: 'endDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '到期时间',name: 'endDate'}, 
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同额',name: 'contractMoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '合同额',name: 'contractMoney'},
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '结算凭证金额',name: 'settlementMoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '结算凭证金额',name: 'settlementMoney'},
 //varchar2
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '是否立项',name: 'projectInfo'},
 	      	 
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款金额',name: 'firstPaymoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款金额',name: 'firstPaymoney'},
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款回款时间',name: 'firstPaymoneyDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '首付款回款时间',name: 'firstPaymoneyDate'}, 
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔金额',name: 'secondPaymoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔金额',name: 'secondPaymoney'},
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔回款时间',name: 'secondPaymoneyDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '第二笔回款时间',name: 'secondPaymoneyDate'}, 
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款金额',name: 'endPaymoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款金额',name: 'endPaymoney'},
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款回款时间',name: 'endPaymoneyDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '尾款回款时间',name: 'endPaymoneyDate'}, 
 //number
-	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款金额',name: 'otherPaymoney'},
+	      	  {xtype: 'numberfield',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款金额',name: 'otherPaymoney'},
 //date
-	      	  {xtype: 'datefield',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款时间',name: 'otherPaymoneyDate'},
+	      	  {xtype: 'datefield',format:'Y-m-d',allowBlank: false,columnWidth:1/4,fieldLabel: '其他回款时间',name: 'otherPaymoneyDate'}, 
 //varchar2
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段1',name: 'remark1'},
 	      	 
@@ -82,7 +82,7 @@ Ext.define('Fes.view.CsContractInfoForm', {
 	      	  {xtype: 'textfield',allowBlank: false,columnWidth:1/4,fieldLabel: '备用字段5',name: 'remark5'},
 	      	 
 					
-					{xtype:'hidden',name:'id',value:null}
+					{xtype:'hidden',name:'id'}
 						        	
 						          
 						            

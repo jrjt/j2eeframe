@@ -153,7 +153,7 @@ saveRecode:function(obj){
 				 	
 						sortIndex:records[records.length-1].data.sortIndex,
 				 	
-						isDef:records[records.length-1].data.isDef,
+						isDef:records[records.length-1].data.isDef
 				 	
  
 								});

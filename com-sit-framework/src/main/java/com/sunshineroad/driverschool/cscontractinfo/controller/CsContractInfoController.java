@@ -26,9 +26,9 @@ import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
 import org.apache.log4j.Logger;
 /**   
  * @Title: Controller
- * @Description: 合同
+ * @Description: 合同信息
  * @author auto Generate
- * @date 2014-01-08 18:26:03
+ * @date 2014-01-15 16:16:53
  * @version V1.0   
  *
  */
@@ -73,7 +73,7 @@ public class CsContractInfoController extends BaseControllerImpl {
 		return ResponseUtils.sendSuccess("保存成功",this.csContractInfoService.save(csContractInfo).getId());
 	}
 	
-	@RequestMapping(value="{destroy/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="delete/{id}",method=RequestMethod.DELETE)
 	public @ResponseBody Object delete(@RequestBody CsContractInfo csContractInfo) throws Exception{
 		this.csContractInfoService.delete(csContractInfo);
 		return ResponseUtils.sendSuccess("删除成功");

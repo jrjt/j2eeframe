@@ -23,9 +23,9 @@ import com.sunshineroad.framework.web.support.pagination.PaginationUtils;
 
 /**   
  * @Title: daoImpl
- * @Description: 合同
+ * @Description: 合同信息
  * @author  
- * @date 2014-01-08 18:26:11
+ * @date 2014-01-15 16:16:59
  * @version V1.0   
  *
  */

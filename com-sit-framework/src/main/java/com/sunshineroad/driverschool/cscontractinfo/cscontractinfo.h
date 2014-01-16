@@ -1,6 +1,6 @@
 
 #import <Foundation/Foundation.h>
-//*/* 表名 cs_contract_info /*/*//
+//*/* 表名 CS_CONTRACT_INFO /*/*//
 @interface CsContractInfo :NSObject
  		////类型 java.lang.Long  说明 id 字段名 ID 
 		@property (nonatomic, strong) NSNumber ////id;

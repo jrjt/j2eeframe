@@ -11,7 +11,7 @@
 %>
 <html>
 	<head>
-		<title>运维综合管理系统1</title>
+		<title>运维综合管理系统</title>
 		<link rel="icon" href="${ctx}/images/heat.ico" type="image/x-icon" />
 			<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">

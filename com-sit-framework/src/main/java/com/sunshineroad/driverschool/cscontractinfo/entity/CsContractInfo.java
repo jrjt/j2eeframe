@@ -29,14 +29,14 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
 
 /**   
  * @Title: Entity
- * @Description: 合同
+ * @Description: 合同信息
  * @author  
- * @date 2014-01-08 18:26:03
+ * @date 2014-01-15 16:16:54
  * @version V1.0   
  *
  */
 @Entity
-@Table(name = "cs_contract_info", schema = "")
+@Table(name = "CS_CONTRACT_INFO", schema = "")
 public class CsContractInfo extends BaseEntity {
 	/**id*/
 	private java.lang.Long id;
@@ -98,7 +98,7 @@ public class CsContractInfo extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="sequence")
-	@SequenceGenerator(name="sequence",sequenceName="cs_contract_info_seq",allocationSize=1)
+	@SequenceGenerator(name="sequence",sequenceName="CS_CONTRACT_INFO_seq",allocationSize=1)
 	@Column(name ="ID",nullable=false,precision=32,scale=0)
 	public java.lang.Long getId(){
 		return this.id;

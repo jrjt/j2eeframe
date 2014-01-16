@@ -2,7 +2,7 @@ var _csContractInfoWindow=false;
 Ext.define('Fes.view.CsContractInfoList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.csContractInfolist',
-	title : '[合同]列表',
+	title : '[合同信息]列表',
  
 	iconCls : 'icon-grid-list',
 	rowLines : true,
@@ -10,7 +10,7 @@ Ext.define('Fes.view.CsContractInfoList', {
 	multiSelect : true,
 	simpleSelect : true,
 	viewConfig : {
-		loadingText : '正在加载[合同]列表'
+		loadingText : '正在加载[合同信息]列表'
 	},
 createRoleCombox:function(){
  
@@ -31,7 +31,7 @@ createRoleCombox:function(){
 		 	 		
 						{text : '项目编号',width : 120,sortable : true,dataIndex : 'projectNumber',field : {xtype : 'textfield',required : true}},
 		 	 		
-					{text : '签订时间',format:'Y-m-d',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'signDate',field : {xtype : 'datefield', format:'Y-m-d'}},
+					{text : '签订时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'signDate',field : {xtype : 'datefield', format:'Y-m-d'}},
 		 	 		
 		 	 		
 					{text : '到期时间',width : 120,sortable : true,renderer:function(v){if(!v||v==''){return;}var d= new Date();d.setTime(v); return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'endDate',field : {xtype : 'datefield', format:'Y-m-d'}},
@@ -123,7 +123,7 @@ createRoleCombox:function(){
 						this.editRecord=record;
 					},
 					edit : function(editor, e) {
-						// alert(Ext.JSON.encode(e.record.data));
+					 
 						e.record.save({
 									success : function(csContractInfo, options) {
 										var data = Ext.decode(options.response.responseText);
@@ -148,39 +148,39 @@ createRoleCombox:function(){
 		this.callParent();
 		
 	},
-editRecord:function(){ 
-	var records = this.getSelectionModel().getSelection();
-	if(records&&records.length > 0){
-		var record = new Fes.model.CsContractInfoModel(records[records.length-1].data);
-		 
-		this.showWindow(record);
-	}else{
-		Ext.Msg.alert('提示：','请先选择需要编辑的记录！');
-	}
 	
-},
+						editRecord : function() {
+						var records = this.getSelectionModel().getSelection();
+						if (records && records.length > 0) {
+							var record = new Fes.model.CsContractInfoModel(
+									records[records.length - 1].data);
+
+							this.showWindow(record);
+						} else {
+							Ext.Msg.alert('提示：', '请先选择需要编辑的记录！');
+						}
+
+					},
+	
 saveRecode:function(obj){
-	 
 		var record = new Fes.model.CsContractInfoModel(obj);
 		this.getStore().add(record);
-		 {
-			record.save({
-				success : function(vo, options) {
-					var data = Ext
-							.decode(options.response.responseText);
-					if (data.extra) {
-						vo.set('id', data.extra);
-					}
-					vo.commit();
+		record.save({
+			success : function(vo, options) {
+				var data = Ext
+						.decode(options.response.responseText);
+				if (data.extra) {
+					vo.set('id', data.extra);
 				}
-			});
-		}; 
+				vo.commit();
+			}
+		}); 
 	},
 	createStore : function() {
 		var me = this;
 		me.store = Ext.create('Fes.store.CsContractInfoStore');
 	},
-	 
+
 	addRecord : function() {
 		var records = this.getSelectionModel().getSelection();
 		var record = new Fes.model.CsContractInfoModel({
@@ -240,7 +240,7 @@ saveRecode:function(obj){
 						remark4:records[records.length-1].data.remark4,
 				 	
 						remark5:records[records.length-1].data.remark5
-						
+				 	
  
 								});
 		}
@@ -254,7 +254,7 @@ saveRecode:function(obj){
 		var me = this;
 		var records = this.getSelectionModel().getSelection();
 		if (records.length > 0) {
-			Fes.MsgBox.confirm('确定删除这' + records.length + '个合同?',
+			Fes.MsgBox.confirm('确定删除这' + records.length + '个合同信息?',
 					function(btn) {
 						Ext.each(records, function(record) {
 									if (Ext.Array.contains(me.getStore()
@@ -276,6 +276,7 @@ saveRecode:function(obj){
 		var me = this;
 		if(!_csContractInfoWindow){
 			_csContractInfoWindow= Ext.create('Fes.view.CsContractInfoWindow', { 
+			    closeAction:'hide',
 				buttons : [
 				            {
 				                text: 'Save5',
@@ -296,11 +297,14 @@ saveRecode:function(obj){
 				            }
 				        ]
 			})
-			 
-		}
-		if(rec){
-			if(rec.data.signDate>0){ var d= new Date(); d.setTime(rec.data.signDate);  rec.data.signDate=d;}
-			_csContractInfoWindow.down('form').loadRecord(rec); 
+			}
+			 						if (rec&&rec.data) {
+							if (rec.data.signDate > 0) {
+								var d = new Date();
+								d.setTime(rec.data.signDate);
+								rec.data.signDate = d;
+							}
+							_csContractInfoWindow.down('form').loadRecord(rec);
 		}
 		_csContractInfoWindow.show();
 	},
@@ -325,21 +329,21 @@ saveRecode:function(obj){
 									});
 								}
 							}, '-', Ext.create('Ext.Button', {
-								text : '添加1',
+								text : '弹窗添加',
 								iconCls : 'icon-add',
 								handler : me.showWindow,
 								scope : me
 							}),Ext.create('Ext.Button', {
-										text : '添加',
+										text : '页面添加',
 										iconCls : 'icon-add',
 										handler : me.addRecord,
 										scope : me
-									}),  '-',Ext.create('Ext.Button', {
+									}),'-',Ext.create('Ext.Button', {
 										text : '编辑',
-										iconCls : 'icon-add',
+										iconCls : 'icon-edit',
 										handler : me.editRecord,
 										scope : me
-									}), '-',{
+									}),'-', {
 								xtype : 'button',
 								text : '删除',
 								iconCls : 'icon-del',

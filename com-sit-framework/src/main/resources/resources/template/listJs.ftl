@@ -76,6 +76,20 @@ createRoleCombox:function(){
 		this.callParent();
 		
 	},
+	
+						editRecord : function() {
+						var records = this.getSelectionModel().getSelection();
+						if (records && records.length > 0) {
+							var record = new Fes.model.${entityName}Model(
+									records[records.length - 1].data);
+
+							this.showWindow(record);
+						} else {
+							Ext.Msg.alert('提示：', '请先选择需要编辑的记录！');
+						}
+
+					},
+	
 saveRecode:function(obj){
 		var record = new Fes.model.${entityName}Model(obj);
 		this.getStore().add(record);
@@ -165,7 +179,14 @@ saveRecode:function(obj){
 				            }
 				        ]
 			})
-			 
+			}
+			 						if (rec&&rec.data) {
+							if (rec.data.signDate > 0) {
+								var d = new Date();
+								d.setTime(rec.data.signDate);
+								rec.data.signDate = d;
+							}
+							_${entityName?uncap_first}Window.down('form').loadRecord(rec);
 		}
 		_${entityName?uncap_first}Window.show();
 	},
@@ -190,16 +211,21 @@ saveRecode:function(obj){
 									});
 								}
 							}, '-', Ext.create('Ext.Button', {
-								text : '添加1',
+								text : '弹窗添加',
 								iconCls : 'icon-add',
 								handler : me.showWindow,
 								scope : me
 							}),Ext.create('Ext.Button', {
-										text : '添加',
+										text : '页面添加',
 										iconCls : 'icon-add',
 										handler : me.addRecord,
 										scope : me
-									}),  '-', {
+									}),'-',Ext.create('Ext.Button', {
+										text : '编辑',
+										iconCls : 'icon-edit',
+										handler : me.editRecord,
+										scope : me
+									}),'-', {
 								xtype : 'button',
 								text : '删除',
 								iconCls : 'icon-del',
