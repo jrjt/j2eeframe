@@ -37,6 +37,7 @@ public class SysParameterServiceImpl extends BaseServiceImpl<SysParameter, Integ
 			hql.append(" or "+" parName like '%"+entity.getParName()+"%'   ");
 			hql.append(" or "+" parCode like '%"+entity.getParName()+"%'   ");
 			hql.append(" or "+" parType like '%"+entity.getParName()+"%'   ");
+			
 			hql.append("  )");
 		}  
 		 

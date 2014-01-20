@@ -78,10 +78,10 @@
 		<script type="text/javascript" src="${extLibPath}/ext-all.js"></script>
 		<script type="text/javascript" src="${extLibPath}/locale/ext-lang-zh_CN.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/firebugx.js"></script>
 		<script type="text/javascript" src="js/cryptojs.js"></script>
 		<script type="text/javascript" src="js/currentDate.js"></script>
-<!-- 		<script type="text/javascript" src="js/extexcel/export-all.js"></script> -->
+<!-- 		<script type="text/javascript" src="js/extexcel/export-all.js"></script>
+		<script type="text/javascript" src="js/firebugx.js"></script> -->
 		<script type="text/javascript" src="js/ExporterExcel-all.js"></script> 
 		<script type="text/javascript">
 			Ext.appPath = '<%=ctx%>';

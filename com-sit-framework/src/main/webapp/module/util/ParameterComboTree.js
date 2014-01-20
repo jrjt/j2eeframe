@@ -15,6 +15,7 @@
 				self.treeObj= new Ext.tree.Panel({
 				border : false,
 				height : 250,
+				id:'tree'+self.id, 
 				//width : 350,
 				autoScroll : true,
 				rootVisible: self.rootVisible,
@@ -28,7 +29,7 @@
 			                        type : 'json',
 			                         root:'root',
 			                        totalProperty : 'total'// 数据的总数
-			                    },
+			                    }
 					        },
 					    	listeners : {
 								load:function(s,records,success,e){
@@ -53,7 +54,8 @@
 						})
 	});},
 	initComponent : function(){
-		this.treeRenderId = Ext.id();
+		console.log('oooooooooooooooooooooooooooooo    '+this.getId());
+		this.treeRenderId = Ext.id()+this.getId();
 		var me=this;
 		this.tpl = "<tpl><div id='"+this.treeRenderId+"'></div></tpl>";		
 		
@@ -63,9 +65,15 @@
 			'expand' : function(){
 				
 				 //alert(me.treeObj.getStore().load({}));
-			    if(!this.treeObj.rendered&&this.treeObj&&!this.readOnly){
+//				console.log(">>>>>>>>>>>>>>>>>>>>>>");
+//				console.log(!me.treeObj.rendered);
+//				console.log(!!me.treeObj);
+//				console.log(!me.readOnly);
+			    if(/*!&&*/me.treeObj&&!me.treeObj.rendered){ // cause here
 			        Ext.defer(function(){
-		        		this.treeObj.render(this.treeRenderId);
+			        	//console.log(document.getElementById(this.treeRenderId).innerHTML);
+			        	//document.getElementById(this.treeRenderId).innerHTML='';
+		        		me.treeObj.render(this.treeRenderId);
 		        	},300,this);
 			    }
 			}
