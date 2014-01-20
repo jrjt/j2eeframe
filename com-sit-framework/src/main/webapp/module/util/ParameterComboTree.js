@@ -52,7 +52,20 @@
 				                   expanded : self.expanded
 				               }
 						})
-	});},
+					});
+				self.treeObj.on('itemclick',function(view,rec){
+					if(rec){
+						self.setValue(this._txtValue = rec.get('text'));
+						self._idValue = rec.get('id');
+						 
+						//设置回调
+						self.callback.call(this,rec.get('id'), rec.get('text'));
+		                //关闭tree
+						self.collapse();
+					}
+				},self);
+	
+	},
 	initComponent : function(){
 		console.log('oooooooooooooooooooooooooooooo    '+this.getId());
 		this.treeRenderId = Ext.id()+this.getId();
@@ -66,30 +79,30 @@
 				
 				 //alert(me.treeObj.getStore().load({}));
 //				console.log(">>>>>>>>>>>>>>>>>>>>>>");
-//				console.log(!me.treeObj.rendered);
+ 				console.log(me.treeRenderId+'_____'+me.treeObj.rendered);
 //				console.log(!!me.treeObj);
 //				console.log(!me.readOnly);
-			    if(/*!&&*/me.treeObj&&!me.treeObj.rendered){ // cause here
+				// console.log(me.treeRenderId+' html     '+document.getElementById(me.treeRenderId).innerHTML);
+				 
+				document.getElementById(me.treeRenderId).innerHTML='';
+        		 
+			    if( me.treeObj&&!me.treeObj.rendered){ // cause here
 			        Ext.defer(function(){
-			        	//console.log(document.getElementById(this.treeRenderId).innerHTML);
-			        	//document.getElementById(this.treeRenderId).innerHTML='';
-		        		me.treeObj.render(this.treeRenderId);
-		        	},300,this);
+			        	 //console.log(document.getElementById(this.treeRenderId).innerHTML);
+			        	 me.treeObj.render(me.treeRenderId);
+			        	 
+		        	},300,me);
+			    }else{
+			    	this.creatTree();
+			    	 me.treeObj.render(me.treeRenderId);
+
+					 me.treeObj.getStore().load();
 			    }
 			}
 		});
-		this.treeObj.on('itemclick',function(view,rec){
-			if(rec){
-				this.setValue(this._txtValue = rec.get('text'));
-				this._idValue = rec.get('id');
-				 
-				//设置回调
-                this.callback.call(this,rec.get('id'), rec.get('text'));
-                //关闭tree
-				this.collapse();
-			}
-		},this);
+		
 		this.callParent(arguments);
+		 
 		 me.treeObj.getStore().load();
 	},
 	getValue : function(){//获取id值
