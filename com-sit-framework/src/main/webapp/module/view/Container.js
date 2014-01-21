@@ -6,9 +6,9 @@ Ext.define('Fes.view.Container', {
 					   'Ext.app.PortalDropZone', 'Ext.ux.TabReorderer','Ext.ux.TabCloseMenu'],
 			activeTab : 0,
 			enableTabScroll : true,
-			animScroll : true,
-			border : true,
-			autoScroll : true,
+			 
+			//border : true,
+			 
 			region : 'center',
 			split : true,
 			plugins : [

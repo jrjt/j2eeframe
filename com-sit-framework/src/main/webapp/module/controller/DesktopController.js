@@ -42,17 +42,18 @@ Ext.define('Fes.controller.DesktopController', {
 		Ext.each(datas, function(data) {
 					var tree = Ext.create("Ext.tree.Panel", {
 								title : data.text,
-								iconCls : data.iconCls,
+								//iconCls : data.iconCls,
 								useArrows : true,
 								autoScroll : true,
 								rootVisible : false,
 								viewConfig : {
 									loadingText : "正在加载..."
 								},
-								store : me.createTreeStore(data.id)
+							 	store : me.createTreeStore(data.id)
 							});
-					tree.on('itemclick', me.onTreeItemClick, me);
-					me.getNavigation().add(tree);
+					 tree.on('itemclick', me.onTreeItemClick, me);
+					// console.log(data.text);
+					  me.getNavigation().add(tree);
 				});
 		Ext.get('loading-msg').update('加载完成.');
 		Ext.Function.defer(function() {
@@ -87,7 +88,7 @@ Ext.define('Fes.controller.DesktopController', {
 									panel = Ext.widget('mainlayout', {
 												title : '机构管理',
 												id : id,
-												closable : true
+												closable : false
 											});
 											
 									//因为是异步，所以下面代码执行前 init方法已经结束
@@ -100,10 +101,10 @@ Ext.define('Fes.controller.DesktopController', {
 								function() {
 									 var newController = application.getController('ParameterController');
 											 newController.init();
-									panel = Ext.widget('parameterLayout', {
-												title : '参数管理',
+									panel = Ext.create('Fes.view.ParameterLayout', {
+												 title : '【参数管理】',
 												id : id,
-												closable : true
+												closable : false
 											});
 											
 									//因为是异步，所以下面代码执行前 init方法已经结束
@@ -116,7 +117,7 @@ Ext.define('Fes.controller.DesktopController', {
 				 panel = Ext.create(node.data.component, {
 				 			id:id,
 							title : node.data.text,
-							closable : true,
+							closable : false,
 							iconCls : 'icon-activity'
 						});
 							tab.add(panel);

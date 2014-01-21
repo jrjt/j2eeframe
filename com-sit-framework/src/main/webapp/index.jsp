@@ -3,7 +3,7 @@
 	String ctx = request.getContextPath();
 	pageContext.setAttribute("ctx", ctx);
 	java.util.ResourceBundle  bundlePath = java.util.ResourceBundle.getBundle("resources//base_config");
-	String extLibPath=bundlePath.getString("js")+"/extjs";
+	String extLibPath=bundlePath.getString("js")+"/ext-4.2.2.1144";
 	//String extLibPath =jsBasePath/extjs4.1"//"js/extjs";// request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+"/ext4";
 		
 	pageContext.setAttribute("extLibPath", extLibPath);
@@ -69,17 +69,26 @@
 			var tip = document.getElementById("loading-tip");
 			tip.style.top = (document.body.clientHeight - 200) / 2;
 			tip.style.left = (document.body.clientWidth - 200) / 2;
-		</script>
-		<link rel="stylesheet" type="text/css" href="${extLibPath}/resources/css/ext-all.css" />
+		</script> 
+		<link rel="stylesheet" type="text/css" href="${extLibPath}/resources/css/ext-all-neptune.css" />
 		<link rel="stylesheet" type="text/css" href="css/icon.css" />
 		<script type="text/javascript">
 			document.getElementById("loading-msg").innerHTML = "加载核心组件...";
 		</script>
-		<script type="text/javascript" src="${extLibPath}/ext-all.js"></script>
+		<script type="text/javascript" src="${extLibPath}/ext-all-debug.js"></script> 
+		<script type="text/javascript" src="${extLibPath}/ext-theme-neptune.js"></script> 
 		<script type="text/javascript" src="${extLibPath}/locale/ext-lang-zh_CN.js"></script>
+		
+		 
+		<link rel="stylesheet" type="text/css" href="css/icon.css" />
+		<script type="text/javascript">
+			document.getElementById("loading-msg").innerHTML = "加载核心组件...";
+		</script>
+		
+		
+		<script type="text/javascript" src="js/currentDate.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/cryptojs.js"></script>
-		<script type="text/javascript" src="js/currentDate.js"></script>
 <!-- 		<script type="text/javascript" src="js/extexcel/export-all.js"></script>
 		<script type="text/javascript" src="js/firebugx.js"></script> -->
 		<script type="text/javascript" src="js/ExporterExcel-all.js"></script> 

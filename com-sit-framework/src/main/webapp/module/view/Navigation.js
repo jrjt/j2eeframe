@@ -3,11 +3,15 @@ Ext.define('Fes.view.Navigation', {
 			extend : 'Ext.panel.Panel',
 			region : 'west',
 			title : '系统菜单',
-			width : 250,
+			width : 245,
 			iconCls : "icon-tree",
-			autoScroll : false,
-			layout : 'accordion',
-			collapsible : true,
+			collapsible:true,
+			animCollapse:true,
+			 collapseFirst:true,
+			 collapseDirection:true,
+			 headerPostion:'left',
+			//layout : 'fit',
+			 
 			layoutConfig : {
 				animate : true
 			},
@@ -17,5 +21,4 @@ Ext.define('Fes.view.Navigation', {
 				this.callParent();
 			}
 		});
-
-console.log('Navigation...');
+ 

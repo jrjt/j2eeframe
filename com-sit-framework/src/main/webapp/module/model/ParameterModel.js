@@ -45,6 +45,7 @@ Ext.define("Fes.model.DeptModel",{
     	 
 	        type : 'rest',
 	        url:'sysParameter',
+	        appendId:false,     
 	        actionMethods:{
 	        	  create : 'POST',
 	              read   : 'GET',

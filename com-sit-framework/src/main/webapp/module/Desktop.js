@@ -19,3 +19,5 @@ Ext.define('Fes.Desktop', {
 		});
 
 
+
+//@ sourceURL=module/Desktop.js

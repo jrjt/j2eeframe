@@ -73,6 +73,7 @@ Ext.define("Fes.view.ParameterTree",{
 					               },
 								 proxy: {
 								        type: 'rest',
+								        appendId:false,
 								     	url: 'sysParameter/getTreeNodeChildren',
 								     	reader:{
 								           type : 'json',
