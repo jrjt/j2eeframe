@@ -90,7 +90,7 @@ public class SysParameterServiceImpl extends BaseServiceImpl<SysParameter, Integ
 		if(null==id)return null;
 		if(null==this.getParamsMap().get(id)){
 			StringBuffer hql= new StringBuffer(" FROM SysParameter  WHERE id="+id);
-			 List<SysParameter> list=sysParameterDao.findPageByHql(hql.toString());
+			 List<SysParameter> list=sysParameterDao.findByHQL(hql.toString());
 			 if(null==list||list.size()==0){
 				 return null;
 			 }
