@@ -3,7 +3,8 @@ Ext.define('Fes.controller.DesktopController', {
 	extend : 'Ext.app.Controller',
 
 	models : ['Node'],
-
+	requires : ['Ext.app.Portlet', 'Ext.app.PortalColumn', 'Ext.app.PortalPanel',
+				   'Ext.app.PortalDropZone', 'Ext.ux.TabReorderer','Ext.ux.TabCloseMenu'],
 	refs : [{
 				ref : 'navigation',
 				selector : 'navigation'
@@ -39,6 +40,104 @@ Ext.define('Fes.controller.DesktopController', {
 	createTree : function(datas) {
  
 		var me = this;
+		
+		var tab = this.getContainer();
+		var panel={
+			iconCls : 'icon-activity',
+			title : '平台首页',
+			xtype : 'portalpanel',
+			 layout: {
+	                type: 'border',
+	                padding: '0 5 5 5' // pad the layout from the window edges
+	            },
+	            plugins: Ext.create('Ext.ux.TabCloseMenu', {
+	                extraItemsTail: [
+	                    '-',
+	                    {
+	                        text: 'Closable',
+	                        checked: true,
+	                        hideOnClick: true,
+	                        handler: function (item) {
+	                            currentItem.tab.setClosable(item.checked);
+	                        }
+	                    },
+	                    '-',
+	                    {
+	                        text: 'Enabled',
+	                        checked: true,
+	                        hideOnClick: true,
+	                        handler: function(item) {
+	                            currentItem.tab.setDisabled(!item.checked);
+	                        }
+	                    }
+	                ],
+	                listeners: {
+	                    beforemenu: function (menu, item) {
+	                        var enabled = menu.child('[text="Enabled"]'); 
+	                        menu.child('[text="Closable"]').setChecked(item.closable);
+	                        if (item.tab.active) {
+	                            enabled.disable();
+	                        } else {
+	                            enabled.enable();
+	                            enabled.setChecked(!item.tab.isDisabled());
+	                        }
+
+	                        currentItem = item;
+	                    }
+	                }
+	            }) ,
+	            
+			items : [{
+						xtype : 'portalcolumn',
+						 region: 'west',
+						items : [{
+									title : '新闻动态1',
+									height : 150,
+									width:150,
+									iconCls : 'icon-news'
+								}, {
+									title : '最新通知',
+									height : 150,
+									width:150,
+									iconCls : 'icon-notice'
+								}, {
+									title : '业绩报表',
+									height : 150,
+									width:150,
+									iconCls : 'icon-chart'
+								}, {
+									title : '邮件列表',
+									height : 150,
+									width:150,
+									iconCls : 'icon-email-list'
+								}]
+					}, {
+						xtype : 'portalcolumn',
+						region: 'east',
+						items : [{
+									title : '功能链接',
+									height : 150,
+									width:150,
+									iconCls : 'icon-link'
+								}, {
+									title : '待办事项',
+									height : 150,
+									width:150,
+									iconCls : 'icon-note'
+								}, {
+									title : '邮件列表',
+									height : 150,
+									width:150,
+									iconCls : 'icon-email-list'
+								}, {
+									title : '邮件列表',
+									height : 150,
+									width:150,
+									iconCls : 'icon-email-list'
+								}]
+					}]
+		};
+		tab.add(panel);
 		Ext.each(datas, function(data) {
 					var tree = Ext.create("Ext.tree.Panel", {
 								title : data.text,
