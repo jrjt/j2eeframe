@@ -6,7 +6,7 @@ Ext.define('Fes.view.Header', {
 	//xtype: 'box',
     region: 'north',
     height: 100,
-    html: 'Comprehensive management department System -部门综合管理系统',
+    html: 'CMDS -部门综合管理系统',//Comprehensive management department System
 	region : 'north',
 	split : true,
 	

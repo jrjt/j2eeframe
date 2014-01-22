@@ -7,7 +7,7 @@ Ext.define('Ext.LoginApp.Login', {
     extend : 'Ext.window.Window',
     
     /** 页面基本属性配置 */
-    title : '登陆 ',
+    title : '登录 ',
     iconCls : 'app-heatIcon',
     width : 500,
     height : 300,
@@ -43,12 +43,12 @@ Ext.define('Ext.LoginApp.Login', {
             },
             items : [{
                 fieldLabel : '帐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号',
-                blankText : '请输入您的登陆账号',
+                blankText : '请输入您的账号',
                 fieldStyle : 'background:url(images/icon/user.png) no-repeat left center; padding-left:20px; font-weight:bold;',
                 name : 'username'
             }, {
                 fieldLabel : '密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码',
-                blankText : '请输入您的登陆密码',
+                blankText : '请输入您的密码',
                 fieldStyle : 'background:url(images/icon/key.png) no-repeat left center; padding-left:20px; font-weight:bold;',
                 inputType : 'password',
                 name : 'password',
@@ -116,7 +116,7 @@ Ext.define('Ext.LoginApp.Login', {
         }, this);
         
         this.buttons = [{
-            text : '登&nbsp;&nbsp;陆',
+            text : '登&nbsp;&nbsp;录',
             iconCls : 'app-homeIcon',
             handler : this.loginAction,
             scope : this
@@ -133,7 +133,7 @@ Ext.define('Ext.LoginApp.Login', {
             border : false,
             html : '<div style=\'background:url(images/heat100.png) no-repeat left center; height:100%;' +
                    'padding-left:120px; font-size:30px; font-weight:bold; font-family:华文隶书,sans-serif; line-height:100px;\'>' +
-                   '运维综合管理平台' + 
+                   'CMDS -部门综合管理系统' + 
                    '</div>'
         }, loginForm];
         

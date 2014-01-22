@@ -11,7 +11,7 @@
 %>
 <html>
 	<head>
-		<title>运维综合管理系统</title>
+		<title>CMDS -部门综合管理系统</title>
 		<link rel="icon" href="${ctx}/images/heat.ico" type="image/x-icon" />
 			<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -58,7 +58,7 @@
 			<div class="loading-indicator" style="color: #444;font: bold 13px tahoma, arial, helvetica;padding: 10px;height: auto;">
 				<img src="${ctx}/images/loading32.gif" width="31" height="31"
 					style="margin-right: 8px; float: left; vertical-align: top;" />
-				 综合管理系统V1.0
+				 CMDS -部门综合管理系统V0.7
 				<br />
 				<span id="loading-msg" style="font: normal 10px arial, tahoma, sans-serif;">加载样式和图片...</span>
 			</div>
