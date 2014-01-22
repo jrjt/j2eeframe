@@ -109,13 +109,13 @@ Ext.define("Fes.view.ParameterTree",{
          me.on("beforeedit", me.handleBeforeEdit, me);  
          //me.on("canceledit", me.handleCancelEdit);  
          me.on("itemcontextmenu", me.showContextMenu, me);  
-         
+         /*
 		 self.getStore().load({
 				callback : function(re, options,success) {
 					 
 					 self.getStore().getRootNode().expand();
 				}
-			});
+			});*/
 		
 		 
 	},

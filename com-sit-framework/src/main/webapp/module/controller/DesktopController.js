@@ -46,6 +46,7 @@ Ext.define('Fes.controller.DesktopController', {
 			iconCls : 'icon-activity',
 			title : '平台首页',
 			xtype : 'portalpanel',
+			closable : true,
 			 layout: {
 	                type: 'border',
 	                padding: '0 5 5 5' // pad the layout from the window edges
@@ -168,7 +169,7 @@ Ext.define('Fes.controller.DesktopController', {
 									panel = Ext.create('Fes.view.ParameterLayout', {
 												 title : '【参数管理】',
 												id : id,
-												closable : false
+												closable : true
 											});
 											
 									//因为是异步，所以下面代码执行前 init方法已经结束
@@ -181,7 +182,7 @@ Ext.define('Fes.controller.DesktopController', {
 				 panel = Ext.create(node.data.component, {
 				 			id:id,
 							title : node.data.text,
-							closable : false,
+							closable : true,
 							iconCls : 'icon-activity'
 						});
 							tab.add(panel);

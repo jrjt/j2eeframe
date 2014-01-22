@@ -24,6 +24,7 @@
 						//	model:'Node',
 							proxy: {
 					            type: 'rest',
+					            appendId:false,
 					         	url: 'sysParameter/getTreeNodeChildren',
 					         	reader:{
 			                        type : 'json',
