@@ -25,6 +25,29 @@
        .classDiv1{font-size: 12px; color: #ffffff; }   
        .classDiv2{font-size: 12px; color: #EEE000; }   
    </style>  
+		
+<meta http-equiv="Access-Control-Allow-Origin" content="*">   
+	</head>
+	<body>
+		<div id="loading-tip" style="border-radius:3px;position: absolute;z-index: 1;border: solid 1px #ccc;background-color: #ffffff;padding: 10px;">
+			<div class="loading-indicator" style="color: #444;font: bold 13px tahoma, arial, helvetica;padding: 10px;height: auto;">
+				<img src="${ctx}/images/loading32.gif" width="31" height="31"
+					style="margin-right: 8px; float: left; vertical-align: top;" />
+				 CMDS -部门综合管理系统V0.7
+				<br />
+				<span id="loading-msg" style="font: normal 10px arial, tahoma, sans-serif;">加载样式和图片...</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var extLibPath = "${extLibPath}";
+			var ctx = "${ctx}";
+			var tip = document.getElementById("loading-tip");
+			tip.style.top = (document.body.clientHeight - 200) / 2;
+			tip.style.left = (document.body.clientWidth - 200) / 2;
+		</script> 
+		<link rel="stylesheet" type="text/css" href="${extLibPath}/resources/css/ext-all-neptune.css" />
+		<link rel="stylesheet" type="text/css" href="${extLibPath}/examples/simple-tasks/resources/css/_tasks.css" />
+		<link rel="stylesheet" type="text/css" href="css/icon.css" />
 		<style type="text/css">
 			.x-panel-ghost {
 			    z-index: 1;
@@ -57,27 +80,6 @@
 			    font-size: 11px;
 			}
 		</style>
-<meta http-equiv="Access-Control-Allow-Origin" content="*">   
-	</head>
-	<body>
-		<div id="loading-tip" style="border-radius:3px;position: absolute;z-index: 1;border: solid 1px #ccc;background-color: #ffffff;padding: 10px;">
-			<div class="loading-indicator" style="color: #444;font: bold 13px tahoma, arial, helvetica;padding: 10px;height: auto;">
-				<img src="${ctx}/images/loading32.gif" width="31" height="31"
-					style="margin-right: 8px; float: left; vertical-align: top;" />
-				 CMDS -部门综合管理系统V0.7
-				<br />
-				<span id="loading-msg" style="font: normal 10px arial, tahoma, sans-serif;">加载样式和图片...</span>
-			</div>
-		</div>
-		<script type="text/javascript">
-			var extLibPath = "${extLibPath}";
-			var ctx = "${ctx}";
-			var tip = document.getElementById("loading-tip");
-			tip.style.top = (document.body.clientHeight - 200) / 2;
-			tip.style.left = (document.body.clientWidth - 200) / 2;
-		</script> 
-		<link rel="stylesheet" type="text/css" href="${extLibPath}/resources/css/ext-all-neptune.css" />
-		<link rel="stylesheet" type="text/css" href="css/icon.css" />
 		<script type="text/javascript">
 			document.getElementById("loading-msg").innerHTML = "加载核心组件...";
 		</script>
@@ -93,6 +95,7 @@
 		
 		
 		<script type="text/javascript" src="js/currentDate.js"></script>
+		 <script type="text/javascript" src="${extLibPath}/examples/simple-tasks/SimpleTaskSettings.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/cryptojs.js"></script>
 <!-- 		<script type="text/javascript" src="js/extexcel/export-all.js"></script>

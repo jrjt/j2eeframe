@@ -86,7 +86,7 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                     }
                 },
                 {
-                    text: 'Title',
+                    text: '简介',
                     dataIndex: 'title',
                     flex: 1,
                     emptyCellText: '',
@@ -96,7 +96,7 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                     }
                 },
                 {
-                    text: 'List',
+                    text: '清单',
                     dataIndex: 'list_id',
                     width: 200,
                     editor: {
@@ -108,11 +108,11 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                 },
                 {
                     xtype: 'datecolumn',
-                    text: 'Due Date',
+                    text: '到期日',
                     dataIndex: 'due',
                     width: 100,
                     editor: 'datefield',
-                    format: 'n/j/Y',
+                    format: 'Y/n/j',
                     emptyCellText: ''
                 },
                 {
@@ -120,7 +120,7 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                     dataIndex: 'reminder',
                     cls: 'tasks-icon-column-header tasks-reminder-column-header',
                     width: 24,
-                    tooltip: 'Set Reminder',
+                    tooltip: '设置提醒',
                     menuPosition: 'tr-br',
                     menuDisabled: true,
                     sortable: false,
@@ -133,9 +133,10 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                     xtype: 'actioncolumn',
                     cls: 'tasks-icon-column-header tasks-edit-column-header',
                     width: 24,
-                    icon: 'resources/images/edit_task.png',
+                      
+                    icon: extLibPath+'/examples/simple-tasks/resources/images/edit_task.png',
                     iconCls: 'x-hidden',
-                    tooltip: 'Edit',
+                    tooltip: '编辑',
                     menuDisabled: true,
                     sortable: false,
                     handler: Ext.bind(me.handleEditClick, me)
@@ -144,9 +145,9 @@ Ext.define('SimpleTasks.view.tasks.Grid', {
                     xtype: 'actioncolumn',
                     cls: 'tasks-icon-column-header tasks-delete-column-header',
                     width: 24,
-                    icon: 'resources/images/delete.png',
+                    icon: extLibPath+'/examples/simple-tasks/resources/images/delete_task.png',
                     iconCls: 'x-hidden',
-                    tooltip: 'Delete',
+                    tooltip: '删除',
                     menuDisabled: true,
                     sortable: false,
                     handler: Ext.bind(me.handleDeleteClick, me)

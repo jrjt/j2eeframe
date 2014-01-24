@@ -7,28 +7,28 @@ Ext.define('SimpleTasks.view.lists.ContextMenu', {
     xtype: 'listsContextMenu',
     items: [
         {
-            text: 'New List',
+            text: '新任务',
             iconCls: 'tasks-new-list',
             id: 'new-list-item'
         },
         {
-            text: 'New Folder',
+            text: '新目录',
             iconCls: 'tasks-new-folder',
             id: 'new-folder-item'
         },
         {
-            text: 'New Task',
+            text: '新任务',
             iconCls: 'tasks-new',
             id: 'new-task-item'
         },
         '-',
         {
-            text: 'Delete',
+            text: '删除文件夹',
             iconCls: 'tasks-delete-folder',
             id: 'delete-folder-item'
         },
         {
-            text: 'Delete',
+            text: '删除任务',
             iconCls: 'tasks-delete-list',
             id: 'delete-list-item'
         }

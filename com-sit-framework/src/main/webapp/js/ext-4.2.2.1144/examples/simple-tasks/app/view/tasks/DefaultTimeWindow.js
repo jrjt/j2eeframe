@@ -7,7 +7,7 @@
 Ext.define('SimpleTasks.view.tasks.DefaultTimeWindow', {
     extend: 'Ext.window.Window',
     xtype: 'defaultTimeWindow',
-    title: 'Set Default Reminder Time',
+    title: '设置默认提醒日期',
     closeAction: 'hide',
     width: 300,
     layout: 'fit',

@@ -394,7 +394,7 @@ Ext.define('SimpleTasks.controller.Tasks', {
                     msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
 
                 Ext.MessageBox.show({
-                    title: 'Mark Complete Failed',
+                    title: '标记完成失败 ！',
                     msg: msg,
                     icon: Ext.Msg.ERROR,
                     buttons: Ext.Msg.OK
@@ -607,7 +607,7 @@ Ext.define('SimpleTasks.controller.Tasks', {
         // load the task data into the form
         taskEditWindow.down('form').loadRecord(task);
         // set the text of the toggle-complete button depending on the tasks "done" value
-        Ext.getCmp('toggle-complete-btn').setText(task.get('done') ? 'Mark Active' : 'Mark Complete');
+        Ext.getCmp('toggle-complete-btn').setText(task.get('done') ? 'Mark Active' : '标记完成');
         taskEditWindow.show();
 
         if(task.get('reminder')) {

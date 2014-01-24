@@ -7,22 +7,22 @@ Ext.define('SimpleTasks.view.tasks.ContextMenu', {
     xtype: 'tasksContextMenu',
     items: [
         {
-            text: 'Edit',
+            text: '编辑',
             id: 'edit-task-item'
         },
         '-',
         {
-            text: 'Mark Complete',
+            text: '标记完成',
             iconCls: 'tasks-mark-complete',
             id: 'mark-complete-item'
         },
         {
-            text: 'Mark Active',
+            text: '激活',
             iconCls: 'tasks-mark-active',
             id: 'mark-active-item'
         },
         {
-            text: 'Delete',
+            text: '删除',
             iconCls: 'tasks-delete-task',
             id: 'delete-task-item'
         }

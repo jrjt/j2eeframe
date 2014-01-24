@@ -31,11 +31,12 @@ Ext.define('SimpleTasks.view.tasks.EditWindow', {
             items: [
                 {
                     iconCls: 'tasks-mark-complete',
+                    text: '标记完成',
                     id: 'toggle-complete-btn'
                 },
                 {
                     iconCls: 'tasks-delete-task',
-                    text: 'Delete Task',
+                    text: '删除任务',
                     id: 'delete-task-window-btn'
                 }
             ]
@@ -54,7 +55,7 @@ Ext.define('SimpleTasks.view.tasks.EditWindow', {
                 {
                     xtype: 'textfield',
                     name: 'title',
-                    fieldLabel: 'Task Subject',
+                    fieldLabel: '任务主题',
                     labelWidth: 90,
                     anchor: '100%'
                 },
@@ -69,7 +70,7 @@ Ext.define('SimpleTasks.view.tasks.EditWindow', {
                         {
                             xtype: 'datefield',
                             name: 'due',
-                            fieldLabel: 'Due Date',
+                            fieldLabel: '到期日',
                             labelWidth: 90,
                             width: 195,
                             margin: '0 15 0 0'
@@ -77,7 +78,7 @@ Ext.define('SimpleTasks.view.tasks.EditWindow', {
                         {
                             xtype: 'treepicker',
                             name: 'list_id',
-                            fieldLabel: 'Task List',
+                            fieldLabel: '任务清单',
                             labelWidth: 60,
                             displayField: 'name',
                             store: Ext.create('SimpleTasks.store.Lists', {storeId: 'Lists-TaskEditWindow'}),
@@ -102,7 +103,7 @@ Ext.define('SimpleTasks.view.tasks.EditWindow', {
                         {
                             xtype: 'checkbox',
                             name: 'has_reminder',
-                            boxLabel: 'Reminder',
+                            boxLabel: '温馨提示',
                             margin: '0 5 0 0'
                         },
                         {

@@ -11,7 +11,7 @@ Ext.define('SimpleTasks.view.lists.Tree', {
         'Ext.tree.plugin.TreeViewDragDrop',
         'Ext.grid.column.Action'
     ],
-    title: 'Lists',
+    title: '清单',
     store: 'Lists',
     hideHeaders: true,
 
@@ -22,21 +22,21 @@ Ext.define('SimpleTasks.view.lists.Tree', {
             items: [
                 {
                     iconCls: 'tasks-new-list',
-                    tooltip: 'New List'
+                    tooltip: '新清单'
                 },
                 {
                     iconCls: 'tasks-delete-list',
                     id: 'delete-list-btn',
-                    tooltip: 'Delete List'
+                    tooltip: '删除清单'
                 },
                 {
                     iconCls: 'tasks-new-folder',
-                    tooltip: 'New Folder'
+                    tooltip: '新目录'
                 },
                 {
                     iconCls: 'tasks-delete-folder',
                     id: 'delete-folder-btn',
-                    tooltip: 'Delete Folder'
+                    tooltip: '删除目录'
                 }
             ]
         }
@@ -75,7 +75,7 @@ Ext.define('SimpleTasks.view.lists.Tree', {
             {
                 xtype: 'actioncolumn',
                 width: 24,
-                icon: 'resources/images/delete.png',
+                icon:  extLibPath+'/examples/simple-tasks/resources/images/delete.png',
                 iconCls: 'x-hidden',
                 tooltip: 'Delete',
                 handler: Ext.bind(me.handleDeleteClick, me)

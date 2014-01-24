@@ -67,7 +67,7 @@ public class FreeTableDaoImpl implements FreeTableDao {
      */
     public String[] getFieldsInArray(String tablename){
         String[] fields;
-           Session se=sessionFactory.getCurrentSession() ; 
+        Session se=sessionFactory.getCurrentSession() ; 
         SQLQuery sq=se.createSQLQuery("desc "+tablename).addScalar("Field");
         List<String> sls=sq.list();
         fields=new String[sls.size()];

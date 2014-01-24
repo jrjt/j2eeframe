@@ -107,7 +107,7 @@ Ext.define('SimpleTasks.controller.Lists', {
             selectedList = selectionModel.getSelection()[0],
             parentList = selectedList.isLeaf() ? selectedList.parentNode : selectedList,
             newList = Ext.create('SimpleTasks.model.List', {
-                name: 'New ' + (leaf ? 'List' : 'Folder'),
+                name: '新 ' + (leaf ? '清单' : '目录'),
                 leaf: leaf,
                 loaded: true // set loaded to true, so the tree won't try to dynamically load children for this node when expanded
             }),
@@ -165,7 +165,7 @@ Ext.define('SimpleTasks.controller.Lists', {
                     msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
 
                 Ext.MessageBox.show({
-                    title: 'Update List Failed',
+                    title: '更新清单失败',
                     msg: msg,
                     icon: Ext.Msg.ERROR,
                     buttons: Ext.Msg.OK
@@ -239,8 +239,8 @@ Ext.define('SimpleTasks.controller.Lists', {
             filters, tasks, store;
 
         Ext.Msg.show({
-            title: 'Delete List?',
-            msg: 'Are you sure you want to permanently delete the "' + listName + '" list and all its tasks?',
+            title: '删除清单?',
+            msg: '确定删除 【"' + listName + '" 】清单和所属的任务 ?',
             buttons: Ext.Msg.YESNO,
             fn: function(response) {
                 if(response === 'yes') {
@@ -271,7 +271,7 @@ Ext.define('SimpleTasks.controller.Lists', {
                                 msg = Ext.isObject(error) ? error.status + ' ' + error.statusText : error;
 
                             Ext.MessageBox.show({
-                                title: 'Delete List Failed',
+                                title: '删除清单失败',
                                 msg: msg,
                                 icon: Ext.Msg.ERROR,
                                 buttons: Ext.Msg.OK

@@ -94,6 +94,54 @@ Ext.define('Fes.controller.DesktopController', {
 					}]
 		};
 		tab.add(panel);
+		//
+		Ext.Loader.setPath({'SimpleTasks' : extLibPath + '/examples/simple-tasks/app'});
+		
+		 Ext.require("SimpleTasks.controller.Lists",
+					function() {
+		var newController = application.getController('SimpleTasks.controller.Lists');
+		 newController.init();
+
+		 
+		 Ext.require("SimpleTasks.controller.Tasks",
+					function() {
+			var newController = application.getController('SimpleTasks.controller.Tasks');
+			 newController.init();
+
+			 
+			var taskPanel={
+							iconCls : 'icon-activity',
+							title : '我的计划任务',
+							xtype : 'panel',
+							closable : true,
+						    layout: 'border',
+				             
+			
+						    items: [
+						        {
+						            xtype: 'tasksToolbar',
+						            region: 'north'
+						        },
+						        {
+						            xtype: 'listTree',
+						            region: 'west',
+						            width: 300,
+						            collapsible: true,
+						            split: true
+						        },
+						        {
+						            region: 'center',
+						            xtype: 'taskGrid',
+						            title: '全部任务清单'  
+						        }
+						    ]
+						};
+			tab.add(taskPanel);
+			 
+		 });
+		 });
+
+		 
 		Ext.each(datas, function(data) {
 					var tree = Ext.create("Ext.tree.Panel", {
 								title : data.text,
@@ -154,8 +202,8 @@ Ext.define('Fes.controller.DesktopController', {
                 	 Ext.require("Fes.view.ParameterLayout");
                 	 Ext.require("Fes.controller.ParameterController",
 								function() {
-									 var newController = application.getController('ParameterController');
-											 newController.init();
+									// var newController = application.getController('ParameterController');
+										//	 newController.init();
 									panel = Ext.create('Fes.view.ParameterLayout', {
 												 title : '【参数管理】',
 												id : id,

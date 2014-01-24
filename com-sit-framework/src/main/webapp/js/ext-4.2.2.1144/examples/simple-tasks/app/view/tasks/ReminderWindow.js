@@ -28,7 +28,7 @@ Ext.define('SimpleTasks.view.tasks.ReminderWindow', {
         {
             xtype: 'combobox',
             name: 'snooze_time',
-            fieldLabel: 'Remind me again in',
+            fieldLabel: '再次提醒我',
             labelWidth: 115,
             anchor: '100%',
             labelSeparator: '',
@@ -58,11 +58,11 @@ Ext.define('SimpleTasks.view.tasks.ReminderWindow', {
     ],
     buttons: [
         {
-            text: 'Snooze',
+            text: '打盹',
             cls: 'snooze-btn'
         },
         {
-            text: 'Dismiss',
+            text: '解除',
             cls: 'dismiss-reminder-btn'
         }
     ],

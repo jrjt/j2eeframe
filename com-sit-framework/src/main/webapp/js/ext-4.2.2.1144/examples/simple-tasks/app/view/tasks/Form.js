@@ -20,7 +20,7 @@ Ext.define('SimpleTasks.view.tasks.Form', {
             {
                 xtype: 'textfield',
                 name: 'title',
-                emptyText: 'Add a new task'
+                emptyText: '添加一个新任务'
             },
             {
                 xtype: 'treepicker',
