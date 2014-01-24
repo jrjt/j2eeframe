@@ -87,7 +87,7 @@
 			<id>kafeitu</id>
 			<url>http://maven.kafeitu.me/nexus/content/groups/public</url>
 		</repository>
-		
+		    
 		
 		<repository>  
         <id>com.aspose</id>  
