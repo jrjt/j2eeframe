@@ -19,6 +19,12 @@
 	<meta http-equiv="keywords" content="Heat">
 	<meta http-equiv="description" content="Heat">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	
+	<style type="text/css"  >  
+       #label2{font-size: 12px; color: #868600;background-color:#808000}   
+       .classDiv1{font-size: 12px; color: #ffffff; }   
+       .classDiv2{font-size: 12px; color: #EEE000; }   
+   </style>  
 		<style type="text/css">
 			.x-panel-ghost {
 			    z-index: 1;

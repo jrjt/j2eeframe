@@ -18,6 +18,7 @@ Ext.define('Ext.app.PortalPanel', {
     bodyCls: 'x-portal-body',
     defaultType: 'portalcolumn',
     autoScroll: true,
+    
 
     manageHeight: false,
 
@@ -26,8 +27,8 @@ Ext.define('Ext.app.PortalPanel', {
 
         // Implement a Container beforeLayout call from the layout to this Container
         this.layout = {
-            type : 'column'
-        };
+        		type: 'hbox',
+        };  
         this.callParent();
 
         this.addEvents({

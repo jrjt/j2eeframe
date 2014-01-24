@@ -11,7 +11,7 @@ Ext.define('Fes.view.Container', {
 			 
 			region : 'center',
 			 plugins: Ext.create('Ext.ux.TabCloseMenu', {
-				 closeTabText: '关闭面板',
+				 closeTabText: '关闭当前面板',
      		  	closeOthersTabsText: '关闭其他',
      		  	closeAllTabsText: '关闭所有',
 	                extraItemsTail: [

@@ -187,7 +187,7 @@
     else{
       JQ+="下月";
     }
-    JQ+=BeginTime.getDate()+"日"+"<font color='#598F03'><b>"+SolarTermStr[M]+"</b></font>";
+    JQ+=BeginTime.getDate()+"日"+"<font color='#ffffff'><b>"+SolarTermStr[M]+"</b></font>";
    }
  return JQ;
  }
@@ -200,14 +200,14 @@
 		{	
 			if(SolarTermFlag)
 			{
-				return GetDateString() + "&nbsp&nbsp&nbsp" + GetcDateString()+
-				"&nbsp&nbsp"+SolarTerm();
+				return "<font color='#ffffff'>"+ GetDateString() + "&nbsp&nbsp&nbsp" + GetcDateString()+
+				"&nbsp&nbsp"+SolarTerm()+"</font>";;
 			}else
 			{
-			return GetDateString() + "&nbsp&nbsp&nbsp" + GetcDateString();
+			return "<font color='#ffffff'>"+GetDateString() + "&nbsp&nbsp&nbsp" + GetcDateString()+"</font>";;
 			}
 		}else
 		{
-			return GetDateString();
+			return "<font color='#ffffff'>"+GetDateString()+"</font>";
 		}
 	} 

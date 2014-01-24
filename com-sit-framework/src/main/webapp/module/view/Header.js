@@ -1,39 +1,59 @@
 Ext.define('Fes.view.Header', {
 	extend : 'Ext.panel.Panel',
-	height : 80,
 	 
-	  
+	 
+	collapsible:true,  
 	//xtype: 'box',
     region: 'north',
-    height: 100,
-    html: 'CMDS -部门综合管理系统',//Comprehensive management department System
+    height: 70,
+   // html: '<div style= "">CMDS -部门综合管理系统 <div>',//Comprehensive management department System
 	region : 'north',
 	split : true,
 	
 	dockedItems: [{
 	    xtype: 'toolbar',
 	    dock: 'bottom',
+	    height:42,
+	    style : 'background:#157fCC',  
 	   // frame:true,
 	    
 	    items: [
 {
+	 
+	 xtype:'label',
+	 html:'<div style= "font-size:20px;color:#FFFFFF;font-family:黑体;font-weight:bolder; ">CMDS -部门综合管理系统 <div>',   
+     
+	 
+	flex : .9
+},
+ 
+{
 	id : 'logon_userid',
+	 
 	hidden : true
-}, {
+}, '->',{
 	iconCls : 'icon-user',
+	 xtype:'label',
+	 cls: 'classDiv1',    
+     itemId: 'label1', 
 	id : 'username',
-	flex : .15
+	flex : .7
 }, '-', {
 	id : 'currentdate',
+	 xtype:'label',
 //	text : Ext.Date.format(new Date(), 'Y年m月d日')
-	text : CurrentDate(true, true)
+	html : '<div>'+CurrentDate(true, true)+'</div>'
 }, {
 	// text : Ext.Date.format(new Date(), 'Y年m月d日')
 	iconCls : 'icon-clock',
+	 xtype:'label',
+	 cls: 'classDiv1', 
 	id : 'currenttime',
 	width : 100
 	// text : CurrentDate(true, true)
-}	, '->', '-', {
+}	,  '-',
+/*
+{
 	// style="font-weight:bold"
 	text : '&nbsp&nbsp<font color="red">签到</font>&nbsp&nbsp',
 	handler : function() {
@@ -71,7 +91,7 @@ Ext.define('Fes.view.Header', {
 		});
 
 	}
-}, '-', {
+}, '-',*/ {
 	text : '菜单',
 	iconCls : 'icon-logout',
 	menu : new Ext.menu.Menu({
@@ -132,7 +152,7 @@ Ext.define('Fes.view.Header', {
 	    ]
 	}],
  
-	bodyStyle : 'background-color:#4682CC;line-height : 50px;padding-left:20px;'
+	bodyStyle : 'background-color:#157fCC; padding-left:20px;padding-top:0px;'
 			+ 'font-size:22px;color:#FFFFFF;font-family:黑体;font-weight:bolder; ',
 	init : function() {
 		console.log('Header.Start...');
@@ -145,7 +165,7 @@ Ext.define('Fes.view.Header', {
 		this.store.on("load", function(userStore) {
 					var UserName = userStore.getAt(0).get('username');
 					var loginName = userStore.getAt(0).get('loginName');
-					Ext.getCmp('username').setText(UserName);
+					Ext.getCmp('username').setText('当前登录：'+UserName);
 					Ext.getCmp('logon_userid').setText(loginName);
 
 				});

@@ -39,68 +39,58 @@ Ext.define('Fes.controller.DesktopController', {
 
 	createTree : function(datas) {
  
-		var me = this;
-		
+		var me = this; 
+		var _minwidth=300;
+		var _maxwidth=460;
 		var tab = this.getContainer();
 		var panel={
 			iconCls : 'icon-activity',
 			title : '平台首页',
 			xtype : 'portalpanel',
 			closable : true,
-			 layout: {
-	                type: 'border',
-	                padding: '0 5 5 5' // pad the layout from the window edges
-	            },
-	        
-	           
+			 layout:{
+                 type: 'accordion',
+               //  animate: true
+             },
+             border: false,  
 			items : [{
 						xtype : 'portalcolumn',
 						 region: 'west',
 						items : [{
 									title : '新闻动态1',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-news'
 								}, {
 									title : '最新通知',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-notice'
 								}, {
 									title : '业绩报表',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-chart'
-								}, {
-									title : '邮件列表',
-									height : 150,
-									width:150,
-									iconCls : 'icon-email-list'
-								}]
+								} ]
 					}, {
 						xtype : 'portalcolumn',
 						region: 'east',
 						items : [{
 									title : '功能链接',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-link'
 								}, {
 									title : '待办事项',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-note'
 								}, {
 									title : '邮件列表',
-									height : 150,
-									width:150,
+									height : 168,
+									width:_maxwidth,
 									iconCls : 'icon-email-list'
-								}, {
-									title : '邮件列表',
-									height : 150,
-									width:150,
-									iconCls : 'icon-email-list'
-								}]
+								} ]
 					}]
 		};
 		tab.add(panel);
