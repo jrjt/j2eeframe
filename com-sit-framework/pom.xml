@@ -27,6 +27,7 @@
 		
 	</developers>
 	<distributionManagement>  
+	
       <repository>  
         <id>releases</id>  
         <url>http://192.168.40.124:8081/nexus/content/repositories/thirdparty/</url>  
@@ -86,6 +87,12 @@
 			<id>kafeitu</id>
 			<url>http://maven.kafeitu.me/nexus/content/groups/public</url>
 		</repository>
+		
+		
+		<repository>  
+        <id>com.aspose</id>  
+        <url>http://192.168.40.124:8081/nexus/content/repositories/thirdparty/</url>  
+      </repository>  
 		<repository>  
         <id>proxool</id>  
         <url>http://192.168.40.124:8081/nexus/content/repositories/thirdparty/</url>  
