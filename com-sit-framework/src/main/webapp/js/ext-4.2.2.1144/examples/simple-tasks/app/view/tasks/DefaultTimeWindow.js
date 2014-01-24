@@ -25,7 +25,7 @@ Ext.define('SimpleTasks.view.tasks.DefaultTimeWindow', {
                     name: 'default_time',
                     editable: false,
                     labelAlign: 'top',
-                    fieldLabel: 'When setting quick reminders, default the time to',
+                    fieldLabel: '快速设置提醒时, 默认时间为：',
                     anchor: '100%'
                 }
             ],

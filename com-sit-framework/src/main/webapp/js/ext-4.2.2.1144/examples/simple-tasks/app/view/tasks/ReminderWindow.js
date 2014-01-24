@@ -22,13 +22,13 @@ Ext.define('SimpleTasks.view.tasks.ReminderWindow', {
             tpl: [
                 '<div class="tasks-reminder-icon"></div>',
                 '<p class="tasks-reminder-title">{title}</p>',
-                '<p class="tasks-reminder-due">Due: {due:date("F j, Y")}</p>'
+                '<p class="tasks-reminder-due">到期日: {due:date("F j, Y")}</p>'
             ]
         },
         {
             xtype: 'combobox',
             name: 'snooze_time',
-            fieldLabel: '再次提醒我',
+            fieldLabel: '再次提醒时间间隔',
             labelWidth: 115,
             anchor: '100%',
             labelSeparator: '',
