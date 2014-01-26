@@ -101,15 +101,17 @@ Ext
 						text : '签订时间',
 						width : 120,
 						sortable : true,
-						renderer : function(v) {
+						renderer: Ext.util.Format.dateRenderer('Y-m-d'),
+						/*renderer : function(v) {
 							if (!v || v == '') {
 								return;
 							}
 							var d = new Date();
 							d.setTime(v);
 							return Ext.util.Format.date(d, 'Y-m-d');
-						},
+						},*/
 						dataIndex : 'signDate',
+						 format:'Y-m-d' ,  
 						field : {
 							xtype : 'datefield',
 							format : 'Y-m-d'
