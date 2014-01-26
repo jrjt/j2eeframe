@@ -136,7 +136,7 @@ Ext.define('Fes.controller.DesktopController', {
 						        }
 						    ]
 						};
-			tab.add(taskPanel);
+			//tab.add(taskPanel);
 			 
 		 });
 		 });
