@@ -30,12 +30,12 @@ Ext
 						},
 						sortable : true,
 						dataIndex : 'area',
-						field : Ext.create('Fes.util.ParameterComboTree',{
-							//xtype : 'parameterComboTree',
+						field : Ext.create('Fes.util.ParameterComboTree', {
+							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
 							storeUrl : 'sysParameter/getTreeNodeChildren',
-							id : 'sysParameterlist' + 'SysParameterComboTree',
+							id : 'csCustomerInfoList' + 'area',
 							selectMode : 'all',
 							treeHeight : 300,
 							rootVisible : false
@@ -61,27 +61,16 @@ Ext
 						},
 						sortable : true,
 						dataIndex : 'customerType',
-						field :  Ext.create('Fes.util.ParameterComboTree',{
-							//xtype : 'parameterComboTree',
+						field : Ext.create('Fes.util.ParameterComboTree', {
+							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
 							storeUrl : 'sysParameter/getTreeNodeChildren',
-							id : 'sysParameterlist' + 'customerType',
+							id : 'csCustomerInfoList' + 'customerType',
 							selectMode : 'all',
 							treeHeight : 300,
 							rootVisible : false
 						})
-					},
-
-					{
-						text : '联系电话',
-						width : 120,
-						sortable : true,
-						dataIndex : 'customerTel',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
 					},
 
 					{
@@ -94,6 +83,21 @@ Ext
 							required : true
 						}
 					},
+					
+					{
+						text : '联系电话',
+						width : 120,
+						sortable : true,
+						dataIndex : 'customerTel',
+						field : {
+							xtype : 'textfield',
+							required : true
+						}
+					},
+					
+					{text : '手机号码',width : 120,sortable : true,dataIndex :
+						'remark1',field :
+						{xtype : 'textfield',required : true}},
 
 					{
 						text : '详细地址',
@@ -139,9 +143,6 @@ Ext
 						}
 					},
 
-					// {text : 'remark1',width : 120,sortable : true,dataIndex :
-					// 'remark1',field :
-					// {xtype : 'textfield',required : true}},
 					//		 	 		
 					// {text : 'remark2',width : 120,sortable : true,dataIndex :
 					// 'remark2',field :
@@ -248,72 +249,39 @@ Ext
 										{
 											id : 'csCustomerInfoListRowEditor',
 											listeners : {
-												beforeedit : function(editor,
-														e, eOpts) {
-
+												beforeedit : function(editor,e, eOpts) {
 													// add here
-													// AREA
-													Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'SysParameterComboTree')
-															.setLocalValue(
-																	e.record.data.area,
-																	e.record.data.areaName);
-													//CUSTOMER TYPE NAME
-													Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'customerType')
-															.setLocalValue(
-																	e.record.data.customerType,
-																	e.record.data.customerTypeName);
-
+													Ext.getCmp('csCustomerInfoList'+ 'area')
+															.setLocalValue(e.record.data.area, e.record.data.areaName);
+													Ext.getCmp('csCustomerInfoList'+ 'customerType')
+															.setLocalValue(e.record.data.customerType, e.record.data.customerTypeName);
+													
 													var d = new Date();
 													if (e.record.data.remark19 > 0) {
-														d
-																.setTime(e.record.data.remark19);
+														d.setTime(e.record.data.remark19);
 														e.record.data.remark19 = d;
 													}
 
 													var d = new Date();
 													if (e.record.data.remark20 > 0) {
-														d
-																.setTime(e.record.data.remark20);
+														d.setTime(e.record.data.remark20);
 														e.record.data.remark20 = d;
 													}
 												},
 												startEdit : function(record,
 														columnHeader) {
-
 													this.editRecord = record;
 												},
 												edit : function(editor, e) {
-
-													// add here
 													var me = this;
+													// add here
 													// AREA
-													e.record.data.area = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'SysParameterComboTree')
-															.getValue();
-													e.record.data.areaName = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'SysParameterComboTree')
-															.getTextValue();
+													e.record.data.area = Ext.getCmp('csCustomerInfoList'+ 'area').getValue();
+													e.record.data.areaName = Ext.getCmp('csCustomerInfoList'+ 'area').getTextValue();
 													// CUSTOMER TYPE NAME
-													e.record.data.customerType = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'customerType')
-															.getValue();
-													e.record.data.customerTypeName = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'customerType')
-															.getTextValue();
+													e.record.data.customerType = Ext.getCmp('csCustomerInfoList'+ 'customerType').getValue();
+													e.record.data.customerTypeName = Ext.getCmp('csCustomerInfoList'+ 'customerType').getTextValue();
+													
 													e.record
 															.save({
 																success : function(
@@ -322,16 +290,16 @@ Ext
 																	var data = Ext
 																			.decode(options.response.responseText);
 																	if (data.extra) {
-																		csCustomerInfo
-																				.set(
-																						'id',
-																						data.extra);
+																		csCustomerInfo.set('id',data.extra);
 																	}
+																	csCustomerInfo.data.areaName = Ext.getCmp('csCustomerInfoList'
+																			+ 'area').getTextValue();
+																	csCustomerInfo.data.customerTypeName = Ext.getCmp('csCustomerInfoList'
+																			+ 'customerType').getTextValue();
 																	csCustomerInfo
 																			.commit();
 																}
 															});
-
 												}
 											}
 										});
@@ -358,7 +326,6 @@ Ext
 						} else {
 							Ext.Msg.alert('提示：', '请先选择需要编辑的记录！');
 						}
-
 					},
 
 					saveRecode : function(obj) {
@@ -378,12 +345,19 @@ Ext
 					createStore : function() {
 						var me = this;
 						me.store = Ext.create('Fes.store.CsCustomerInfoStore');
+						
+						me.store.on('beforeload', function (store, options) {
+				             var params = {paramsArea : Ext.getCmp('csCustomerInfoList' + 'areaQ').getValue(),
+									            	paramsCustomerName : Ext.getCmp('csCustomerInfoCustomerName').getValue(),
+								            		paramsCustomerType : Ext.getCmp('csCustomerInfoList' + 'customerTypeQ').getValue(),
+									            	paramsCustomerPeople : Ext.getCmp('csCustomerInfoCustomerPeople').getValue()};
+				        Ext.apply(me.store.proxy.extraParams, params); 
+				    });
 					},
 
 					addRecord : function() {
 						var records = this.getSelectionModel().getSelection();
 						var record = new Fes.model.CsCustomerInfoModel({
-
 						});
 
 						if (records.length > 0) {
@@ -476,8 +450,8 @@ Ext
 								});
 							});
 						}
-
 					},
+					
 					showWindow : function(rec) {
 						var me = this;
 						if (!_csCustomerInfoWindow) {
@@ -490,13 +464,8 @@ Ext
 														{
 															text : 'Save5',
 															handler : function() {
-
-																// alert(_csCustomerInfoWindow.down('form').getValues());
-																me
-																		.saveRecode(_csCustomerInfoWindow
-																				.down(
-																						'form')
-																				.getValues());
+																me.saveRecode(_csCustomerInfoWindow
+																				.down('form').getValues());
 
 															}
 														},
@@ -528,11 +497,42 @@ Ext
 										{
 											items : [
 													{
+														xtype : 'parameterComboTree',
+														rootText : '功能',
+														labelWidth : 20,
+														rootId : '1',
+														emptyText:'区域',
+														storeUrl : 'sysParameter/getTreeNodeChildren',
+														id : 'csCustomerInfoList' + 'areaQ',
+														selectMode : 'all',
+														treeHeight : 300,
+														rootVisible : false
+													},
+													{
 														xtype : 'textfield',
-														fieldLabel : 'ID',
-														labelWidth : 40,
+														emptyText:'客户名称',
+														labelWidth : 20,
 														flex : .6,
-														id : 'csCustomerInfoId'
+														id : 'csCustomerInfoCustomerName'
+													},
+													{
+														xtype : 'parameterComboTree',
+														rootText : '功能',
+														labelWidth : 20,
+														rootId : '1',
+														emptyText:'客户类型',
+														storeUrl : 'sysParameter/getTreeNodeChildren',
+														id : 'csCustomerInfoList' + 'customerTypeQ',
+														selectMode : 'all',
+														treeHeight : 300,
+														rootVisible : false
+													},
+													{
+														xtype : 'textfield',
+														emptyText:'联系人',
+														labelWidth : 20,
+														flex : .6,
+														id : 'csCustomerInfoCustomerPeople'
 													},
 													{
 														xtype : 'button',
@@ -542,24 +542,31 @@ Ext
 															me
 																	.getStore()
 																	.load(
-																			{
+																			/*{
 																				params : {
-																					id : Ext
-																							.getCmp(
-																									'csCustomerInfoId')
-																							.getValue()
-																				},
-																				callback : function(re, options,
-																						success) {
-
-																					me.setTitle('查询条件为： :"'
-																							+ Ext.getCmp(
-																									'sysParameterId')
-																									.getValue()
-																							+ '" 的结果列表');
+																					paramsArea : Ext.getCmp('csCustomerInfoList' + 'areaQ')
+																							.getValue(),
+																					paramsCustomerName : Ext.getCmp('csCustomerInfoCustomerName')
+																							.getValue(),
+																					paramsCustomerType : Ext.getCmp('csCustomerInfoList' + 'customerTypeQ')
+																							.getValue(),
+																					paramsCustomerPeople : Ext.getCmp('csCustomerInfoCustomerPeople')
+																							.getValue(),
+																					start : 0
 																				}
-																			});
+																			}*/);
 														}
+													},
+													{
+														xtype : 'button',
+														text : ' 清空',
+														iconCls : 'icon-no',
+													    handler:function(){
+													    	Ext.getCmp('csCustomerInfoList' + 'areaQ').setLocalValue(null, null);
+													    	Ext.getCmp('csCustomerInfoCustomerName').reset();
+													    	Ext.getCmp('csCustomerInfoList' + 'customerTypeQ').setLocalValue(null, null);
+													    	Ext.getCmp('csCustomerInfoCustomerPeople').reset();
+													    }
 													},
 													'-',
 													Ext

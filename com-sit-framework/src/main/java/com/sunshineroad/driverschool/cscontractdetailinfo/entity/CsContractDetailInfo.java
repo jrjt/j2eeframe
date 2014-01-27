@@ -31,7 +31,7 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
  * @Title: Entity
  * @Description: 合同明细
  * @author  
- * @date 2014-01-15 13:45:01
+ * @date 2014-01-22 12:32:22
  * @version V1.0   
  *
  */
@@ -76,8 +76,8 @@ public class CsContractDetailInfo extends BaseEntity {
 	private java.lang.String remark11;
 	/**remark12*/
 	private java.lang.String remark12;
-	/**remark13*/
-	private java.lang.Integer remark13;
+	/**设备数量*/
+	private java.lang.Integer deviceNumber;
 	/**remark14*/
 	private java.lang.Integer remark14;
 	/**remark15*/
@@ -403,19 +403,19 @@ public class CsContractDetailInfo extends BaseEntity {
 	}
 	/**
 	 *方法: 取得java.lang.Integer
-	 *@return: java.lang.Integer  remark13
+	 *@return: java.lang.Integer  设备数量
 	 */
-	@Column(name ="REMARK13",nullable=true,scale=0)
-	public java.lang.Integer getRemark13(){
-		return this.remark13;
+	@Column(name ="DEVICE_NUMBER",nullable=true,scale=0)
+	public java.lang.Integer getDeviceNumber(){
+		return this.deviceNumber;
 	}
 
 	/**
 	 *方法: 设置java.lang.Integer
-	 *@param: java.lang.Integer  remark13
+	 *@param: java.lang.Integer  设备数量
 	 */
-	public void setRemark13(java.lang.Integer remark13){
-		this.remark13 = remark13;
+	public void setDeviceNumber(java.lang.Integer deviceNumber){
+		this.deviceNumber = deviceNumber;
 	}
 	/**
 	 *方法: 取得java.lang.Integer

@@ -6,7 +6,8 @@ Ext
 					extend : 'Ext.grid.Panel',
 					alias : 'widget.csContractInfolist',
 					title : '[合同信息]列表',
-
+					requires : [ "Fes.util.ParameterComboTree",
+									'Ext.toolbar.Paging' ],// add here
 					iconCls : 'icon-grid-list',
 					rowLines : true,
 					columnLines : true,
@@ -23,12 +24,21 @@ Ext
 					}, {
 						text : '区域',
 						width : 120,
+						renderer : function(v, c, r) {
+							return r.data.areaName;
+						},
 						sortable : true,
 						dataIndex : 'area',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
+						field : Ext.create('Fes.util.ParameterComboTree', {
+							xtype : 'parameterComboTree',
+							rootText : '功能',
+							rootId : '1',
+							storeUrl : 'sysParameter/getTreeNodeChildren',
+							id : 'csContractInfoList' + 'area',
+							selectMode : 'all',
+							treeHeight : 300,
+							rootVisible : false
+						})
 					},
 
 					{
@@ -45,12 +55,21 @@ Ext
 					{
 						text : '客户类型',
 						width : 120,
+						renderer : function(v, c, r) {
+							return r.data.customerTypeName;
+						},
 						sortable : true,
 						dataIndex : 'customerType',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
+						field : Ext.create('Fes.util.ParameterComboTree', {
+							xtype : 'parameterComboTree',
+							rootText : '功能',
+							rootId : '1',
+							storeUrl : 'sysParameter/getTreeNodeChildren',
+							id : 'csContractInfoList' + 'customerType',
+							selectMode : 'all',
+							treeHeight : 300,
+							rootVisible : false
+						})
 					},
 
 					{
@@ -78,12 +97,21 @@ Ext
 					{
 						text : '合同类型',
 						width : 120,
+						renderer : function(v, c, r) {
+							return r.data.contractTypeName;
+						},
 						sortable : true,
 						dataIndex : 'contractType',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
+						field : Ext.create('Fes.util.ParameterComboTree', {
+							xtype : 'parameterComboTree',
+							rootText : '功能',
+							rootId : '1',
+							storeUrl : 'sysParameter/getTreeNodeChildren',
+							id : 'csContractInfoList' + 'contractType',
+							selectMode : 'all',
+							treeHeight : 300,
+							rootVisible : false
+						})
 					},
 
 					{
@@ -101,17 +129,15 @@ Ext
 						text : '签订时间',
 						width : 120,
 						sortable : true,
-						renderer: Ext.util.Format.dateRenderer('Y-m-d'),
-						/*renderer : function(v) {
+						renderer : function(v) {
 							if (!v || v == '') {
 								return;
 							}
 							var d = new Date();
 							d.setTime(v);
 							return Ext.util.Format.date(d, 'Y-m-d');
-						},*/
+						},
 						dataIndex : 'signDate',
-						 format:'Y-m-d' ,  
 						field : {
 							xtype : 'datefield',
 							format : 'Y-m-d'
@@ -290,60 +316,60 @@ Ext
 						}
 					},
 
-					{
-						text : '备用字段1',
-						width : 120,
-						sortable : true,
-						dataIndex : 'remark1',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
-					},
-
-					{
-						text : '备用字段2',
-						width : 120,
-						sortable : true,
-						dataIndex : 'remark2',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
-					},
-
-					{
-						text : '备用字段3',
-						width : 120,
-						sortable : true,
-						dataIndex : 'remark3',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
-					},
-
-					{
-						text : '备用字段4',
-						width : 120,
-						sortable : true,
-						dataIndex : 'remark4',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
-					},
-
-					{
-						text : '备用字段5',
-						width : 120,
-						sortable : true,
-						dataIndex : 'remark5',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
-					},
+//					{
+//						text : '备用字段1',
+//						width : 120,
+//						sortable : true,
+//						dataIndex : 'remark1',
+//						field : {
+//							xtype : 'textfield',
+//							required : true
+//						}
+//					},
+//
+//					{
+//						text : '备用字段2',
+//						width : 120,
+//						sortable : true,
+//						dataIndex : 'remark2',
+//						field : {
+//							xtype : 'textfield',
+//							required : true
+//						}
+//					},
+//
+//					{
+//						text : '备用字段3',
+//						width : 120,
+//						sortable : true,
+//						dataIndex : 'remark3',
+//						field : {
+//							xtype : 'textfield',
+//							required : true
+//						}
+//					},
+//
+//					{
+//						text : '备用字段4',
+//						width : 120,
+//						sortable : true,
+//						dataIndex : 'remark4',
+//						field : {
+//							xtype : 'textfield',
+//							required : true
+//						}
+//					},
+//
+//					{
+//						text : '备用字段5',
+//						width : 120,
+//						sortable : true,
+//						dataIndex : 'remark5',
+//						field : {
+//							xtype : 'textfield',
+//							required : true
+//						}
+//					},
 
 					{
 						text : 'id',
@@ -366,7 +392,12 @@ Ext
 											listeners : {
 												beforeedit : function(editor,
 														e, eOpts) {
-
+													
+													// add here
+													Ext.getCmp('csContractInfoList' + 'area').setLocalValue(e.record.data.area, e.record.data.areaName);
+													Ext.getCmp('csContractInfoList' + 'customerType').setLocalValue(e.record.data.customerType, e.record.data.customerTypeName);
+													Ext.getCmp('csContractInfoList' + 'contractType').setLocalValue(e.record.data.contractType, e.record.data.contractTypeName);
+										
 													var d = new Date();
 													if (e.record.data.signDate > 0) {
 														d
@@ -412,11 +443,20 @@ Ext
 												},
 												startEdit : function(record,
 														columnHeader) {
-
 													this.editRecord = record;
 												},
 												edit : function(editor, e) {
 
+													// add here
+													e.record.data.area = Ext.getCmp('csContractInfoList'+ 'area').getValue();
+													e.record.data.areaName = Ext.getCmp('csContractInfoList'+ 'area').getTextValue();
+													
+													e.record.data.customerType = Ext.getCmp('csContractInfoList'+ 'customerType').getValue();
+													e.record.data.customerTypeName = Ext.getCmp('csContractInfoList'+ 'customerType').getTextValue();
+													
+													e.record.data.contractType = Ext.getCmp('csContractInfoList'+ 'contractType').getValue();
+													e.record.data.contractTypeName = Ext.getCmp('csContractInfoList'+ 'contractType').getTextValue();
+													
 													e.record
 															.save({
 																success : function(
@@ -430,8 +470,11 @@ Ext
 																						'id',
 																						data.extra);
 																	}
-																	csContractInfo
-																			.commit();
+																	// add here
+																	e.record.data.areaName = Ext.getCmp('csContractInfoList'+ 'area').getTextValue();
+																	e.record.data.customerTypeName = Ext.getCmp('csContractInfoList'+ 'customerType').getTextValue();
+																	e.record.data.contractTypeName = Ext.getCmp('csContractInfoList'+ 'contractType').getTextValue();
+																	csContractInfo.commit();
 																}
 															});
 
@@ -456,7 +499,6 @@ Ext
 						if (records && records.length > 0) {
 							var record = new Fes.model.CsContractInfoModel(
 									records[records.length - 1].data);
-
 							this.showWindow(record);
 						} else {
 							Ext.Msg.alert('提示：', '请先选择需要编辑的记录！');
@@ -481,19 +523,24 @@ Ext
 					createStore : function() {
 						var me = this;
 						me.store = Ext.create('Fes.store.CsContractInfoStore');
+						
+						me.store.on('beforeload', function (store, options) {
+				             var params = {paramsArea: Ext.getCmp('csContractInfoList' + 'areaQ').getValue(),
+                                                    paramsCustomerName:Ext.getCmp('csContractInfoCustomerName').getValue(),
+				        		                    paramsCustomerType:Ext.getCmp('csContractInfoList' + 'customerTypeQ').getValue(),
+				        		                    paramsContractType:Ext.getCmp('csContractInfoList' + 'contractTypeQ').getValue()};
+				        Ext.apply(me.store.proxy.extraParams, params); 
+				    });
 					},
 
 					addRecord : function() {
 						var records = this.getSelectionModel().getSelection();
 						var record = new Fes.model.CsContractInfoModel({
-
 						});
 
 						if (records.length > 0) {
-							// record = records[records.length-1];
 							record = new Fes.model.CsContractInfoModel(
 									{
-
 										area : records[records.length - 1].data.area,
 
 										customerName : records[records.length - 1].data.customerName,
@@ -546,7 +593,6 @@ Ext
 
 									});
 						}
-
 						this.getStore().add(record);
 						this.rowEditor.startEdit(record, 1);
 					},
@@ -585,22 +631,14 @@ Ext
 														{
 															text : 'Save5',
 															handler : function() {
-
-																// alert(_csContractInfoWindow.down('form').getValues());
-																me
-																		.saveRecode(_csContractInfoWindow
-																				.down(
-																						'form')
-																				.getValues());
-
+																me.saveRecode(_csContractInfoWindow.down('form').getValues());
 															}
 														},
 														{
 															text : 'Cancel',
 															scope : this,
 															handler : function() {
-																_csContractInfoWindow
-																		.hide();
+																_csContractInfoWindow.hide();
 															}
 														} ]
 											})
@@ -623,68 +661,70 @@ Ext
 										{
 											items : [
 													{
-														xtype : 'textfield',
-														fieldLabel : '区域',
+														xtype : 'parameterComboTree',
+														rootText : '功能',
 														labelWidth : 20,
-														flex : .6,
-														id : 'csContractInfoArea'
+														rootId : '1',
+														emptyText:'区域',
+														storeUrl : 'sysParameter/getTreeNodeChildren',
+														id : 'csContractInfoList' + 'areaQ',
+														selectMode : 'all',
+														treeHeight : 300,
+														rootVisible : false
 													},
 													{
 														xtype : 'textfield',
-														fieldLabel : '客户名称',
 														labelWidth : 20,
 														flex : .6,
+														emptyText:'客户名称',
 														id : 'csContractInfoCustomerName'
 													},
 													{
-														xtype : 'textfield',
-														fieldLabel : '客户类型',
+														xtype : 'parameterComboTree',
+														rootText : '功能',
 														labelWidth : 20,
-														flex : .6,
-														id : 'csContractInfoCustomerType'
+														rootId : '1',
+														emptyText:'客户类型',
+														storeUrl : 'sysParameter/getTreeNodeChildren',
+														id : 'csContractInfoList' + 'customerTypeQ',
+														selectMode : 'all',
+														treeHeight : 300,
+														rootVisible : false
 													},
 													{
-														xtype : 'textfield',
-														fieldLabel : '合同类型',
+														xtype : 'parameterComboTree',
+														rootText : '功能',
 														labelWidth : 20,
-														flex : .6,
-														id : 'csContractInfoContractType'
+														rootId : '1',
+														emptyText:'合同类型',
+														storeUrl : 'sysParameter/getTreeNodeChildren',
+														id : 'csContractInfoList' + 'contractTypeQ',
+														selectMode : 'all',
+														treeHeight : 300,
+														rootVisible : false
 													},
 													{
 														xtype : 'button',
 														text : '查询',
 														iconCls : 'icon-search',
 														handler : function() {
-															me
-																	.getStore()
-																	.load(
-																			{
-																				params : {
-																					id : Ext
-																							.getCmp(
-																									'csContractInfoId')
-																							.getValue()
-																				},
-																				callback : function(
-																						re,
-																						options,
-																						success) {
-
-																					me
-																							.setTitle('查询 :"'
-																									+ Ext
-																											.getCmp(
-																													'csContractInfoId')
-																											.getValue()
-																									+ '" 的结果列表');
-																				}
-																			});
+															me.getStore().load();
+														}
+													},
+													{
+														xtype : 'button',
+														text : ' 清空',
+														iconCls : 'icon-no',
+														handler : function() {// 清空搜索条件文本框
+															Ext.getCmp('csContractInfoList' + 'areaQ').setLocalValue(null, null);
+															Ext.getCmp('csContractInfoCustomerName').reset();
+															Ext.getCmp('csContractInfoList' + 'customerTypeQ').setLocalValue(null, null);
+															Ext.getCmp('csContractInfoList' + 'contractTypeQ').setLocalValue(null, null);
 														}
 													},
 													'-',
 													Ext
-															.create(
-																	'Ext.Button',
+															.create('Ext.Button',
 																	{
 																		text : '弹窗添加',
 																		iconCls : 'icon-add',
@@ -699,8 +739,7 @@ Ext
 													}),
 													'-',
 													Ext
-															.create(
-																	'Ext.Button',
+															.create('Ext.Button',
 																	{
 																		text : '编辑',
 																		iconCls : 'icon-edit',

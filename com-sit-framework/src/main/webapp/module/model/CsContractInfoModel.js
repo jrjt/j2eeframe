@@ -2,13 +2,13 @@ Ext.define("Fes.model.CsContractInfoModel",{
 	extend:'Ext.data.Model',
 	fields:[
 				{name:'area',type:'string'}	,	//区域
-			
+				{name:'areaName', type:'string'},
 			
 				{name:'customerName',type:'string'}	,	//客户名称
 			
 			
 				{name:'customerType',type:'string'}	,	//客户类型
-			
+				{name:'customerTypeName', type:'string'},
 			
 				{name:'contractNumber',type:'string'}	,	//合同/销单/签证编号
 			
@@ -17,12 +17,12 @@ Ext.define("Fes.model.CsContractInfoModel",{
 			
 			
 				{name:'contractType',type:'string'}	,	//合同类型
-			
+				{name:'contractTypeName', type:'string'},
 			
 				{name:'projectNumber',type:'string'}	,	//项目编号
 			
 			
-				{name:'signDate',type:'date',dateFormat:'time'}	,	//签订时间
+				{name:'signDate',type:'auto'}	,	//签订时间
 			
 				{name:'endDate',type:'auto'}	,	//到期时间
 			
@@ -77,6 +77,7 @@ Ext.define("Fes.model.CsContractInfoModel",{
 	   proxy:{
     	 
         type : 'rest',
+        appendId:false,
         url:'csContractInfo',
         actionMethods:{
         	  create : 'POST',

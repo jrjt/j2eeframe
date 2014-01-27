@@ -93,6 +93,7 @@ Ext.define("Fes.model.CsCustomerInfoModel",{
 	   proxy:{
     	 
         type : 'rest',
+		appendId:false,
         url:'csCustomerInfo',
         actionMethods:{
         	  create : 'POST',

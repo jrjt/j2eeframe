@@ -67,7 +67,7 @@ public class CsCustomerInfoVo {
 	}
 
 	/** 联系电话 */
-	private java.lang.Long customerTel;
+	private java.lang.String customerTel;
 	/** 客户联系人 */
 	private java.lang.String customerPeople;
 	/** 详细地址 */
@@ -196,7 +196,7 @@ public class CsCustomerInfoVo {
 	 * 
 	 * @return: java.lang.Long 联系电话
 	 */
-	public java.lang.Long getCustomerTel() {
+	public java.lang.String getCustomerTel() {
 		return this.customerTel;
 	}
 
@@ -205,7 +205,7 @@ public class CsCustomerInfoVo {
 	 * 
 	 * @param: java.lang.Long 联系电话
 	 */
-	public void setCustomerTel(java.lang.Long customerTel) {
+	public void setCustomerTel(java.lang.String customerTel) {
 		this.customerTel = customerTel;
 	}
 

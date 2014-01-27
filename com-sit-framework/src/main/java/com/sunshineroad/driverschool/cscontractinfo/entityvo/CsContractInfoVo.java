@@ -40,16 +40,43 @@ public class CsContractInfoVo   {
 	private java.lang.Long id;
 	/**区域*/
 	private java.lang.String area;
+	private java.lang.String areaName;
 	/**客户名称*/
 	private java.lang.String customerName;
 	/**客户类型*/
 	private java.lang.String customerType;
+	private java.lang.String customerTypeName;
 	/**合同/销单/签证编号*/
 	private java.lang.String contractNumber;
 	/**合同名称*/
 	private java.lang.String contractName;
 	/**合同类型*/
 	private java.lang.String contractType;
+	private java.lang.String contractTypeName;
+	public java.lang.String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(java.lang.String areaName) {
+		this.areaName = areaName;
+	}
+
+	public java.lang.String getCustomerTypeName() {
+		return customerTypeName;
+	}
+
+	public void setCustomerTypeName(java.lang.String customerTypeName) {
+		this.customerTypeName = customerTypeName;
+	}
+
+	public java.lang.String getContractTypeName() {
+		return contractTypeName;
+	}
+
+	public void setContractTypeName(java.lang.String contractTypeName) {
+		this.contractTypeName = contractTypeName;
+	}
+
 	/**项目编号*/
 	private java.lang.String projectNumber;
 	/**签订时间*/

@@ -28,7 +28,7 @@ import com.sunshineroad.system.monitor.entity.Monitor;
  * 功能说明：大小额监控
  *
  */
-@Service("largeMicrofinance")
+//@Service("largeMicrofinance")
 public class LargeMicrofinance {
 	
 	private static final Logger logger = Logger.getLogger(TelnetConn.class);

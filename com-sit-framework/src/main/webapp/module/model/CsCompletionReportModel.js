@@ -77,6 +77,7 @@ Ext.define("Fes.model.CsCompletionReportModel",{
 	   proxy:{
     	 
         type : 'rest',
+		appendId:false,
         url:'csCompletionReport',
         actionMethods:{
         	  create : 'POST',
@@ -90,7 +91,6 @@ Ext.define("Fes.model.CsCompletionReportModel",{
         	read:'csCompletionReport/list',
         	update:'csCompletionReport/update',
         	destroy:'csCompletionReport/delete' 
-        	 
         },
         reader:{
             type : 'json',

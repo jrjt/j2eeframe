@@ -7,5 +7,5 @@ import com.sunshineroad.driverschool.cscustomerinfo.entityvo.CsCustomerInfoVo;
 import com.sunshineroad.framework.support.service.IBaseService;
 
 public interface CsCustomerInfoService extends IBaseService<CsCustomerInfo, Integer>{
-	public List<CsCustomerInfoVo> list(CsCustomerInfo entity) ;
+	public List<CsCustomerInfoVo> list(CsCustomerInfoVo entity) ;
 }

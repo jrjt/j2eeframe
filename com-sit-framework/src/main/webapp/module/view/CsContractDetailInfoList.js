@@ -6,7 +6,8 @@ Ext
 					extend : 'Ext.grid.Panel',
 					alias : 'widget.csContractDetailInfolist',
 					title : '[合同明细]列表',
-
+					requires : [ "Fes.util.ParameterComboTree",
+									'Ext.toolbar.Paging' ],// add here
 					iconCls : 'icon-grid-list',
 					rowLines : true,
 					columnLines : true,
@@ -43,14 +44,23 @@ Ext
 					},
 
 					{
-						text : '设备型号',
-						width : 120,
-						sortable : true,
-						dataIndex : 'deviceModel',
-						field : {
-							xtype : 'textfield',
-							required : true
-						}
+					text : '设备型号',
+					width : 120,
+					renderer : function(v, c, r) {
+						return r.data.deviceModelName;
+					},
+					sortable : true,
+					dataIndex : 'deviceModel',
+					field : {
+						xtype : 'parameterComboTree',
+						rootText : '功能',
+						rootId : '1',
+						storeUrl : 'sysParameter/getTreeNodeChildren',
+						id : 'csContractDetailInfo' + 'deviceModel',
+						selectMode : 'all',
+						treeHeight : 300,
+						rootVisible : false
+					}
 					},
 
 					{
@@ -65,6 +75,15 @@ Ext
 					},
 
 					{
+						text : '设备数量',
+						width : 120,
+						sortable : true,
+						dataIndex : 'deviceNumber',
+						field : {
+							xtype : 'textfield',
+							required : true
+						}
+					}, {
 						text : 'SIM卡开始时间',
 						width : 120,
 						sortable : true,
@@ -140,11 +159,7 @@ Ext
 					// {text : 'remark12',width : 120,sortable : true,dataIndex
 					// : 'remark12',field : {xtype : 'textfield',required :
 					// true}},
-					//		 	 		
-					// {text : 'remark13',width : 120,sortable : true,dataIndex
-					// : 'remark13',field : {xtype : 'textfield',required :
-					// true}},
-					//		 	 		
+
 					// {text : 'remark14',width : 120,sortable : true,dataIndex
 					// : 'remark14',field : {xtype : 'textfield',required :
 					// true}},
@@ -179,7 +194,6 @@ Ext
 					// Ext.util.Format.date(d,'Y-m-d');},dataIndex :
 					// 'remark20',field : {xtype : 'datefield',
 					// format:'Y-m-d'}},
-					//		 	 		
 
 					{
 						text : 'id',
@@ -200,9 +214,14 @@ Ext
 										{
 											id : 'csContractDetailInfoListRowEditor',
 											listeners : {
-												beforeedit : function(editor,
-														e, eOpts) {
-
+												beforeedit : function(editor,e, eOpts) {
+													// add here
+													Ext.getCmp('csContractDetailInfo' + 'deviceModel')
+													.setLocalValue(e.record.data.deviceModel, e.record.data.deviceModelName);
+													
+													console.log(e.record.data.deviceModel);
+													console.log(e.record.data.deviceModelName);
+													
 													var d = new Date();
 													if (e.record.data.openDate > 0) {
 														d
@@ -233,24 +252,25 @@ Ext
 												},
 												startEdit : function(record,
 														columnHeader) {
-
+													// add here
+													Ext.getCmp('csContractDetailInfo' + 'deviceModel')
+													.setLocalValue(e.record.data.deviceModel, e.record.data.deviceModelName);
 													this.editRecord = record;
 												},
 												edit : function(editor, e) {
-
+													var me = this;
+													// add here
+													e.record.data.deviceModel = Ext.getCmp('csContractDetailInfo' + 'deviceModel').getValue();
+													e.record.data.deviceModelName = Ext.getCmp('csContractDetailInfo' + 'deviceModel').getTextValue();
 													e.record
 															.save({
-																success : function(
-																		csContractDetailInfo,
-																		options) {
-																	var data = Ext
-																			.decode(options.response.responseText);
+																success : function(csContractDetailInfo,options) {
+																	var data = Ext.decode(options.response.responseText);
 																	if (data.extra) {
-																		csContractDetailInfo
-																				.set(
-																						'id',
-																						data.extra);
+																		csContractDetailInfo.set('id',data.extra);
 																	}
+																	// add here
+																	csContractDetailInfo.data.deviceModelName = Ext.getCmp('csContractDetailInfo' + 'deviceModel').getTextValue();
 																	csContractDetailInfo
 																			.commit();
 																}
@@ -304,6 +324,11 @@ Ext
 						var me = this;
 						me.store = Ext
 								.create('Fes.store.CsContractDetailInfoStore');
+						me.store.on('beforeload', function (store, options) {
+				             var params = { paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
+										paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()};
+				        Ext.apply(me.store.proxy.extraParams, params); 
+				    });
 					},
 
 					addRecord : function() {
@@ -353,7 +378,7 @@ Ext
 
 										remark12 : records[records.length - 1].data.remark12,
 
-										remark13 : records[records.length - 1].data.remark13,
+										deviceNumber : records[records.length - 1].data.deviceNumber,
 
 										remark14 : records[records.length - 1].data.remark14,
 
@@ -429,7 +454,6 @@ Ext
 															}
 														} ]
 											})
-
 						}
 						if (rec && rec.data) {
 							if (rec.data.signDate > 0) {
@@ -451,10 +475,21 @@ Ext
 											items : [
 													{
 														xtype : 'textfield',
-														fieldLabel : 'ID',
-														labelWidth : 40,
+														emptyText : '设备名称',
+														labelWidth : 20,
 														flex : .6,
-														id : 'csContractDetailInfoId'
+														id : 'csContractDetailInfoListDeviceName'
+													},
+													{
+															xtype : 'parameterComboTree',
+															rootText : '功能',
+															emptyText: '设备型号',
+															rootId : '1',
+															storeUrl : 'sysParameter/getTreeNodeChildren',
+															id : 'csContractDetailInfo' + 'deviceModelQ',
+															selectMode : 'all',
+															treeHeight : 300,
+															rootVisible : false
 													},
 													{
 														xtype : 'button',
@@ -464,14 +499,22 @@ Ext
 															me
 																	.getStore()
 																	.load(
-																			{
+																			/*{
 																				params : {
-																					id : Ext
-																							.getCmp(
-																									'csContractDetailInfoId')
-																							.getValue()
+																					paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
+																					paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()
 																				}
-																			});
+																			}*/);
+														}
+
+													},
+													{
+														xtype : 'button',
+														text : ' 清空',
+														iconCls : 'icon-no',
+														handler : function() {
+															Ext.getCmp('csContractDetailInfoListDeviceName').reset();
+															Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').setLocalValue(null, null);
 														}
 													},
 													'-',

@@ -1,4 +1,5 @@
 package com.sunshineroad.driverschool.cscontractdetailinfo.controller;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ import org.apache.log4j.Logger;
  * @Title: Controller
  * @Description: 合同明细
  * @author auto Generate
- * @date 2014-01-15 13:45:01
+ * @date 2014-01-22 12:32:21
  * @version V1.0   
  *
  */
@@ -54,13 +55,35 @@ public class CsContractDetailInfoController extends BaseControllerImpl {
 	public @ResponseBody Object list( ){
 	 	 HttpServletRequest request =WebUtils.getRequestByContext();
 		CsContractDetailInfo csContractDetailInfo= new CsContractDetailInfo();
-  
+
+		String paramsDeviceName = request.getParameter("paramsDeviceName");
+		String paramsDeviceModel = request.getParameter("paramsDeviceModel");
+		
+		if (null!=paramsDeviceName||null!=paramsDeviceModel) {
+			byte b[];
+			try {
+				b = paramsDeviceName.getBytes("GBK"); 
+				paramsDeviceName = new String(b);
+				
+				b = paramsDeviceModel.getBytes("GBK"); 
+				paramsDeviceModel = new String(b);
+			} catch (UnsupportedEncodingException e) {
+				paramsDeviceName = null;
+				paramsDeviceModel = null;
+			}
+			if (null!=paramsDeviceName||null!=paramsDeviceModel) {
+				csContractDetailInfo.setDeviceName(paramsDeviceName);
+				csContractDetailInfo.setDeviceModel(paramsDeviceModel);
+			}
+		}
+		
 		return ResponseUtils.sendPagination(csContractDetailInfoService.list(csContractDetailInfo)) ;
 	}
  
-	@RequestMapping(value="update/{id}",  method=RequestMethod.PUT)
+	@RequestMapping(value="update",  method=RequestMethod.PUT)
 	public @ResponseBody Object update(@RequestBody CsContractDetailInfoVo csContractDetailInfoVo) throws Exception{
 		CsContractDetailInfo csContractDetailInfo =new CsContractDetailInfo();
+		csContractDetailInfo.setId(csContractDetailInfoVo.getId());
 		PropertyUtils.copyProperties(csContractDetailInfo, csContractDetailInfoVo);
 		this.csContractDetailInfoService.update(csContractDetailInfo);
 		return ResponseUtils.sendSuccess("保存成功");
@@ -73,8 +96,11 @@ public class CsContractDetailInfoController extends BaseControllerImpl {
 		return ResponseUtils.sendSuccess("保存成功",this.csContractDetailInfoService.save(csContractDetailInfo).getId());
 	}
 	
-	@RequestMapping(value="delete/{id}",method=RequestMethod.DELETE)
-	public @ResponseBody Object delete(@RequestBody CsContractDetailInfo csContractDetailInfo) throws Exception{
+	@RequestMapping(value="delete",method=RequestMethod.DELETE)
+	public @ResponseBody Object delete(@RequestBody CsContractDetailInfoVo csContractDetailInfoVo) throws Exception{
+		CsContractDetailInfo csContractDetailInfo = new CsContractDetailInfo();
+		csContractDetailInfo.setId(csContractDetailInfoVo.getId());
+		PropertyUtils.copyProperties(csContractDetailInfo, csContractDetailInfoVo);
 		this.csContractDetailInfoService.delete(csContractDetailInfo);
 		return ResponseUtils.sendSuccess("删除成功");
 	}

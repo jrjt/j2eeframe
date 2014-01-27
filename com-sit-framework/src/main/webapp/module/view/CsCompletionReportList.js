@@ -22,7 +22,10 @@ Ext
 					},
 					columns : [ {
 						xtype : 'rownumberer'
-					}, {
+					}, 
+					
+					
+					{
 						text : '档案编号',
 						width : 120,
 						sortable : true,
@@ -57,7 +60,7 @@ Ext
 							rootText : '功能',
 							rootId : '1',
 							storeUrl : 'sysParameter/getTreeNodeChildren',
-							id : 'sysParameterlist' + 'SysParameterComboTree',
+							id : 'csCompletionReport' + 'reportType',
 							selectMode : 'all',
 							treeHeight : 300,
 							rootVisible : false
@@ -184,7 +187,7 @@ Ext
 												beforeedit : function(editor,
 														e, eOpts) {
 													// add here
-													Ext.getCmp('sysParameterlist' + 'SysParameterComboTree')
+													Ext.getCmp('csCompletionReport' + 'reportType')
 													.setLocalValue(e.record.data.reportType,
 															e.record.data.parameterName);
 													
@@ -211,44 +214,30 @@ Ext
 												},
 												startEdit : function(record,
 														columnHeader) {
-
+													// add here
+													Ext.getCmp('csCompletionReport' + 'reportType')
+													.setLocalValue(e.record.data.reportType,
+															e.record.data.parameterName);
 													this.editRecord = record;
+													
 												},
 												edit : function(editor, e) {
 
 													// add here
 													var me = this;
-													e.record.data.reportType = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'SysParameterComboTree')
-															.getValue();
-													e.record.data.parameterName = Ext
-															.getCmp(
-																	'sysParameterlist'
-																			+ 'SysParameterComboTree')
-															.getTextValue();
+													e.record.data.reportType = Ext.getCmp('csCompletionReport' + 'reportType').getValue();
+													e.record.data.parameterName = Ext.getCmp('csCompletionReport' + 'reportType').getTextValue();
 													
-													console.log(e.record.data);
 													
-													e.record
-															.save({
-																success : function(
-																		csCompletionReport,
-																		options) {
-																	var data = Ext
-																			.decode(options.response.responseText);
+													e.record.save({
+																success : function(csCompletionReport,options) {
+																	var data = Ext.decode(options.response.responseText);
 																	if (data.extra) {
-																		csCompletionReport
-																				.set(
-																						'id',
-																						data.extra);
+																		csCompletionReport.set('id',data.extra);
 																	}
-																	csCompletionReport
-																			.commit();
+																	csCompletionReport.commit();
 																}
 															});
-
 												}
 											}
 										});
@@ -294,8 +283,14 @@ Ext
 					},
 					createStore : function() {
 						var me = this;
-						me.store = Ext
-								.create('Fes.store.CsCompletionReportStore');
+						me.store = Ext.create('Fes.store.CsCompletionReportStore');
+						
+						me.store.on('beforeload', function (store, options) {
+				             var params = { paramReportId : Ext.getCmp('csCompletionReportId').getValue(),
+									             	paramcontractNumber : Ext.getCmp('csCompletionContractNumber').getValue(),
+									            	paramReportType : Ext.getCmp( 'csCompletionReport' + 'reportTypeQ').getValue()};
+				        Ext.apply(me.store.proxy.extraParams, params); 
+				    });
 					},
 
 					addRecord : function() {
@@ -437,31 +432,60 @@ Ext
 										'Ext.toolbar.Toolbar',
 										{
 											items : [
-													{
-														xtype : 'textfield',
-														fieldLabel : 'ID',
-														labelWidth : 40,
-														flex : .6,
-														id : 'csCompletionReportId'
-													},
+														{
+															xtype : 'textfield',
+															labelWidth : 40,
+															flex : .6,
+															emptyText:'档案编号',
+															id : 'csCompletionReportId'
+														},													
+														{
+															xtype : 'textfield',
+															labelWidth : 40,
+															flex : .6,
+															emptyText:'合同/销单/签证编号',
+															id : 'csCompletionContractNumber'
+														},													
+														{
+																xtype : 'parameterComboTree',
+																rootText : '功能',
+																rootId : '1',
+																storeUrl : 'sysParameter/getTreeNodeChildren',
+																id : 'csCompletionReport' + 'reportTypeQ',
+																selectMode : 'all',
+																treeHeight : 300,
+																rootVisible : false,
+															flex : .6,
+															emptyText:'档案类型'
+														},
 													{
 														xtype : 'button',
 														text : '查询',
 														iconCls : 'icon-search',
 														handler : function() {
-															me
-																	.getStore()
-																	.load(
-																			{
+															me.getStore().load(
+																			/*{
 																				params : {
-																					id : Ext
-																							.getCmp(
-																									'csCompletionReportId')
-																							.getValue()
+																					paramReportId : Ext.getCmp('csCompletionReportId')
+																					.getValue(),
+																					paramcontractNumber : Ext.getCmp('csCompletionContractNumber')
+																					.getValue(),
+																					paramReportType : Ext.getCmp( 'csCompletionReport' + 'reportTypeQ')
+																					.getValue()
 																				}
-																			});
-														}
+																			}*/);
+														}},
+														{
+															xtype : 'button',
+															text : ' 清空',
+															iconCls : 'icon-no',
+														    handler:function(){
+														    	Ext.getCmp('csCompletionReportId').reset();
+														    	Ext.getCmp('csCompletionContractNumber').reset();
+														    	Ext.getCmp( 'csCompletionReport' + 'reportTypeQ').setLocalValue(null, null);
+														    }
 													},
+													
 													'-',
 													Ext
 															.create(

@@ -34,8 +34,18 @@ public class CsCompletionReportServiceImpl extends BaseServiceImpl<CsCompletionR
 		HQLParameter p = new HQLParameter(CsCompletionReport.class);	   
 //		return ListUtils.transform(csCompletionReportDao.findPageByHql(" from CsCompletionReport "   ),
 //				CsCompletionReportVo.class);
+		StringBuffer hql = new StringBuffer(" FROM CsCompletionReport WHERE 1=1 ");
+		if (null!=entity&&(null!=entity.getReportNumber()||null!=entity.getContractNumber()||null!=entity.getReportType())) {
+			hql.append(" AND ( 1!=1 ");
+			hql.append(" or "+" reportNumber like '%"+entity.getReportNumber()+"%'   ");
+			hql.append(" AND "+" contractNumber like '%"+entity.getContractNumber()+"%'   ");
+			hql.append(" AND "+" reportType like '%"+entity.getReportType()+"%'   ");
+			hql.append("  )");
+		}
+		
+		
 		// 以下通过ID获取参数名
-		List<CsCompletionReportVo> list = ListUtils.transform(csCompletionReportDao.findPageByHql(" from CsCompletionReport "   ),
+		List<CsCompletionReportVo> list = ListUtils.transform(csCompletionReportDao.findPageByHql(hql.toString()),
 				CsCompletionReportVo.class);
 		List<CsCompletionReportVo> resultlist = new ArrayList<CsCompletionReportVo>();
 		for(CsCompletionReportVo vo:list){

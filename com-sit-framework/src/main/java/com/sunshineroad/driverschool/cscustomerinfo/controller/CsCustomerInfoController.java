@@ -1,4 +1,5 @@
 package com.sunshineroad.driverschool.cscustomerinfo.controller;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,14 +54,50 @@ public class CsCustomerInfoController extends BaseControllerImpl {
  @RequestMapping(value="list",method=RequestMethod.GET)
 	public @ResponseBody Object list( ){
 	 	 HttpServletRequest request =WebUtils.getRequestByContext();
-		CsCustomerInfo csCustomerInfo= new CsCustomerInfo();
-  
-		return ResponseUtils.sendPagination(csCustomerInfoService.list(csCustomerInfo)) ;
+		CsCustomerInfoVo csCustomerInfoVo = new CsCustomerInfoVo();
+		
+		// 接受查询参数
+		String paramsArea = request.getParameter("paramsArea");
+		String paramsCustomerName = request.getParameter("paramsCustomerName");
+		String paramsCustomerType = request.getParameter("paramsCustomerType");
+		String paramsCustomerPeople = request.getParameter("paramsCustomerPeople");
+		
+		if (null!=paramsArea) {
+			byte b[];
+			try {
+				b = paramsArea.getBytes("GBK"); 
+				paramsArea = new String(b);
+				
+				b = paramsCustomerName.getBytes("GBK");
+				paramsCustomerName = new String(b);
+				
+				b = paramsCustomerType.getBytes("GBK"); 
+				paramsCustomerType = new String(b);
+				
+				b = paramsCustomerPeople.getBytes("GBK"); 
+				paramsCustomerPeople = new String(b);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				paramsArea = null;
+				paramsCustomerPeople = null;
+				paramsCustomerName = null;
+				paramsCustomerType = null;
+			}
+			if (null!=paramsArea) {
+				csCustomerInfoVo.setArea(paramsArea);
+				csCustomerInfoVo.setCustomerName(paramsCustomerName);
+				csCustomerInfoVo.setCustomerType(paramsCustomerType);
+				csCustomerInfoVo.setCustomerPeople(paramsCustomerPeople);
+			}
+		}
+		
+		return ResponseUtils.sendPagination(csCustomerInfoService.list(csCustomerInfoVo)) ;
 	}
  
-	@RequestMapping(value="update/{id}",  method=RequestMethod.PUT)
+	@RequestMapping(value="update",  method=RequestMethod.PUT)
 	public @ResponseBody Object update(@RequestBody CsCustomerInfoVo csCustomerInfoVo) throws Exception{
 		CsCustomerInfo csCustomerInfo =new CsCustomerInfo();
+		csCustomerInfo.setId(csCustomerInfoVo.getId());
 		PropertyUtils.copyProperties(csCustomerInfo, csCustomerInfoVo);
 		this.csCustomerInfoService.update(csCustomerInfo);
 		return ResponseUtils.sendSuccess("保存成功");
@@ -73,8 +110,10 @@ public class CsCustomerInfoController extends BaseControllerImpl {
 		return ResponseUtils.sendSuccess("保存成功",this.csCustomerInfoService.save(csCustomerInfo).getId());
 	}
 	
-	@RequestMapping(value="delete/{id}",method=RequestMethod.DELETE)
-	public @ResponseBody Object delete(@RequestBody CsCustomerInfo csCustomerInfo) throws Exception{
+	@RequestMapping(value="delete",method=RequestMethod.DELETE)
+	public @ResponseBody Object delete(@RequestBody CsCustomerInfoVo csCustomerInfoVo) throws Exception{
+		CsCustomerInfo csCustomerInfo = new CsCustomerInfo();
+		csCustomerInfo.setId(csCustomerInfoVo.getId());
 		this.csCustomerInfoService.delete(csCustomerInfo);
 		return ResponseUtils.sendSuccess("删除成功");
 	}

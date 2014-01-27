@@ -6,7 +6,7 @@ Ext.define('Fes.view.Header', {
 	//xtype: 'box',
     region: 'north',
     height: 70,
-   // html: '<div style= "">CMDS -部门综合管理系统 <div>',//Comprehensive management department System
+   // html: '<div style= "">CMDS - 部门综合管理系统 <div>',//Comprehensive management department System
 	region : 'north',
 	split : true,
 	
@@ -21,7 +21,7 @@ Ext.define('Fes.view.Header', {
 {
 	 
 	 xtype:'label',
-	 html:'<div style= "font-size:20px;color:#FFFFFF;font-family:黑体;font-weight:bolder; ">CMDS -部门综合管理系统 <div>',   
+	 html:'<div style= "font-size:20px;color:#FFFFFF;font-family:黑体;font-weight:bolder; ">CMDS - 部门综合管理系统 <div>',   
      
 	 
 	flex : .9

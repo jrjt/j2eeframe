@@ -117,12 +117,12 @@ Ext.define('Ext.LoginApp.Login', {
         
         this.buttons = [{
             text : '登&nbsp;&nbsp;录',
-            iconCls : 'app-homeIcon',
+//            iconCls : 'app-homeIcon',
             handler : this.loginAction,
             scope : this
         }, {
             text : '选&nbsp;&nbsp;项',
-            iconCls : 'app-homeIcon',
+//            iconCls : 'app-homeIcon',
             handler : function(btn) {
             },
             scope : this
@@ -133,7 +133,7 @@ Ext.define('Ext.LoginApp.Login', {
             border : false,
             html : '<div style=\'background:url(images/heat100.png) no-repeat left center; height:100%;' +
                    'padding-left:120px; font-size:30px; font-weight:bold; font-family:华文隶书,sans-serif; line-height:100px;\'>' +
-                   'CMDS -部门综合管理系统' + 
+                   'CMDS - 部门综合管理系统' + 
                    '</div>'
         }, loginForm];
         

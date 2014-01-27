@@ -8,7 +8,7 @@ Ext.define("Fes.model.CsContractDetailInfoModel",{
 			
 			
 				{name:'deviceModel',type:'string'}	,	//设备型号
-			
+				{name:'deviceModelName',type:'string'},
 			
 				{name:'equipmentPrice',type:'string'}	,	//设备单价
 			
@@ -53,7 +53,7 @@ Ext.define("Fes.model.CsContractDetailInfoModel",{
 				{name:'remark12',type:'string'}	,	//remark12
 			
 			
-				{name:'remark13',type:'string'}	,	//remark13
+				{name:'deviceNumber',type:'string'}	,	//设备数量
 			
 			
 				{name:'remark14',type:'string'}	,	//remark14
@@ -82,6 +82,7 @@ Ext.define("Fes.model.CsContractDetailInfoModel",{
 	   proxy:{
     	 
         type : 'rest',
+        appendId:false,
         url:'csContractDetailInfo',
         actionMethods:{
         	  create : 'POST',

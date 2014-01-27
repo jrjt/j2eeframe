@@ -47,7 +47,7 @@ public class CsCustomerInfo extends BaseEntity {
 	/**客户类型*/
 	private java.lang.String customerType;
 	/**联系电话*/
-	private java.lang.Long customerTel;
+	private java.lang.String customerTel;
 	/**客户联系人*/
 	private java.lang.String customerPeople;
 	/**详细地址*/
@@ -172,7 +172,7 @@ public class CsCustomerInfo extends BaseEntity {
 	 *@return: java.lang.Long  联系电话
 	 */
 	@Column(name ="CUSTOMER_TEL",nullable=true,precision=32,scale=0)
-	public java.lang.Long getCustomerTel(){
+	public java.lang.String getCustomerTel(){
 		return this.customerTel;
 	}
 
@@ -180,7 +180,7 @@ public class CsCustomerInfo extends BaseEntity {
 	 *方法: 设置java.lang.Long
 	 *@param: java.lang.Long  联系电话
 	 */
-	public void setCustomerTel(java.lang.Long customerTel){
+	public void setCustomerTel(java.lang.String customerTel){
 		this.customerTel = customerTel;
 	}
 	/**

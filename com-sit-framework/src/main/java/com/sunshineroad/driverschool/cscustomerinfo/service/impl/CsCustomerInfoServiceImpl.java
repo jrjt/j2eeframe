@@ -25,15 +25,29 @@ import com.sunshineroad.framework.util.ListUtils;
 public class CsCustomerInfoServiceImpl extends BaseServiceImpl<CsCustomerInfo, Integer>  implements CsCustomerInfoService {
 	@Autowired
 	private CsCustomerInfoDao  csCustomerInfoDao;
-	@Autowired
+	@Autowired	
 	private SysParameterService sysParameterService;
 
-	public List<CsCustomerInfoVo> list(CsCustomerInfo entity) {
-		HQLParameter p = new HQLParameter(CsCustomerInfo.class);	   
-//		return ListUtils.transform(csCustomerInfoDao.findPageByHql(" from CsCustomerInfo "   ),
-//				CsCustomerInfoVo.class);
+	public List<CsCustomerInfoVo> list(CsCustomerInfoVo entity) {
+		HQLParameter p = new HQLParameter(CsCustomerInfo.class);
+		StringBuffer hql = new StringBuffer("FROM CsCustomerInfo WHERE 1=1");
+		if (null != entity
+				&& (null != entity.getArea()
+						|| null != entity.getCustomerName()
+						|| null != entity.getCustomerType() || null != entity
+						.getCustomerPeople())) {
+			hql.append(" AND ( 1!=1 ");
+			hql.append(" or " + " area like '%" + entity.getArea() + "%'   ");
+			hql.append(" and " + " customerName like '%" + entity.getCustomerName() + "%'   ");
+			hql.append(" and " + " customerType like '%" + entity.getCustomerType() + "%'   ");
+			hql.append(" and " + " customerPeople like '%" + entity.getCustomerPeople() + "%'   ");
+			hql.append("  )");
+		}else{
+			hql = new StringBuffer("FROM CsCustomerInfo WHERE 1=1");
+		}
+		
 		// 通过ID获取参数名
-		List<CsCustomerInfoVo> list = ListUtils.transform(csCustomerInfoDao.findPageByHql("from CsCustomerInfo"), CsCustomerInfoVo.class);
+		List<CsCustomerInfoVo> list = ListUtils.transform(csCustomerInfoDao.findPageByHql(hql.toString()), CsCustomerInfoVo.class);
 		List<CsCustomerInfoVo> resultlist = new ArrayList<CsCustomerInfoVo>();
 		for(CsCustomerInfoVo vo:list){
 			if (vo.getArea()!=null) {

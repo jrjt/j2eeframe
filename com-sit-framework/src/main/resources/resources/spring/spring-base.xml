@@ -18,55 +18,19 @@
 	</bean>
 
 <!-- 工作的bean大小额 -->
-    <bean id="LargeMicrofinance" class="com.sunshineroad.system.job.service.impl.LargeMicrofinance" />
   
     <!-- job的配置开始 -->
-    <bean id="LargeMicrofinanceJobDetail"
-        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject">
-            <ref bean="LargeMicrofinance" />
-        </property>
-        <property name="targetMethod">
-            <value>work</value>
-        </property>
-    </bean> 
     <!-- job的配置结束 -->
 
     <!-- 调度的配置开始 -->
-    <bean id="LargeMicrofinanceJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail">
-            <ref bean="LargeMicrofinanceJobDetail" />
-        </property>
-        <property name="cronExpression">
-            <value>0/30 * * * * ?</value>
-        </property>
-    </bean>
     <!-- 调度的配置结束 -->
     
 <!-- 工作的bean存贷款取数 -->
-    <bean id="FundsSummary" class="com.sunshineroad.system.job.service.impl.FundsSummary" />
   
     <!-- job的配置开始 -->
-    <bean id="FundsSummaryJobDetail"
-        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-        <property name="targetObject">
-            <ref bean="FundsSummary" />
-        </property>
-        <property name="targetMethod">
-            <value>work</value>
-        </property>
-    </bean> 
     <!-- job的配置结束 -->
 
     <!-- 调度的配置开始 -->
-    <bean id="FundsSummaryJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail">
-            <ref bean="FundsSummaryJobDetail" />
-        </property>
-        <property name="cronExpression">
-            <value>0 0 10 * * ?</value>
-        </property>
-    </bean>
     <!-- 调度的配置结束 -->    
 
 
@@ -75,9 +39,6 @@
         class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-<!--                 <ref bean="LargeMicrofinanceJobTrigger"/>  -->
-				<ref bean="FundsSummaryJobTrigger"/>
-
             </list>
         </property>
     </bean>

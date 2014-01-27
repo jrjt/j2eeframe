@@ -30,7 +30,7 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
  * @Title: Entity
  * @Description: 合同明细
  * @author  
- * @date 2014-01-15 13:45:03
+ * @date 2014-01-22 12:32:22
  * @version V1.0   
  *
  */
@@ -44,6 +44,15 @@ public class CsContractDetailInfoVo   {
 	private java.lang.String deviceName;
 	/**设备型号*/
 	private java.lang.String deviceModel;
+	private String deviceModelName;
+	public String getDeviceModelName() {
+		return deviceModelName;
+	}
+
+	public void setDeviceModelName(String deviceModelName) {
+		this.deviceModelName = deviceModelName;
+	}
+
 	/**设备单价*/
 	private java.math.BigDecimal equipmentPrice;
 	/**SIM卡开始时间*/
@@ -74,8 +83,8 @@ public class CsContractDetailInfoVo   {
 	private java.lang.String remark11;
 	/**remark12*/
 	private java.lang.String remark12;
-	/**remark13*/
-	private java.lang.Integer remark13;
+	/**设备数量*/
+	private java.lang.Integer deviceNumber;
 	/**remark14*/
 	private java.lang.Integer remark14;
 	/**remark15*/
@@ -378,18 +387,18 @@ public java.lang.String getRemark12(){
 	}
 	/**
 	 *方法: 取得java.lang.Integer
-	 *@return: java.lang.Integer  remark13
+	 *@return: java.lang.Integer  设备数量
 	 */
-public java.lang.Integer getRemark13(){
-		return this.remark13;
+public java.lang.Integer getDeviceNumber(){
+		return this.deviceNumber;
 	}
 
 	/**
 	 *方法: 设置java.lang.Integer
-	 *@param: java.lang.Integer  remark13
+	 *@param: java.lang.Integer  设备数量
 	 */
-	public void setRemark13(java.lang.Integer remark13){
-		this.remark13 = remark13;
+	public void setDeviceNumber(java.lang.Integer deviceNumber){
+		this.deviceNumber = deviceNumber;
 	}
 	/**
 	 *方法: 取得java.lang.Integer
