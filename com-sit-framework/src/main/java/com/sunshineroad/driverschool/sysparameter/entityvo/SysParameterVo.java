@@ -28,17 +28,17 @@ public class SysParameterVo   {
 	/**图标路径*/
 	private java.lang.String icoUrl;
 	/**是否有子类*/
-	private java.lang.Integer isDir;
+	private Boolean isDir;
 	/**参数类型*/
 	private java.lang.String parType;
 	/**层级*/
 	private java.lang.Integer parLev;
 	/**是否默认展开*/
-	private java.lang.Integer isExp;
+	private Boolean isExp;
 	/**排序序号*/
 	private java.lang.Integer sortIndex;
 	/**默认选中*/
-	private java.lang.Integer isDef;
+	private Boolean isDef;
 	
 	/**
 	 *方法: 取得java.lang.Long
@@ -127,7 +127,7 @@ public java.lang.String getIcoUrl(){
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  是否有子类
 	 */
-public java.lang.Integer getIsDir(){
+public Boolean getIsDir(){
 		return this.isDir;
 	}
 
@@ -135,7 +135,7 @@ public java.lang.Integer getIsDir(){
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  是否有子类
 	 */
-	public void setIsDir(java.lang.Integer isDir){
+	public void setIsDir(Boolean isDir){
 		this.isDir = isDir;
 	}
 	/**
@@ -172,7 +172,7 @@ public java.lang.Integer getParLev(){
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  是否默认展开
 	 */
-public java.lang.Integer getIsExp(){
+public Boolean getIsExp(){
 		return this.isExp;
 	}
 
@@ -180,7 +180,7 @@ public java.lang.Integer getIsExp(){
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  是否默认展开
 	 */
-	public void setIsExp(java.lang.Integer isExp){
+	public void setIsExp(Boolean isExp){
 		this.isExp = isExp;
 	}
 	/**
@@ -202,7 +202,7 @@ public java.lang.Integer getSortIndex(){
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  默认选中
 	 */
-public java.lang.Integer getIsDef(){
+public Boolean getIsDef(){
 		return this.isDef;
 	}
 
@@ -210,7 +210,7 @@ public java.lang.Integer getIsDef(){
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  默认选中
 	 */
-	public void setIsDef(java.lang.Integer isDef){
+	public void setIsDef(Boolean isDef){
 		this.isDef = isDef;
 	}
 	public static TreeNode sysParameterVo2TreeNode(SysParameterVo vo){
@@ -220,7 +220,7 @@ public java.lang.Integer getIsDef(){
 		TreeNode treenode = new TreeNode();
 		 treenode.setId(Integer.valueOf(vo.getId().toString()));
 		 treenode.setIndex(vo.getSortIndex());
-		 treenode.setLeaf(!(vo.getIsDef()!=null&&vo.getIsDir()==1));
+		 treenode.setLeaf(!(vo.getIsDef()!=null&&vo.getIsDir()));
 		
 		 if(vo.getParUpId()!=null){
 			 treenode.setParentId(Integer.valueOf(vo.getParUpId().toString()));
@@ -229,7 +229,7 @@ public java.lang.Integer getIsDef(){
 		 }
 		 
 		 treenode.setText(vo.getParName());
-		 treenode.setExpanded(vo.getIsDef()==1);
+		 treenode.setExpanded(vo.getIsDef());
 		 
 		return treenode;
 	}

@@ -2,7 +2,7 @@ var _sysParameterWindow = false;
 Ext.define('Fes.view.SysParameterList', {
 	extend : 'Ext.grid.Panel',
 	alias : 'widget.sysParameterList',
-	title : '全部参数-列表',
+	title : '全部参数-列表1',
 
 	requires : [ "Fes.util.ParameterComboTree", 'Ext.toolbar.Paging' ],
 	iconCls : 'icon-grid-list',
@@ -60,7 +60,7 @@ Ext.define('Fes.view.SysParameterList', {
 			id : 'sysParameterlist' + 'SysParameterComboTree',
 			selectMode : 'all',
 			treeHeight : 300,
-			rootVisible : false
+			rootVisible : true
 		}
 	},
 

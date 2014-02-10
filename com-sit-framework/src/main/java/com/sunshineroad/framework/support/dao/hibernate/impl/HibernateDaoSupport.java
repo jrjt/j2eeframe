@@ -175,6 +175,9 @@ public class HibernateDaoSupport<T, ID extends Serializable> implements
 		return (SQLQuery) setParameters(getSession().createSQLQuery(sql),
 				params);
 	}
+	public SQLQuery createSQLQuery(String sql) {
+		return (SQLQuery) setParameters(getSession().createSQLQuery(sql) );
+	}
 
 	public Query createHQLQuery(String hql, Object... params) {
 		return setParameters(getSession().createQuery(hql), params);

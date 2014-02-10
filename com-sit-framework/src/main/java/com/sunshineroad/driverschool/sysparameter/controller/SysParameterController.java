@@ -71,6 +71,8 @@ public class SysParameterController extends BaseControllerImpl {
 	 	 String id=request.getParameter("id");
 		 if(null!=id){
 			 sysParameterVo.setId(Long.valueOf(id));
+		 }else{
+			 sysParameterVo.setId(1l);
 		 }
 
 	 	 String params=request.getParameter("params");

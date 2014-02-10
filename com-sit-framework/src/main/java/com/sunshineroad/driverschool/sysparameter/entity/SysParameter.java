@@ -49,17 +49,20 @@ public class SysParameter extends BaseEntity {
 	/**图标路径*/
 	private java.lang.String icoUrl;
 	/**是否有子类*/
-	private java.lang.Integer isDir;
+	private Boolean isDir;
 	/**参数类型*/
 	private java.lang.String parType;
 	/**层级*/
 	private java.lang.Integer parLev;
 	/**是否默认展开*/
-	private java.lang.Integer isExp;
+	private Boolean isExp;
 	/**排序序号*/
 	private java.lang.Integer sortIndex;
 	/**默认选中*/
-	private java.lang.Integer isDef;
+
+	@Column(name ="IS_DEF",nullable=true)
+	@org.hibernate.annotations.Type(type="yes_no")
+	private boolean isDef;
 	
 	/**
 	 *方法: 取得java.lang.Long
@@ -149,8 +152,9 @@ public class SysParameter extends BaseEntity {
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  是否有子类
 	 */
-	@Column(name ="IS_DIR",nullable=true,precision=1,scale=0)
-	public java.lang.Integer getIsDir(){
+
+	@Column(name ="IS_DIR",nullable=true )
+	public Boolean getIsDir(){
 		return this.isDir;
 	}
 
@@ -158,7 +162,7 @@ public class SysParameter extends BaseEntity {
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  是否有子类
 	 */
-	public void setIsDir(java.lang.Integer isDir){
+	public void setIsDir(Boolean isDir){
 		this.isDir = isDir;
 	}
 	/**
@@ -197,8 +201,10 @@ public class SysParameter extends BaseEntity {
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  是否默认展开
 	 */
-	@Column(name ="IS_EXP",nullable=true,precision=1,scale=0)
-	public java.lang.Integer getIsExp(){
+
+	@org.hibernate.annotations.Type(type="yes_no")
+	@Column(name ="IS_EXP",nullable=true )
+	public Boolean getIsExp(){
 		return this.isExp;
 	}
 
@@ -206,7 +212,7 @@ public class SysParameter extends BaseEntity {
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  是否默认展开
 	 */
-	public void setIsExp(java.lang.Integer isExp){
+	public void setIsExp(Boolean isExp){
 		this.isExp = isExp;
 	}
 	/**
@@ -229,8 +235,9 @@ public class SysParameter extends BaseEntity {
 	 *方法: 取得java.lang.Integer
 	 *@return: java.lang.Integer  默认选中
 	 */
-	@Column(name ="IS_DEF",nullable=true,precision=1,scale=0)
-	public java.lang.Integer getIsDef(){
+	@Column(name ="IS_DEF",nullable=true)
+	@org.hibernate.annotations.Type(type="yes_no")
+	public Boolean getIsDef(){
 		return this.isDef;
 	}
 
@@ -238,7 +245,8 @@ public class SysParameter extends BaseEntity {
 	 *方法: 设置java.lang.Integer
 	 *@param: java.lang.Integer  默认选中
 	 */
-	public void setIsDef(java.lang.Integer isDef){
+ 
+	public void setIsDef(boolean isDef){
 		this.isDef = isDef;
 	}
 }

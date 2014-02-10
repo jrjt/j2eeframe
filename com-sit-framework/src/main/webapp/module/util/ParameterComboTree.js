@@ -68,7 +68,6 @@
 	
 	},
 	initComponent : function(){
-		console.log('oooooooooooooooooooooooooooooo    '+this.getId());
 		this.treeRenderId = Ext.id()+this.getId();
 		var me=this;
 		this.tpl = "<tpl><div id='"+this.treeRenderId+"'></div></tpl>";		
@@ -80,7 +79,6 @@
 				
 				 //alert(me.treeObj.getStore().load({}));
 //				console.log(">>>>>>>>>>>>>>>>>>>>>>");
- 				console.log(me.treeRenderId+'_____'+me.treeObj.rendered);
 //				console.log(!!me.treeObj);
 //				console.log(!me.readOnly);
 				// console.log(me.treeRenderId+' html     '+document.getElementById(me.treeRenderId).innerHTML);

@@ -47,7 +47,7 @@ Ext.define('Fes.controller.DesktopController', {
 			iconCls : 'icon-activity',
 			title : '平台首页',
 			xtype : 'portalpanel',
-			closable : true,
+			closable : false,
 			 layout:{
                  type: 'accordion',
                //  animate: true
@@ -95,20 +95,20 @@ Ext.define('Fes.controller.DesktopController', {
 		};
 		tab.add(panel);
 		//
-		Ext.Loader.setPath({'SimpleTasks' : extLibPath + '/examples/simple-tasks/app'});
+		 Ext.Loader.setPath({	'SimpleReports' :    ctx+ '/absolute/simple-reports/app'});
 		
-		 Ext.require("SimpleTasks.controller.Lists",
+		 Ext.require("SimpleReports.controller.Lists",
 					function() {
-		var newController = application.getController('SimpleTasks.controller.Lists');
+		var newController = application.getController('SimpleReports.controller.Lists');
 		 newController.init();
 
 		 
-		 Ext.require("SimpleTasks.controller.Tasks",
+		 Ext.require("SimpleReports.controller.Tasks",
 					function() {
-			var newController = application.getController('SimpleTasks.controller.Tasks');
+			var newController = application.getController('SimpleReports.controller.Tasks');
 			 newController.init();
 
-			 
+			 /*
 			var taskPanel={
 							iconCls : 'icon-activity',
 							title : '我的计划任务',
@@ -137,7 +137,35 @@ Ext.define('Fes.controller.DesktopController', {
 						    ]
 						};
 			//tab.add(taskPanel);
-			 
+			*/
+			 var taskPanel={
+						iconCls : 'icon-activity',
+						title : '报表',
+						xtype : 'panel',
+						closable : true,
+					    layout: 'border',
+			             
+		
+					    items: [
+					        {
+					            xtype: 'tasksToolbar',
+					            region: 'north'
+					        },
+					        {
+					            xtype: 'listTree',
+					            region: 'west',
+					            width: 300,
+					            collapsible: true,
+					            split: true
+					        },
+					        {
+					            region: 'center',
+					            xtype: 'taskGrid',
+					            title: '全部任务清单'  
+					        }
+					    ]
+					};
+		 tab.add(taskPanel);
 		 });
 		 });
 

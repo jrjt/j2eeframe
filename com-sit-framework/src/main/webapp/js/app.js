@@ -5,7 +5,8 @@ Ext.Loader.setConfig({
 
 Ext.Loader.setPath({
 			'Ext.ux' : extLibPath + '/examples/ux',
-			'SimpleTasks' : extLibPath + '/examples/simple-tasks/app',
+			//'SimpleTasks' : extLibPath + '/examples/simple-tasks/app',  
+			'SimpleReports' : ctx + '/absolute/simple-reports/app',
 			
 			'Ext.app' : extLibPath + '/examples/app',
 			'Fes' : 'module'

@@ -12,17 +12,17 @@ Ext.define("Fes.model.SysParameterModel",{
 			
 			{name:'icoUrl',type:'string'}	,	//图标路径
 			
-			{name:'isDir',type:'string'}	,	//是否有子类
+			{name:'isDir',type:'Boolean'}	,	//是否有子类
 			
 			{name:'parType',type:'string'}	,	//参数类型
 			
 			{name:'parLev',type:'string'}	,	//层级
 			
-			{name:'isExp',type:'string'}	,	//是否默认展开
+			{name:'isExp',type:'Boolean'}	,	//是否默认展开
 			
 			{name:'sortIndex',type:'string'}	,	//排序序号
 			
-			{name:'isDef',type:'string'}	,	//默认选中
+			{name:'isDef',type:'Boolean'}	,	//默认选中
 		{name:'id',type:'int'}
 		 
 	],

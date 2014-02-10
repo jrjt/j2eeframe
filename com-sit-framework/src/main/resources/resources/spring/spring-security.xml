@@ -42,8 +42,12 @@
 			</beans:bean> -->
 		</beans:property>
 
-	</beans:bean>
-
+	</beans:bean> 
+	
+	
+	<http pattern="/freeTableController/**" security="none" />
+	<http pattern="/sysCustomSql/**" security="none" />
+	<http pattern="/absolute/simple-reports/**" security="none" />
 	<http pattern="/toExcel/**" security="none" />
 	<http pattern="/sysParameter/**" security="none" />
 	<http pattern="/resources/TreeJson" security="none" />
