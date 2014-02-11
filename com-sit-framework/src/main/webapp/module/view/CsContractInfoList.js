@@ -23,13 +23,14 @@ Ext
 						xtype : 'rownumberer'
 					}, {
 						text : '区域',
-						width : 120,
 						renderer : function(v, c, r) {
 							return r.data.areaName;
 						},
 						sortable : true,
 						dataIndex : 'area',
 						field : Ext.create('Fes.util.ParameterComboTree', {
+							width : 110,
+							emptyText : '区域',
 							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
@@ -47,6 +48,7 @@ Ext
 						sortable : true,
 						dataIndex : 'customerName',
 						field : {
+							emptyText : '客户名称',
 							xtype : 'textfield',
 							required : true
 						}
@@ -54,13 +56,14 @@ Ext
 
 					{
 						text : '客户类型',
-						width : 120,
 						renderer : function(v, c, r) {
 							return r.data.customerTypeName;
 						},
 						sortable : true,
 						dataIndex : 'customerType',
 						field : Ext.create('Fes.util.ParameterComboTree', {
+							width : 110,
+							emptyText : '客户类型',
 							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
@@ -78,6 +81,7 @@ Ext
 						sortable : true,
 						dataIndex : 'contractNumber',
 						field : {
+							emptyText : '合同/销单/签证编号',
 							xtype : 'textfield',
 							required : true
 						}
@@ -89,6 +93,7 @@ Ext
 						sortable : true,
 						dataIndex : 'contractName',
 						field : {
+							emptyText : '合同名称',
 							xtype : 'textfield',
 							required : true
 						}
@@ -96,13 +101,14 @@ Ext
 
 					{
 						text : '合同类型',
-						width : 120,
 						renderer : function(v, c, r) {
 							return r.data.contractTypeName;
 						},
 						sortable : true,
 						dataIndex : 'contractType',
 						field : Ext.create('Fes.util.ParameterComboTree', {
+							width : 110,
+							emptyText : '合同类型',
 							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
@@ -120,6 +126,7 @@ Ext
 						sortable : true,
 						dataIndex : 'projectNumber',
 						field : {
+							emptyText : '项目编号',
 							xtype : 'textfield',
 							required : true
 						}
@@ -139,6 +146,7 @@ Ext
 						},
 						dataIndex : 'signDate',
 						field : {
+							emptyText : '签订时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -158,6 +166,7 @@ Ext
 						},
 						dataIndex : 'endDate',
 						field : {
+							emptyText : '到期时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -169,6 +178,7 @@ Ext
 						sortable : true,
 						dataIndex : 'contractMoney',
 						field : {
+							emptyText : '合同额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -180,6 +190,7 @@ Ext
 						sortable : true,
 						dataIndex : 'settlementMoney',
 						field : {
+							emptyText : '结算凭证金额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -191,6 +202,7 @@ Ext
 						sortable : true,
 						dataIndex : 'projectInfo',
 						field : {
+							emptyText : '是否立项',
 							xtype : 'textfield',
 							required : true
 						}
@@ -202,6 +214,7 @@ Ext
 						sortable : true,
 						dataIndex : 'firstPaymoney',
 						field : {
+							emptyText : '首付款金额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -221,6 +234,7 @@ Ext
 						},
 						dataIndex : 'firstPaymoneyDate',
 						field : {
+							emptyText : '首付款回款时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -232,6 +246,7 @@ Ext
 						sortable : true,
 						dataIndex : 'secondPaymoney',
 						field : {
+							emptyText : '第二笔金额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -251,6 +266,7 @@ Ext
 						},
 						dataIndex : 'secondPaymoneyDate',
 						field : {
+							emptyText : '第二笔回款时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -262,6 +278,7 @@ Ext
 						sortable : true,
 						dataIndex : 'endPaymoney',
 						field : {
+							emptyText : '尾款金额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -281,6 +298,7 @@ Ext
 						},
 						dataIndex : 'endPaymoneyDate',
 						field : {
+							emptyText : '尾款回款时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -292,6 +310,7 @@ Ext
 						sortable : true,
 						dataIndex : 'otherPaymoney',
 						field : {
+							emptyText : '其他回款金额',
 							xtype : 'textfield',
 							required : true
 						}
@@ -311,6 +330,7 @@ Ext
 						},
 						dataIndex : 'otherPaymoneyDate',
 						field : {
+							emptyText : '其他回款时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}

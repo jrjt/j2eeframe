@@ -1,11 +1,6 @@
 package com.sunshineroad.driverschool.cscompletionreport.dao;
 
-import java.util.List;
-
-
-
 import com.sunshineroad.driverschool.cscompletionreport.entity.CsCompletionReport;
-import com.sunshineroad.driverschool.cscompletionreport.entityvo.CsCompletionReportVo;
 import com.sunshineroad.framework.support.dao.hibernate.HibernateDao;
 /**   
  * @Title: Dao

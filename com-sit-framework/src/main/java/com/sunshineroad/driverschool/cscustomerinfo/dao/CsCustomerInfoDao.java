@@ -1,11 +1,6 @@
 package com.sunshineroad.driverschool.cscustomerinfo.dao;
 
-import java.util.List;
-
-
-
 import com.sunshineroad.driverschool.cscustomerinfo.entity.CsCustomerInfo;
-import com.sunshineroad.driverschool.cscustomerinfo.entityvo.CsCustomerInfoVo;
 import com.sunshineroad.framework.support.dao.hibernate.HibernateDao;
 /**   
  * @Title: Dao

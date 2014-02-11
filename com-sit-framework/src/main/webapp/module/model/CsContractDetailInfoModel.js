@@ -2,7 +2,7 @@ Ext.define("Fes.model.CsContractDetailInfoModel",{
 	extend:'Ext.data.Model',
 	fields:[
 				{name:'contractNumber',type:'string'}	,	//合同/销单/签证编号
-			
+		 	    {name : 'customerName', type : 'string'},
 			
 				{name:'deviceName',type:'string'}	,	//设备名称
 			

@@ -1,24 +1,19 @@
 package com.sunshineroad.driverschool.cscompletionreport.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import   com.sunshineroad.driverschool.cscompletionreport.service.CsCompletionReportService;
- 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.sunshineroad.driverschool.cscompletionreport.dao.CsCompletionReportDao;
 import com.sunshineroad.driverschool.cscompletionreport.entity.CsCompletionReport;
 import com.sunshineroad.driverschool.cscompletionreport.entityvo.CsCompletionReportVo;
+import com.sunshineroad.driverschool.cscompletionreport.service.CsCompletionReportService;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-import com.sunshineroad.framework.support.matchrule.HQLParameter;
-
+//import com.sunshineroad.framework.support.matchrule.HQLParameter;
 import com.sunshineroad.framework.support.service.impl.BaseServiceImpl;
-
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import com.sunshineroad.framework.util.ListUtils;
 
 @Service("csCompletionReportService")
@@ -31,7 +26,7 @@ public class CsCompletionReportServiceImpl extends BaseServiceImpl<CsCompletionR
 	private SysParameterService sysParameterService;
 
 	public List<CsCompletionReportVo> list(CsCompletionReport entity) {
-		HQLParameter p = new HQLParameter(CsCompletionReport.class);	   
+//		HQLParameter p = new HQLParameter(CsCompletionReport.class);	   
 //		return ListUtils.transform(csCompletionReportDao.findPageByHql(" from CsCompletionReport "   ),
 //				CsCompletionReportVo.class);
 		StringBuffer hql = new StringBuffer(" FROM CsCompletionReport WHERE 1=1 ");

@@ -3,7 +3,7 @@ package com.sunshineroad.driverschool.freeTable.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class FreeTableController extends BaseControllerImpl {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(FreeTableController.class);
+//	private static final Logger logger = Logger.getLogger(FreeTableController.class);
 
 	public FreeTableController(){		
 	}

@@ -13,7 +13,7 @@ import com.sunshineroad.driverschool.sysparameter.dao.SysParameterDao;
 import com.sunshineroad.driverschool.sysparameter.entity.SysParameter;
 import com.sunshineroad.driverschool.sysparameter.entityvo.SysParameterVo;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-import com.sunshineroad.framework.support.matchrule.HQLParameter;
+//import com.sunshineroad.framework.support.matchrule.HQLParameter;
 import com.sunshineroad.framework.support.service.impl.BaseServiceImpl;
 import com.sunshineroad.framework.util.ListUtils;
 import com.sunshineroad.framework.util.TreeNode;
@@ -26,7 +26,7 @@ public class SysParameterServiceImpl extends BaseServiceImpl<SysParameter, Integ
 	public static  Map<Long,String>  paramsMap= new HashMap<Long,String> ();
 
 	public List<SysParameterVo> list(SysParameterVo entity) {
-		HQLParameter p = new HQLParameter(SysParameter.class);	   
+//		HQLParameter p = new HQLParameter(SysParameter.class);	   
 		StringBuffer hql= new StringBuffer(" FROM SysParameter  WHERE 1=1");
 		if(null!=entity&&null!=entity.getId()){
 			hql.append(" AND parUpId= "+entity.getId());
@@ -74,7 +74,7 @@ public class SysParameterServiceImpl extends BaseServiceImpl<SysParameter, Integ
 
 	@Override
 	public List<TreeNode> getChildrenById(Long id) {
-		HQLParameter p = new HQLParameter(SysParameter.class);	   
+//		HQLParameter p = new HQLParameter(SysParameter.class);	   
 		 
 		StringBuffer hql= new StringBuffer(" FROM SysParameter  WHERE 1=1");
 		if(null!=id){

@@ -6,26 +6,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sunshineroad.framework.support.service.IBaseService;
-import com.sunshineroad.framework.util.ResponseUtils;
-import com.sunshineroad.framework.util.TreeNode;
-import com.sunshineroad.framework.util.WebUtils; 
 import com.sunshineroad.driverschool.sysparameter.entity.SysParameter;
 import com.sunshineroad.driverschool.sysparameter.entityvo.SysParameterVo;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
 import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
-import com.sunshineroad.system.dept.vo.DeptVo;
-
-import org.apache.log4j.Logger;
+import com.sunshineroad.framework.util.ResponseUtils;
+import com.sunshineroad.framework.util.TreeNode;
+import com.sunshineroad.framework.util.WebUtils;
 /**   
  * @Title: Controller
  * @Description: 参数
@@ -43,7 +38,7 @@ public class SysParameterController extends BaseControllerImpl {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(SysParameterController.class);
+//	private static final Logger logger = Logger.getLogger(SysParameterController.class);
 
 	public SysParameterController(){		
 	}
