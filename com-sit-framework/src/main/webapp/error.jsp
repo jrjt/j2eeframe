@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8" isErrorPage="true"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="java.io.StringWriter"%>
-<%@ page import="com.sit.framework.util.WebUtils"%>
+<%@ page import="com.sunshineroad.framework.util.WebUtils"%>
 <%
 	String code = request.getParameter("code");
 	StringWriter sw = new StringWriter();

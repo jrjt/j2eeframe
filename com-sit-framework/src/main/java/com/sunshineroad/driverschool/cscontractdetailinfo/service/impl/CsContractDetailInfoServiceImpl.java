@@ -6,13 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 import   com.sunshineroad.driverschool.cscontractdetailinfo.service.CsContractDetailInfoService;
  
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.sunshineroad.driverschool.cscontractdetailinfo.dao.CsContractDetailInfoDao;
 import com.sunshineroad.driverschool.cscontractdetailinfo.entity.CsContractDetailInfo;
 import com.sunshineroad.driverschool.cscontractdetailinfo.entityvo.CsContractDetailInfoVo;
-import com.sunshineroad.driverschool.cscontractinfo.entityvo.CsContractInfoVo;
+import com.sunshineroad.driverschool.cscontractinfo.service.CsContractInfoService;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-import com.sunshineroad.framework.support.matchrule.HQLParameter;
+//import com.sunshineroad.framework.support.matchrule.HQLParameter;
 
 import com.sunshineroad.framework.support.service.impl.BaseServiceImpl;
 
@@ -28,9 +27,11 @@ public class CsContractDetailInfoServiceImpl extends BaseServiceImpl<CsContractD
 	private CsContractDetailInfoDao  csContractDetailInfoDao;
 	@Autowired	
 	private SysParameterService sysParameterService;
-
+	@Autowired 
+	private CsContractInfoService csContractInfoService;
+	
 	public List<CsContractDetailInfoVo> list(CsContractDetailInfo entity) {
-		HQLParameter p = new HQLParameter(CsContractDetailInfo.class);	  
+//		HQLParameter p = new HQLParameter(CsContractDetailInfo.class);	  
 		StringBuffer hql = new StringBuffer(" FROM CsContractDetailInfo WHERE 1=1 ");
 		
 		if (null!=entity&&(null!=entity.getDeviceName()||null!=entity.getDeviceModel())) {
@@ -40,12 +41,14 @@ public class CsContractDetailInfoServiceImpl extends BaseServiceImpl<CsContractD
 			hql.append("  )");
 		}
 		
-		//
 		List<CsContractDetailInfoVo> list = ListUtils.transform(csContractDetailInfoDao.findPageByHql(hql.toString()), CsContractDetailInfoVo.class);
 		List<CsContractDetailInfoVo> resultlist = new ArrayList<CsContractDetailInfoVo>();
 		for(CsContractDetailInfoVo vo:list) {
 			if (null!=vo.getDeviceModel()) {
 				vo.setDeviceModelName(sysParameterService.getParameterNameById(Long.parseLong(vo.getDeviceModel())));
+			}
+			if (null!=vo.getContractNumber()) {
+				vo.setCustomerName(csContractInfoService.getCustomerNameByContractNumber(vo.getContractNumber()));
 			}
 			resultlist.add(vo);
 		}

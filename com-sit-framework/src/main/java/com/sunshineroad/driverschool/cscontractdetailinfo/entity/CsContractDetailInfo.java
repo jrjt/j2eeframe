@@ -1,29 +1,13 @@
 package com.sunshineroad.driverschool.cscontractdetailinfo.entity;
  
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.SequenceGenerator;
-
-import java.util.List;
-
-import javax.persistence.FetchType;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.validator.constraints.Email;
+import javax.persistence.Table;
 
 import com.sunshineroad.framework.support.entity.BaseEntity;
 
@@ -38,6 +22,10 @@ import com.sunshineroad.framework.support.entity.BaseEntity;
 @Entity
 @Table(name = "CS_CONTRACT_DETAIL_INFO", schema = "")
 public class CsContractDetailInfo extends BaseEntity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**id*/
 	private java.lang.Long id;
 	/**合同/销单/签证编号*/

@@ -31,6 +31,7 @@ Ext
 						sortable : true,
 						dataIndex : 'reportNumber',
 						field : {
+							emptyText : '档案编号',
 							xtype : 'textfield',
 							required : true
 						}
@@ -42,6 +43,7 @@ Ext
 						sortable : true,
 						dataIndex : 'contractNumber',
 						field : {
+							emptyText : '合同/销单/签证编号',
 							xtype : 'textfield',
 							required : true
 						}
@@ -56,6 +58,7 @@ Ext
 						sortable : true,
 						dataIndex : 'reportType',
 						field : {
+							emptyText : '档案类型',
 							xtype : 'parameterComboTree',
 							rootText : '功能',
 							rootId : '1',
@@ -81,6 +84,7 @@ Ext
 						},
 						dataIndex : 'reportDate',
 						field : {
+							emptyText : '完工时间/到货时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -193,22 +197,19 @@ Ext
 													
 													var d = new Date();
 													if (e.record.data.reportDate > 0) {
-														d
-																.setTime(e.record.data.reportDate);
+														d.setTime(e.record.data.reportDate);
 														e.record.data.reportDate = d;
 													}
 
 													var d = new Date();
 													if (e.record.data.remark19 > 0) {
-														d
-																.setTime(e.record.data.remark19);
+														d.setTime(e.record.data.remark19);
 														e.record.data.remark19 = d;
 													}
 
 													var d = new Date();
 													if (e.record.data.remark20 > 0) {
-														d
-																.setTime(e.record.data.remark20);
+														d.setTime(e.record.data.remark20);
 														e.record.data.remark20 = d;
 													}
 												},

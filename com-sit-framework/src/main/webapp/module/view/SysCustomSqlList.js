@@ -162,7 +162,7 @@ saveRecode:function(obj){
 				 	
 						syb5:records[records.length-1].data.syb5,
 				 	
-						createDate:records[records.length-1].data.createDate,
+						createDate:records[records.length-1].data.createDate
 				 	
  
 								});
@@ -219,7 +219,7 @@ saveRecode:function(obj){
 				                }
 				            }
 				        ]
-			})
+			});
 			}
 			 						if (rec&&rec.data) {
 							if (rec.data.signDate > 0) {

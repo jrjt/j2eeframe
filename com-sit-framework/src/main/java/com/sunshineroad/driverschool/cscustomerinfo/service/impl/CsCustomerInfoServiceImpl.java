@@ -1,23 +1,19 @@
 package com.sunshineroad.driverschool.cscustomerinfo.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import   com.sunshineroad.driverschool.cscustomerinfo.service.CsCustomerInfoService;
- 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.sunshineroad.driverschool.cscustomerinfo.dao.CsCustomerInfoDao;
 import com.sunshineroad.driverschool.cscustomerinfo.entity.CsCustomerInfo;
 import com.sunshineroad.driverschool.cscustomerinfo.entityvo.CsCustomerInfoVo;
+import com.sunshineroad.driverschool.cscustomerinfo.service.CsCustomerInfoService;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-import com.sunshineroad.framework.support.matchrule.HQLParameter;
-
+//import com.sunshineroad.framework.support.matchrule.HQLParameter;
 import com.sunshineroad.framework.support.service.impl.BaseServiceImpl;
-
-
-import java.util.ArrayList;
-import java.util.List;
 import com.sunshineroad.framework.util.ListUtils;
 
 @Service("csCustomerInfoService")
@@ -29,7 +25,7 @@ public class CsCustomerInfoServiceImpl extends BaseServiceImpl<CsCustomerInfo, I
 	private SysParameterService sysParameterService;
 
 	public List<CsCustomerInfoVo> list(CsCustomerInfoVo entity) {
-		HQLParameter p = new HQLParameter(CsCustomerInfo.class);
+//		HQLParameter p = new HQLParameter(CsCustomerInfo.class);
 		StringBuffer hql = new StringBuffer("FROM CsCustomerInfo WHERE 1=1");
 		if (null != entity
 				&& (null != entity.getArea()
@@ -52,6 +48,8 @@ public class CsCustomerInfoServiceImpl extends BaseServiceImpl<CsCustomerInfo, I
 		for(CsCustomerInfoVo vo:list){
 			if (vo.getArea()!=null) {
 				vo.setAreaName(sysParameterService.getParameterNameById(Long.parseLong(vo.getArea())));
+			}
+			if (null!=vo.getCustomerType()) {
 				vo.setCustomerTypeName(sysParameterService.getParameterNameById(Long.parseLong(vo.getCustomerType())));
 			}
 			resultlist.add(vo);

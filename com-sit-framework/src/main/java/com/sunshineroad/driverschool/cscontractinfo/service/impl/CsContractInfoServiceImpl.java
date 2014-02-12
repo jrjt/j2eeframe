@@ -1,23 +1,20 @@
 package com.sunshineroad.driverschool.cscontractinfo.service.impl;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.sunshineroad.driverschool.cscontractdetailinfo.entityvo.CsContractDetailInfoVo;
-import com.sunshineroad.driverschool.cscontractinfo.service.CsContractInfoService;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.sunshineroad.driverschool.cscontractinfo.dao.CsContractInfoDao;
 import com.sunshineroad.driverschool.cscontractinfo.entity.CsContractInfo;
 import com.sunshineroad.driverschool.cscontractinfo.entityvo.CsContractInfoVo;
+import com.sunshineroad.driverschool.cscontractinfo.service.CsContractInfoService;
 import com.sunshineroad.driverschool.sysparameter.service.SysParameterService;
-import com.sunshineroad.framework.support.matchrule.HQLParameter;
-
 import com.sunshineroad.framework.support.service.impl.BaseServiceImpl;
-
-import java.util.ArrayList;
-import java.util.List;
 import com.sunshineroad.framework.util.ListUtils;
 
 @Service("csContractInfoService")
@@ -30,8 +27,10 @@ public class CsContractInfoServiceImpl extends
 	@Autowired
 	private SysParameterService sysParameterService;
 	
+	public static  Map<String,String>  paramsMap= new HashMap<String,String> ();
+	
 	public List<CsContractInfoVo> list(CsContractInfo entity) {
-		HQLParameter p = new HQLParameter(CsContractInfo.class);
+//		HQLParameter p = new HQLParameter(CsContractInfo.class);
 		StringBuffer hql = new StringBuffer(" FROM CsContractInfo  WHERE 1=1");
 
 		if (entity.getArea().length()==0&&
@@ -61,7 +60,11 @@ public class CsContractInfoServiceImpl extends
 		for(CsContractInfoVo vo:list) {
 			if (null!=vo.getArea()) {
 				vo.setAreaName(sysParameterService.getParameterNameById(Long.parseLong(vo.getArea())));
+			}
+			if(null!=vo.getCustomerType()){
 				vo.setCustomerTypeName(sysParameterService.getParameterNameById(Long.parseLong(vo.getCustomerType())));
+			}
+			if(null!=vo.getContractType()){
 				vo.setContractTypeName(sysParameterService.getParameterNameById(Long.parseLong(vo.getContractType())));
 			}
 			resultlist.add(vo);
@@ -72,6 +75,10 @@ public class CsContractInfoServiceImpl extends
 //		return ListUtils.transform(
 //				csContractInfoDao.findPageByHql(hql.toString()),
 //				CsContractInfoVo.class);
+	}
+
+	public static void setParamsMap(Map<String, String> paramsMap) {
+		CsContractInfoServiceImpl.paramsMap = paramsMap;
 	}
 
 	@Override
@@ -89,4 +96,26 @@ public class CsContractInfoServiceImpl extends
 	public void delete(CsContractInfo model) {
 		this.csContractInfoDao.delete(model);
 	}
+	
+	
+	public   Map<String,String> getParamsMap() {
+		return paramsMap;
+	}
+
+	@Override
+	public String getCustomerNameByContractNumber(String contractNumber) {
+		if(null==contractNumber)return null;
+		if(null==this.getParamsMap().get(contractNumber)){
+			StringBuffer hql= new StringBuffer(" FROM CsContractInfo  WHERE contractNumber ='"+contractNumber + "'");
+			 List<CsContractInfo> list=csContractInfoDao.findByHQL(hql.toString());
+			 if(null==list||list.size()==0){
+				 return null;
+			 }
+			 this.getParamsMap().put(contractNumber, list.get(0).getCustomerName());
+			 return list.get(0).getCustomerName();
+					 
+		}else{
+			return this.getParamsMap().get(contractNumber);
+		}	
+		}
 }

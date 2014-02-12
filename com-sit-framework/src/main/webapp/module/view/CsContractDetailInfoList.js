@@ -27,17 +27,29 @@ Ext
 						sortable : true,
 						dataIndex : 'contractNumber',
 						field : {
+							emptyText : '合同/销单/签证编号',
 							xtype : 'textfield',
 							required : true
 						}
 					},
 
 					{
+						text : '客户名称',
+						width : 120,
+						sortable : true,
+						dataIndex : 'customerName',
+						field : {
+							emptyText : '客户名称',
+							xtype : 'textfield',
+							required : true
+						}
+					},					{
 						text : '设备名称',
 						width : 120,
 						sortable : true,
 						dataIndex : 'deviceName',
 						field : {
+							emptyText : '设备名称',
 							xtype : 'textfield',
 							required : true
 						}
@@ -52,6 +64,7 @@ Ext
 					sortable : true,
 					dataIndex : 'deviceModel',
 					field : {
+						emptyText : '设备型号',
 						xtype : 'parameterComboTree',
 						rootText : '功能',
 						rootId : '1',
@@ -69,6 +82,7 @@ Ext
 						sortable : true,
 						dataIndex : 'equipmentPrice',
 						field : {
+							emptyText : '设备单价',
 							xtype : 'textfield',
 							required : true
 						}
@@ -80,6 +94,7 @@ Ext
 						sortable : true,
 						dataIndex : 'deviceNumber',
 						field : {
+							emptyText : '设备数量',
 							xtype : 'textfield',
 							required : true
 						}
@@ -97,6 +112,7 @@ Ext
 						},
 						dataIndex : 'openDate',
 						field : {
+							emptyText : 'SIM卡开始时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -116,6 +132,7 @@ Ext
 						},
 						dataIndex : 'endDate',
 						field : {
+							emptyText : 'SIM卡结束时间',
 							xtype : 'datefield',
 							format : 'Y-m-d'
 						}
@@ -453,7 +470,7 @@ Ext
 																		.hide();
 															}
 														} ]
-											})
+											});
 						}
 						if (rec && rec.data) {
 							if (rec.data.signDate > 0) {
@@ -473,38 +490,46 @@ Ext
 										'Ext.toolbar.Toolbar',
 										{
 											items : [
-													{
-														xtype : 'textfield',
-														emptyText : '设备名称',
-														labelWidth : 20,
-														flex : .6,
-														id : 'csContractDetailInfoListDeviceName'
-													},
-													{
-															xtype : 'parameterComboTree',
-															rootText : '功能',
-															emptyText: '设备型号',
-															rootId : '1',
-															storeUrl : 'sysParameter/getTreeNodeChildren',
-															id : 'csContractDetailInfo' + 'deviceModelQ',
-															selectMode : 'all',
-															treeHeight : 300,
-															rootVisible : false
-													},
-													{
-														xtype : 'button',
-														text : '查询',
-														iconCls : 'icon-search',
-														handler : function() {
-															me
-																	.getStore()
-																	.load(
-																			/*{
-																				params : {
-																					paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
-																					paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()
-																				}
-																			}*/);
+														{
+															xtype : 'textfield',
+															emptyText : '客户名称条件暂不可用',
+															readOnly: true,
+															labelWidth : 20,
+															flex : .6,
+															id : 'csContractDetailInfoListCustomerName'
+														},													
+														{
+															xtype : 'textfield',
+															emptyText : '设备名称',
+															labelWidth : 20,
+															flex : .6,
+															id : 'csContractDetailInfoListDeviceName'
+														},
+														{
+																xtype : 'parameterComboTree',
+																rootText : '功能',
+																emptyText: '设备型号',
+																rootId : '1',
+																storeUrl : 'sysParameter/getTreeNodeChildren',
+																id : 'csContractDetailInfo' + 'deviceModelQ',
+																selectMode : 'all',
+																treeHeight : 300,
+																rootVisible : false
+														},
+														{
+															xtype : 'button',
+															text : '查询',
+															iconCls : 'icon-search',
+															handler : function() {
+																me
+																		.getStore()
+																		.load(
+																				/*{
+																					params : {
+																						paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
+																						paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()
+																					}
+																				}*/);
 														}
 
 													},

@@ -75,7 +75,7 @@
 		<!-- 注意： 不但要满足自己实现的权限控制还要满足SPRING默认的访问权限控制才可以访问特定资源 -->
 
 		<!-- 会话管理 -->
-		<session-management invalid-session-url="/timeout.jsp">
+		<session-management invalid-session-url="/index.jsp">
 			<concurrency-control max-sessions="1000"
 				error-if-maximum-exceeded="true" />
 		</session-management>

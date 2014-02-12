@@ -8,4 +8,6 @@ import com.sunshineroad.framework.support.service.IBaseService;
 
 public interface CsContractInfoService extends IBaseService<CsContractInfo, Integer>{
 	public List<CsContractInfoVo> list(CsContractInfo entity) ;
+	
+	public String getCustomerNameByContractNumber(String contractNumber);
 }

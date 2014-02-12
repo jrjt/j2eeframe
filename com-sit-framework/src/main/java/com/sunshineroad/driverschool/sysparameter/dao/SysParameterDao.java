@@ -1,11 +1,6 @@
 package com.sunshineroad.driverschool.sysparameter.dao;
 
-import java.util.List;
-
-
-
 import com.sunshineroad.driverschool.sysparameter.entity.SysParameter;
-import com.sunshineroad.driverschool.sysparameter.entityvo.SysParameterVo;
 import com.sunshineroad.framework.support.dao.hibernate.HibernateDao;
 /**   
  * @Title: Dao

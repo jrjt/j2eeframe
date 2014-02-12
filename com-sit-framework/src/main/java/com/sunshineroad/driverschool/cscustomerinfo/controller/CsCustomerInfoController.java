@@ -1,30 +1,23 @@
 package com.sunshineroad.driverschool.cscustomerinfo.controller;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.sunshineroad.framework.support.service.IBaseService;
-import com.sunshineroad.framework.util.ResponseUtils;
-import com.sunshineroad.framework.util.WebUtils; 
 
 import com.sunshineroad.driverschool.cscustomerinfo.entity.CsCustomerInfo;
 import com.sunshineroad.driverschool.cscustomerinfo.entityvo.CsCustomerInfoVo;
 import com.sunshineroad.driverschool.cscustomerinfo.service.CsCustomerInfoService;
-
 import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
-
-import org.apache.log4j.Logger;
+import com.sunshineroad.framework.util.ResponseUtils;
+import com.sunshineroad.framework.util.WebUtils;
 /**   
  * @Title: Controller
  * @Description: 客户信息
@@ -42,7 +35,7 @@ public class CsCustomerInfoController extends BaseControllerImpl {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(CsCustomerInfoController.class);
+//	private static final Logger logger = Logger.getLogger(CsCustomerInfoController.class);
 
 	public CsCustomerInfoController(){		
 	}

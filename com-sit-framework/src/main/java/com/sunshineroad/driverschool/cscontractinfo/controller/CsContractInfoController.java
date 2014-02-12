@@ -1,31 +1,23 @@
 package com.sunshineroad.driverschool.cscontractinfo.controller;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang.StringUtils;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.sunshineroad.framework.support.service.IBaseService;
-import com.sunshineroad.framework.util.ResponseUtils;
-import com.sunshineroad.framework.util.WebUtils; 
 
 import com.sunshineroad.driverschool.cscontractinfo.entity.CsContractInfo;
 import com.sunshineroad.driverschool.cscontractinfo.entityvo.CsContractInfoVo;
 import com.sunshineroad.driverschool.cscontractinfo.service.CsContractInfoService;
-
 import com.sunshineroad.framework.support.controller.impl.BaseControllerImpl;
-import com.sunshineroad.system.user.model.AjaxInfoModel;
-
-import org.apache.log4j.Logger;
+import com.sunshineroad.framework.util.ResponseUtils;
+import com.sunshineroad.framework.util.WebUtils;
 /**   
  * @Title: Controller
  * @Description: 合同信息
@@ -43,7 +35,7 @@ public class CsContractInfoController extends BaseControllerImpl {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = Logger.getLogger(CsContractInfoController.class);
+//	private static final Logger logger = Logger.getLogger(CsContractInfoController.class);
 
 	public CsContractInfoController(){		
 	}
@@ -62,12 +54,6 @@ public class CsContractInfoController extends BaseControllerImpl {
 		String paramsCustomerName = request.getParameter("paramsCustomerName");
 		String paramsCustomerType = request.getParameter("paramsCustomerType");
 		String paramsContractType = request.getParameter("paramsContractType");
-		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-		System.out.println(paramsArea);
-		System.out.println(paramsCustomerName);
-		System.out.println(paramsCustomerType);
-		System.out.println(paramsContractType);
 		
 		if (null!=paramsArea) {
 			byte b[];
