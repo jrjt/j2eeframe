@@ -141,12 +141,12 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
                                 '<tpl if="age &gt; 1"><p>{#}. {parent.name}\'s kid - {name}</p></tpl>',
                             '</tpl></p>'
                         ],
-                        tbar: [{
+                      /*  tbar: [{
                             text: 'Apply Template',
                             handler: function() {
                                 this.up('panel').update(data);
                             }
-                        }],
+                        }],*/
                         html: '<p><i>Apply the template to see results here</i></p>'
                      
                 	
