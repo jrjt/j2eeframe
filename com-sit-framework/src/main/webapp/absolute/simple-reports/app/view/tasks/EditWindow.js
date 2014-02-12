@@ -121,10 +121,35 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
                         }
                     ]
                 },
-                {
+               /* {
                     xtype: 'htmleditor',
                     name: 'note',
                     anchor: '100% -90'
+                },*/
+                {
+                        width: 300,
+                        xtype:'panel',
+                        //margin: 15,
+                        //bodyPadding: 5,
+                        //title: 'XTemplate',
+                        tpl: [
+                            '<p>Name: {name}</p>',
+                            '<p>Company: {company}</p>',
+                            '<p>Location: {city}, {state}</p>',
+                            '<p>Kids: ',
+                            '<tpl for="kids">',
+                                '<tpl if="age &gt; 1"><p>{#}. {parent.name}\'s kid - {name}</p></tpl>',
+                            '</tpl></p>'
+                        ],
+                        tbar: [{
+                            text: 'Apply Template',
+                            handler: function() {
+                                this.up('panel').update(data);
+                            }
+                        }],
+                        html: '<p><i>Apply the template to see results here</i></p>'
+                     
+                	
                 },
                 {
                     xtype: 'hiddenfield',
