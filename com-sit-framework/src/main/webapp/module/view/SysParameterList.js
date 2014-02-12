@@ -44,7 +44,7 @@ Ext.define('Fes.view.SysParameterList', {
 		text : '上级参数',
 		width : 120,
 		renderer : function(v, c, r) {
-			return r.data.parUpName
+			return r.data.parUpName;
 		},
 		sortable : true,
 		dataIndex : 'parUpName',
@@ -301,7 +301,7 @@ Ext.define('Fes.view.SysParameterList', {
 								_sysParameterWindow.hide();
 							}
 						} ]
-			})
+			});
 
 		}
 		_sysParameterWindow.show();

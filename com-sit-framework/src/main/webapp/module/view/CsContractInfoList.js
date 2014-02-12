@@ -661,7 +661,7 @@ Ext
 																_csContractInfoWindow.hide();
 															}
 														} ]
-											})
+											});
 						}
 						if (rec && rec.data) {
 							if (rec.data.signDate > 0) {
@@ -672,6 +672,20 @@ Ext
 							_csContractInfoWindow.down('form').loadRecord(rec);
 						}
 						_csContractInfoWindow.show();
+					},
+					exportExcel : function(){ // 导出EXCEL报表
+						this.getEl().mask('正在生成报表，请稍候...');
+						Ext.Ajax.request({
+							 method : 'GET',
+					         url : 'toExcel/getReport',
+					         success : function(response, options) {
+					        	 Ext.Msg.alert("SUCCESS","建设中……");
+					         },
+							 failure: function(response,options){
+								 Ext.Msg.alert("FAILURE","建设中……");
+							 }
+						});
+						this.getEl().unmask();
 					},
 					createToolbar : function() {
 						var me = this;
@@ -743,14 +757,12 @@ Ext
 														}
 													},
 													'-',
-													Ext
-															.create('Ext.Button',
-																	{
-																		text : '弹窗添加',
-																		iconCls : 'icon-add',
-																		handler : me.showWindow,
-																		scope : me
-																	}),
+													Ext.create('Ext.Button',{
+														text : '导出报表',
+														iconCls : 'icon-download',
+														handler : me.exportExcel,
+														scope : me
+													}),
 													Ext.create('Ext.Button', {
 														text : '页面添加',
 														iconCls : 'icon-add',
@@ -758,14 +770,12 @@ Ext
 														scope : me
 													}),
 													'-',
-													Ext
-															.create('Ext.Button',
-																	{
-																		text : '编辑',
-																		iconCls : 'icon-edit',
-																		handler : me.editRecord,
-																		scope : me
-																	}),
+													Ext.create('Ext.Button',{
+														text : '编辑',
+														iconCls : 'icon-edit',
+														handler : me.editRecord,
+														scope : me
+													}),
 													'-',
 													{
 														xtype : 'button',

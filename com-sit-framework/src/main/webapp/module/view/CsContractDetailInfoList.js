@@ -470,7 +470,7 @@ Ext
 																		.hide();
 															}
 														} ]
-											})
+											});
 						}
 						if (rec && rec.data) {
 							if (rec.data.signDate > 0) {
@@ -505,31 +505,31 @@ Ext
 															flex : .6,
 															id : 'csContractDetailInfoListDeviceName'
 														},
-													{
-															xtype : 'parameterComboTree',
-															rootText : '功能',
-															emptyText: '设备型号',
-															rootId : '1',
-															storeUrl : 'sysParameter/getTreeNodeChildren',
-															id : 'csContractDetailInfo' + 'deviceModelQ',
-															selectMode : 'all',
-															treeHeight : 300,
-															rootVisible : false
-													},
-													{
-														xtype : 'button',
-														text : '查询',
-														iconCls : 'icon-search',
-														handler : function() {
-															me
-																	.getStore()
-																	.load(
-																			/*{
-																				params : {
-																					paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
-																					paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()
-																				}
-																			}*/);
+														{
+																xtype : 'parameterComboTree',
+																rootText : '功能',
+																emptyText: '设备型号',
+																rootId : '1',
+																storeUrl : 'sysParameter/getTreeNodeChildren',
+																id : 'csContractDetailInfo' + 'deviceModelQ',
+																selectMode : 'all',
+																treeHeight : 300,
+																rootVisible : false
+														},
+														{
+															xtype : 'button',
+															text : '查询',
+															iconCls : 'icon-search',
+															handler : function() {
+																me
+																		.getStore()
+																		.load(
+																				/*{
+																					params : {
+																						paramsDeviceName : Ext.getCmp('csContractDetailInfoListDeviceName').getValue(),
+																						paramsDeviceModel : Ext.getCmp('csContractDetailInfo' + 'deviceModelQ').getValue()
+																					}
+																				}*/);
 														}
 
 													},

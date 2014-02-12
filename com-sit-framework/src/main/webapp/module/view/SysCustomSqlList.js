@@ -219,7 +219,7 @@ saveRecode:function(obj){
 				                }
 				            }
 				        ]
-			})
+			});
 			}
 			 						if (rec&&rec.data) {
 							if (rec.data.signDate > 0) {
