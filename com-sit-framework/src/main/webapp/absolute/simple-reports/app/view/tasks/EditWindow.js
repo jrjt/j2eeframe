@@ -52,13 +52,13 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
             border: false,
             frame: true,
             items: [
-                {
-                    xtype: 'textfield',
-                    name: 'title',
-                    fieldLabel: '任务主题',
-                    labelWidth: 90,
-                    anchor: '100%'
-                },
+//                {
+//                    xtype: 'textfield',
+//                    name: 'title',
+//                    fieldLabel: '任务主题',
+//                    labelWidth: 90,
+//                    anchor: '100%'
+//                },
                 {
                     xtype: 'fieldset',
                     layout: 'hbox',
@@ -67,23 +67,23 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
                     margin: '0 0 5',
                     border: false,
                     items: [
-                        {
-                            xtype: 'datefield',
-                            name: 'due',
-                            fieldLabel: '到期日',
-                            labelWidth: 90,
-                            width: 195,
-                            margin: '0 15 0 0'
-                        },
-                        {
-                            xtype: 'treepicker',
-                            name: 'list_id',
-                            fieldLabel: '任务清单',
-                            labelWidth: 60,
-                            displayField: 'name',
-                            store: Ext.create('SimpleReports.store.Lists', {storeId: 'Lists-TaskEditWindow'}),
-                            flex: 1
-                        }
+//                        {
+//                            xtype: 'datefield',
+//                            name: 'due',
+//                            fieldLabel: '到期日',
+//                            labelWidth: 90,
+//                            width: 195,
+//                            margin: '0 15 0 0'
+//                        },
+//                        {
+//                            xtype: 'treepicker',
+//                            name: 'list_id',
+//                            fieldLabel: '任务清单',
+//                            labelWidth: 60,
+//                            displayField: 'name',
+//                            store: Ext.create('SimpleReports.store.Lists', {storeId: 'Lists-TaskEditWindow'}),
+//                            flex: 1
+//                        }
                     ]
                 },
                 {
@@ -100,32 +100,32 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
                     margin: '0 0 5',
                     border: false,
                     items: [
-                        {
-                            xtype: 'checkbox',
-                            name: 'has_reminder',
-                            boxLabel: '温馨提示',
-                            margin: '0 5 0 0'
-                        },
-                        {
-                            xtype: 'datefield',
-                            name: 'reminder_date',
-                            margin: '0 5 0 0',
-                            disabled: true,
-                            editable: false
-                        },
-                        {
-                            xtype: 'timefield',
-                            name: 'reminder_time',
-                            disabled: true,
-                            editable: false
-                        }
+//                        {
+//                            xtype: 'checkbox',
+//                            name: 'has_reminder',
+//                            boxLabel: '温馨提示',
+//                            margin: '0 5 0 0'
+//                        },
+//                        {
+//                            xtype: 'datefield',
+//                            name: 'reminder_date',
+//                            margin: '0 5 0 0',
+//                            disabled: true,
+//                            editable: false
+//                        },
+//                        {
+//                            xtype: 'timefield',
+//                            name: 'reminder_time',
+//                            disabled: true,
+//                            editable: false
+//                        }
                     ]
                 },
-               /* {
+               {
                     xtype: 'htmleditor',
-                    name: 'note',
-                    anchor: '100% -90'
-                },*/
+                    name: 'sql',
+//                    anchor: '100% -90'
+                },
                 {
                         width: 300,
                         xtype:'panel',
@@ -170,7 +170,7 @@ Ext.define('SimpleReports.view.tasks.EditWindow', {
                     id: 'cancel-task-edit-btn'
                 }
             ]
-        }]
+        }];
 
         this.callParent(arguments);
 

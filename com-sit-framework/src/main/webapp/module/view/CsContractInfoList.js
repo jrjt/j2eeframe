@@ -336,16 +336,17 @@ Ext
 						}
 					},
 
-//					{
-//						text : '备用字段1',
-//						width : 120,
-//						sortable : true,
-//						dataIndex : 'remark1',
-//						field : {
-//							xtype : 'textfield',
-//							required : true
-//						}
-//					},
+					{
+						text : '发票信息',
+						width : 120,
+						sortable : true,
+						dataIndex : 'remark1',
+						field : {
+							emptyText : '发票信息',
+							xtype : 'textfield',
+							required : true
+						}
+					},
 //
 //					{
 //						text : '备用字段2',

@@ -79,10 +79,8 @@ createRoleCombox:function(){
 	                        		 {return;}
 	                        		 var d= new Date();
 	                        		 d.setTime(v); 
-	                        		 return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'updateDate',field : {xtype : 'datefield', format:'Y-m-d'}
-	                        		 ,
-	                        	 
-	                        	 dataIndex : 'signDate',
+	                        		 return Ext.util.Format.date(d,'Y-m-d');},dataIndex : 'updateDate',field : {xtype : 'datefield', format:'Y-m-d'}, 
+	                        	     dataIndex : 'updateDate',
 	     						field : {
 	     							emptyText : '设备更新日期',
 	     							xtype : 'datefield',
