@@ -110,7 +110,7 @@
 	getTextValue : function(){//获取text值
 		return this._txtValue;
 	},
-	setLocalValue : function(txt,id){//设值
+	setLocalValue : function(id,txt){//设值
 		this._idValue = id;
 		this.setValue(this._txtValue = txt);
 	}
