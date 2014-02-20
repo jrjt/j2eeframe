@@ -3,6 +3,7 @@ package com.sunshineroad.driverschool.csdeviceinfo.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sun.star.i18n.ForbiddenCharacters;
 import com.sunshineroad.driverschool.cscompletionreport.entityvo.CsCompletionReportVo;
 import   com.sunshineroad.driverschool.csdeviceinfo.service.CsDeviceInfoService;
  
@@ -56,6 +57,7 @@ public class CsDeviceInfoServiceImpl extends BaseServiceImpl<CsDeviceInfo, Integ
 			hql.append("  )");	
 		  
 		}
+		
 		List<CsDeviceInfoVo> list = ListUtils.transform(csDeviceInfoDao.findPageByHql(hql.toString()),
 				CsDeviceInfoVo.class);
 		List<CsDeviceInfoVo> resultlist = new ArrayList<CsDeviceInfoVo>();

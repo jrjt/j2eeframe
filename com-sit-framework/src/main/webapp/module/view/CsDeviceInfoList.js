@@ -377,7 +377,7 @@ saveRecode:function(obj){
 				 	
 						remark19:records[records.length-1].data.remark19,
 				 	
-						remark20:records[records.length-1].data.remark20,
+						remark20:records[records.length-1].data.remark20
 				 	
  
 								});
