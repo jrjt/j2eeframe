@@ -7,7 +7,6 @@ Ext.define('SimpleReports.controller.Tasks', {
 
     models: ['Task'],
     stores: ['Tasks'],
-
     views: [
         'tasks.Grid',
         'tasks.Form',
@@ -644,54 +643,57 @@ Ext.define('SimpleReports.controller.Tasks', {
     showSqlWindow: function(task) {
         var me = this,
         taskSqlWindow = me.getTaskSqlWindow();
-
-    // Set the tasks title as the title of the edit window
         taskSqlWindow.setTitle('Edit Task - ' + task.get('title'));
-    // load the task data into the form
-       // taskSqlWindow.down('form').loadRecord(task);
-    // set the text of the toggle-complete button depending on the tasks "done" value
-   // Ext.getCmp('toggle-complete-btn').setText(task.get('done') ? 'Mark Active' : '标记完成');
-    taskSqlWindow.show();
-    
-
-    var griddb=taskSqlWindow.down('grid');//Ext.getCmp('databaselist');
-    
-    /*
-	Ext.Ajax.request({
-		url : 'resource/root',// 获取面板的地址
-		method : 'GET',
-		callback : function(options, success, response) {
-			me.createTree(Ext.JSON.decode(response.responseText));
-		}
-	});*/
-    Ext.Ajax.request({
-        url:'sysCustomSql/getContentStrBySql/',
-        params:{
-            id:task.get('id')
-        },
-        method : 'GET',
-        success : function(response) {
-            var strT=response.responseText;
-            var json = Ext.JSON.decode(strT);
-           // console.log('json==========='+Ext.JSON.encode(json));
-            json= json.result ;
-           // console.log('json.contentstr==========='+Ext.JSON.encode(json));
-           //  var json = Ext.JSON.decode(strT.replace(/\"\{/g,"{").replace(/\}\"/g,"}"));   
-           // console.log('json.fields==========='+Ext.JSON.encode(json.fields));
-            //console.log('json.fieldheader==========='+Ext.JSON.encode(json.fieldheader));
-            //console.log('json.contentstr==========='+Ext.JSON.encode(json.contentstr));
-            var store=Ext.create('Ext.data.Store',{ 
-                fields:Ext.JSON.decode(json.fields),
-                data:Ext.JSON.decode(json.contentstr)
-            });
-            //var pagebar=Ext.getCmp('datapagebar');
-            //pagebar.bind(store); //为分页栏加载数据
-           // store.load();
-            griddb.reconfigure(store,Ext.JSON.decode(json.fieldheader));
-              
-        }
-    });
- 
+        var griddb=taskSqlWindow.down('grid');
+        Ext.Ajax.request({
+            url:'sysCustomSql/getContentStrBySql/',
+            params:{
+                id:task.get('id')
+            },
+            method : 'GET',
+            success : function(response) {
+                var strT=response.responseText;
+                var json = Ext.JSON.decode(strT);
+                json= json.result ;
+                var store=Ext.create('Ext.data.Store',{ 
+                    fields:Ext.JSON.decode(json.fields),
+                    data:Ext.JSON.decode(json.contentstr)
+                });
+                griddb.reconfigure(store,Ext.JSON.decode(json.fieldheader));
+                
+                //----------------------
+                var vExportContent = getExcelUrl.getExcelUrl(griddb, "SQL报表");
+                if (Ext.isIE6 || Ext.isIE7 || Ext.isIE8 || Ext.isSafari) {
+                    var fd = Ext.get('frmDummy');
+                    if (!fd) {
+                        fd = Ext.DomHelper.append(Ext.getBody(), {
+                            tag: 'form',
+                            method: 'post',
+                            id: 'frmDummy',
+                            action: Ext.appPath + '/exportexcel.jsp',
+                            target: '_blank',
+                            name: 'frmDummy',
+                            cls: 'x-hidden',
+                            cn: [{
+                                tag: 'input',
+                                name: 'exportContent',
+                                id: 'exportContent',
+                                type: 'hidden'
+                            }]
+                        },
+                        true);
+                    }
+                    fd.child('#exportContent').set({
+                        value: vExportContent
+                    });
+                    fd.dom.submit();
+                } else {
+                    document.location = 'data:application/vnd.ms-excel;base64,' + Base64.encode(vExportContent);
+                }
+                //^^^^^^^^^^^^^^^^^^^^^^
+            }
+        });
+        taskSqlWindow.show();
 },
 hideSqlWindow: function(button, e) {
     this.getTaskSqlWindow().close();

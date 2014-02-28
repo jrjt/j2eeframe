@@ -122,7 +122,7 @@ var getExcelUrl = (function() {
 				var store = grid.store;
 				var count = store.getCount();
 				var columns = grid.columns;
-
+				console.log("Columns Length: "+columns.length);
 				var temp = '<ss:Worksheet ss:Name="ExportTable Grid">';
 				var headerXml = '<ss:Cell ss:StyleID="headercell" ss:MergeAcross="'
 						+ (columns.length - 2)
@@ -144,16 +144,11 @@ var getExcelUrl = (function() {
 				}
 				temp += '</ss:Row>';
 
-/*				var acolumn = store.getAt(0).fields.length;
-				if (columns[1].dataIndex == 'id') {
-					acolumn++;
-				};*/
-
 				for (var i = 0; i < count; i++) {
 					var cellClass = (i & 1) ? 'odd' : 'even';
 					var model = store.getAt(i);
 					temp += '<ss:Row ss:Height="20">';
-
+					
 					for (var j = 1; j < columns.length; j++) {
 						var name = columns[j].dataIndex;
 						if (name == null || name == '') {
@@ -248,9 +243,6 @@ var getExcelUrl = (function() {
 	return {
 		getExcelUrl : function(inputGrid, inputTitle) {
 			var vExportContent = storeToXml.storeToXml(inputGrid, inputTitle);
-			//			var url = 'data:application/vnd.ms-excel;base64,'
-			//					+ Base64.encode(vExportContent);
-			//			return url;
 			return vExportContent;
 		}
 	};

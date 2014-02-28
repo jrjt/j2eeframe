@@ -234,9 +234,7 @@ Ext.define('SimpleReports.view.tasks.Grid', {
              */
             'reminderselect'
         );
-
         cellEditingPlugin.on('edit', me.handleCellEdit, this);
-
     },
 
     /**
