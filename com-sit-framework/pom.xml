@@ -30,7 +30,7 @@
 	
       <repository>  
         <id>releases</id>  
-        <url>http://172.20.15.17:8081/nexus/content/repositories/thirdparty/</url>  
+        <url>http://172.20.15.143:7023/nexus/content/repositories/thirdparty/</url>  
       </repository>  
 	</distributionManagement>  
 
@@ -75,7 +75,7 @@
 	<repository>  
             <id>nexus</id>  
             <name>nexus</name>  
-            <url>http://172.20.15.17:8081/nexus/content/groups/public/</url>  
+            <url>http://172.20.15.143:7023/nexus/content/groups/public/</url>  
             <releases>  
                 <enabled>true</enabled>  
             </releases>  
@@ -91,11 +91,11 @@
 		
 		<repository>  
         <id>com.aspose</id>  
-        <url>http://172.20.15.17:8081/nexus/content/repositories/thirdparty/</url>  
+        <url>http://172.20.15.143:7023/nexus/content/repositories/thirdparty/</url>  
       </repository>  
 		<repository>  
         <id>proxool</id>  
-        <url>http://172.20.15.17:8081/nexus/content/repositories/thirdparty/</url>  
+        <url>http://172.20.15.143:7023/nexus/content/repositories/thirdparty/</url>  
       </repository>  
 		<repository>
 			<id>Activiti</id>
@@ -750,7 +750,7 @@
         <pluginRepository>  
             <id>nexus</id>  
             <name>nexus</name>  
-            <url>http://172.20.15.17:8081/nexus/content/groups/public/</url>  
+            <url>http://172.20.15.143:7023/nexus/content/groups/public/</url>  
             <releases>  
                 <enabled>true</enabled>  
             </releases>  
